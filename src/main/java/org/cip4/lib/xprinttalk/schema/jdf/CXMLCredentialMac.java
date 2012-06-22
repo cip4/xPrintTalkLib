@@ -15,7 +15,7 @@ import javax.xml.bind.annotation.XmlType;
  * <pre>
  * &lt;complexType name="cXML-CredentialMac">
  *   &lt;simpleContent>
- *     &lt;extension base="&lt;http://www.printtalk.org/schema_13>cXML-TextOnly">
+ *     &lt;extension base="&lt;http://www.printtalk.org/schema_2_0>cXML-TextOnly">
  *     &lt;/extension>
  *   &lt;/simpleContent>
  * &lt;/complexType>

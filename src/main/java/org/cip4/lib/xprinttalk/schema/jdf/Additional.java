@@ -16,7 +16,7 @@ import javax.xml.bind.annotation.XmlType;
  * <pre>
  * &lt;complexType name="Additional">
  *   &lt;complexContent>
- *     &lt;extension base="{http://www.printtalk.org/schema_13}Abstract_pt">
+ *     &lt;extension base="{http://www.printtalk.org/schema_2_0}Abstract_pt">
  *       &lt;attribute name="Amount" use="required" type="{http://www.CIP4.org/JDFSchema_2_0}double" />
  *       &lt;attribute name="Price" use="required" type="{http://www.CIP4.org/JDFSchema_2_0}double" />
  *     &lt;/extension>

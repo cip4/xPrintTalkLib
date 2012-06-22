@@ -18,7 +18,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * <pre>
  * &lt;complexType name="StatusRequest">
  *   &lt;complexContent>
- *     &lt;extension base="{http://www.printtalk.org/schema_13}Abstract_pt">
+ *     &lt;extension base="{http://www.printtalk.org/schema_2_0}Abstract_pt">
  *       &lt;attribute name="JobIDRef" type="{http://www.CIP4.org/JDFSchema_2_0}string" />
  *       &lt;attribute name="JobPartIDRef" type="{http://www.CIP4.org/JDFSchema_2_0}string" />
  *       &lt;attribute name="ResponseDetails">

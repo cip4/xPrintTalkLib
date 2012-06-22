@@ -20,11 +20,11 @@ import org.cip4.lib.xjdf.schema.jdf.DeliveryParams;
  * <pre>
  * &lt;complexType name="OrderStatusResponse">
  *   &lt;complexContent>
- *     &lt;extension base="{http://www.printtalk.org/schema_13}BusinessObject">
+ *     &lt;extension base="{http://www.printtalk.org/schema_2_0}BusinessObject">
  *       &lt;sequence>
  *         &lt;element ref="{http://www.CIP4.org/JDFSchema_2_0}Contact" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element ref="{http://www.CIP4.org/JDFSchema_2_0}DeliveryParams" minOccurs="0"/>
- *         &lt;element name="Status" type="{http://www.printtalk.org/schema_13}Status" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="Status" type="{http://www.printtalk.org/schema_2_0}Status" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>

@@ -18,10 +18,10 @@ import javax.xml.bind.annotation.XmlType;
  * <pre>
  * &lt;complexType name="Pricing">
  *   &lt;complexContent>
- *     &lt;extension base="{http://www.printtalk.org/schema_13}Abstract_pt">
+ *     &lt;extension base="{http://www.printtalk.org/schema_2_0}Abstract_pt">
  *       &lt;sequence>
- *         &lt;element name="Payment" type="{http://www.printtalk.org/schema_13}Payment" minOccurs="0"/>
- *         &lt;element name="Price" type="{http://www.printtalk.org/schema_13}Price" maxOccurs="unbounded"/>
+ *         &lt;element name="Payment" type="{http://www.printtalk.org/schema_2_0}Payment" minOccurs="0"/>
+ *         &lt;element name="Price" type="{http://www.printtalk.org/schema_2_0}Price" maxOccurs="unbounded"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>

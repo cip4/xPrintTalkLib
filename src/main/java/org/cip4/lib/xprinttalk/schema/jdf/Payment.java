@@ -20,10 +20,10 @@ import org.cip4.lib.xjdf.schema.jdf.Telem;
  * <pre>
  * &lt;complexType name="Payment">
  *   &lt;complexContent>
- *     &lt;extension base="{http://www.printtalk.org/schema_13}Abstract_pt">
+ *     &lt;extension base="{http://www.printtalk.org/schema_2_0}Abstract_pt">
  *       &lt;sequence maxOccurs="unbounded" minOccurs="0">
  *         &lt;element name="PayTerm" type="{http://www.CIP4.org/JDFSchema_2_0}telem" minOccurs="0"/>
- *         &lt;element name="CreditCard" type="{http://www.printtalk.org/schema_13}CreditCard" minOccurs="0"/>
+ *         &lt;element name="CreditCard" type="{http://www.printtalk.org/schema_2_0}CreditCard" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -42,10 +42,10 @@ public class Payment
 {
 
     @XmlElements({
-        @XmlElement(name = "CreditCard", type = CreditCard.class),
-        @XmlElement(name = "PayTerm", type = Telem.class)
+        @XmlElement(name = "PayTerm", type = Telem.class),
+        @XmlElement(name = "CreditCard", type = CreditCard.class)
     })
-    protected List<Object> payTermsAndCreditCards;
+    protected List<Serializable> payTermsAndCreditCards;
 
     /**
      * Gets the value of the payTermsAndCreditCards property.
@@ -65,14 +65,14 @@ public class Payment
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link CreditCard }
      * {@link Telem }
+     * {@link CreditCard }
      * 
      * 
      */
-    public List<Object> getPayTermsAndCreditCards() {
+    public List<Serializable> getPayTermsAndCreditCards() {
         if (payTermsAndCreditCards == null) {
-            payTermsAndCreditCards = new ArrayList<Object>();
+            payTermsAndCreditCards = new ArrayList<Serializable>();
         }
         return this.payTermsAndCreditCards;
     }

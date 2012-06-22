@@ -19,7 +19,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * <pre>
  * &lt;complexType name="BusinessObject">
  *   &lt;complexContent>
- *     &lt;extension base="{http://www.printtalk.org/schema_13}Abstract_pt">
+ *     &lt;extension base="{http://www.printtalk.org/schema_2_0}Abstract_pt">
  *       &lt;attribute name="AgentID" use="required" type="{http://www.CIP4.org/JDFSchema_2_0}NMTOKEN" />
  *       &lt;attribute name="AgentDisplayName" use="required" type="{http://www.CIP4.org/JDFSchema_2_0}string" />
  *       &lt;attribute name="AuxID" type="{http://www.CIP4.org/JDFSchema_2_0}NMTOKEN" />

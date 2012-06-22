@@ -19,10 +19,10 @@ import org.cip4.lib.xjdf.schema.jdf.Contact;
  * <pre>
  * &lt;complexType name="OrderStatusRequest">
  *   &lt;complexContent>
- *     &lt;extension base="{http://www.printtalk.org/schema_13}BusinessObject">
+ *     &lt;extension base="{http://www.printtalk.org/schema_2_0}BusinessObject">
  *       &lt;sequence>
  *         &lt;element ref="{http://www.CIP4.org/JDFSchema_2_0}Contact" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="StatusRequest" type="{http://www.printtalk.org/schema_13}StatusRequest" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="StatusRequest" type="{http://www.printtalk.org/schema_2_0}StatusRequest" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>

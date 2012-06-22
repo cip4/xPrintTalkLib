@@ -22,9 +22,9 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * <pre>
  * &lt;complexType name="Price">
  *   &lt;complexContent>
- *     &lt;extension base="{http://www.printtalk.org/schema_13}Abstract_pt_A">
+ *     &lt;extension base="{http://www.printtalk.org/schema_2_0}Abstract_pt_A">
  *       &lt;sequence>
- *         &lt;element name="Additional" type="{http://www.printtalk.org/schema_13}Additional" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="Additional" type="{http://www.printtalk.org/schema_2_0}Additional" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *       &lt;attribute name="Amount" type="{http://www.CIP4.org/JDFSchema_2_0}double" />
  *       &lt;attribute name="ItemRefs" type="{http://www.CIP4.org/JDFSchema_2_0}NMTOKENS" />

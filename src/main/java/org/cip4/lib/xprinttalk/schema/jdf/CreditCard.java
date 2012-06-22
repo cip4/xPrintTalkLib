@@ -19,7 +19,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  * <pre>
  * &lt;complexType name="CreditCard">
  *   &lt;complexContent>
- *     &lt;extension base="{http://www.printtalk.org/schema_13}Abstract_pt">
+ *     &lt;extension base="{http://www.printtalk.org/schema_2_0}Abstract_pt">
  *       &lt;attribute name="Authorization" type="{http://www.CIP4.org/JDFSchema_2_0}string" />
  *       &lt;attribute name="AuthorizationExpires" type="{http://www.CIP4.org/JDFSchema_2_0}gYearMonth" />
  *       &lt;attribute name="Expires" use="required" type="{http://www.CIP4.org/JDFSchema_2_0}gYearMonth" />

@@ -20,12 +20,12 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="Header" type="{http://www.printtalk.org/schema_13}Header"/>
- *         &lt;element name="Request" type="{http://www.printtalk.org/schema_13}Request"/>
+ *         &lt;element name="Header" type="{http://www.printtalk.org/schema_2_0}Header"/>
+ *         &lt;element name="Request" type="{http://www.printtalk.org/schema_2_0}Request"/>
  *       &lt;/sequence>
- *       &lt;attribute name="version" use="required" type="{http://www.printtalk.org/schema_13}Version" />
+ *       &lt;attribute name="version" use="required" type="{http://www.printtalk.org/schema_2_0}Version" />
  *       &lt;attribute name="payloadID" use="required" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="timeStamp" type="{http://www.CIP4.org/JDFSchema_2_0}dateTime" />
+ *       &lt;attribute name="Timestamp" type="{http://www.CIP4.org/JDFSchema_2_0}dateTime" />
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -47,12 +47,12 @@ public class PrintTalk
     protected Header header;
     @XmlElement(name = "Request", required = true)
     protected Request request;
-    @XmlAttribute(required = true)
+    @XmlAttribute(name = "version", required = true)
     protected String version;
-    @XmlAttribute(required = true)
+    @XmlAttribute(name = "payloadID", required = true)
     protected String payloadID;
-    @XmlAttribute
-    protected String timeStamp;
+    @XmlAttribute(name = "Timestamp")
+    protected String timestamp;
 
     /**
      * Gets the value of the header property.
@@ -151,27 +151,27 @@ public class PrintTalk
     }
 
     /**
-     * Gets the value of the timeStamp property.
+     * Gets the value of the timestamp property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getTimeStamp() {
-        return timeStamp;
+    public String getTimestamp() {
+        return timestamp;
     }
 
     /**
-     * Sets the value of the timeStamp property.
+     * Sets the value of the timestamp property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setTimeStamp(String value) {
-        this.timeStamp = value;
+    public void setTimestamp(String value) {
+        this.timestamp = value;
     }
 
 }

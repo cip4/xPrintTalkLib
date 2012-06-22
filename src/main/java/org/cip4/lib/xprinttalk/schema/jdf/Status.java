@@ -16,7 +16,7 @@ import javax.xml.bind.annotation.XmlType;
  * <pre>
  * &lt;complexType name="Status">
  *   &lt;complexContent>
- *     &lt;extension base="{http://www.printtalk.org/schema_13}Abstract_pt_B">
+ *     &lt;extension base="{http://www.printtalk.org/schema_2_0}Abstract_pt_B">
  *       &lt;attribute name="JobIDRef" use="required" type="{http://www.CIP4.org/JDFSchema_2_0}string" />
  *     &lt;/extension>
  *   &lt;/complexContent>

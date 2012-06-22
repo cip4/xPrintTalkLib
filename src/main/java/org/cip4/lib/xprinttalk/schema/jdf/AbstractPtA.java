@@ -20,7 +20,7 @@ import javax.xml.bind.annotation.XmlType;
  * <pre>
  * &lt;complexType name="Abstract_pt_A">
  *   &lt;complexContent>
- *     &lt;restriction base="{http://www.printtalk.org/schema_13}Abstract_pt">
+ *     &lt;restriction base="{http://www.printtalk.org/schema_2_0}Abstract_pt">
  *       &lt;sequence>
  *         &lt;element ref="{http://www.CIP4.org/JDFSchema_2_0}Comment" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element ref="{http://www.CIP4.org/JDFSchema_2_0}GeneralID" maxOccurs="unbounded" minOccurs="0"/>

@@ -18,9 +18,9 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="From" type="{http://www.printtalk.org/schema_13}From"/>
- *         &lt;element name="To" type="{http://www.printtalk.org/schema_13}To"/>
- *         &lt;element name="Sender" type="{http://www.printtalk.org/schema_13}Sender"/>
+ *         &lt;element name="From" type="{http://www.printtalk.org/schema_2_0}From"/>
+ *         &lt;element name="To" type="{http://www.printtalk.org/schema_2_0}To"/>
+ *         &lt;element name="Sender" type="{http://www.printtalk.org/schema_2_0}Sender"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>

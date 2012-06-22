@@ -18,7 +18,7 @@ import org.cip4.lib.xjdf.schema.jdf.ProofItem;
  * <pre>
  * &lt;complexType name="ProofRequest">
  *   &lt;complexContent>
- *     &lt;extension base="{http://www.printtalk.org/schema_13}Abstract_pt">
+ *     &lt;extension base="{http://www.printtalk.org/schema_2_0}Abstract_pt">
  *       &lt;sequence>
  *         &lt;element name="ProofItem" type="{http://www.CIP4.org/JDFSchema_2_0}ProofItem"/>
  *       &lt;/sequence>

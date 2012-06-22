@@ -25,8 +25,8 @@ import org.cip4.lib.xjdf.schema.jdf.Telem;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element name="Identity" type="{http://www.CIP4.org/JDFSchema_2_0}telem"/>
- *         &lt;element name="SharedSecret" type="{http://www.printtalk.org/schema_13}cXML-SharedSecret" minOccurs="0"/>
- *         &lt;element name="CredentialMac" type="{http://www.printtalk.org/schema_13}cXML-CredentialMac" minOccurs="0"/>
+ *         &lt;element name="SharedSecret" type="{http://www.printtalk.org/schema_2_0}cXML-SharedSecret" minOccurs="0"/>
+ *         &lt;element name="CredentialMac" type="{http://www.printtalk.org/schema_2_0}cXML-CredentialMac" minOccurs="0"/>
  *       &lt;/sequence>
  *       &lt;attribute name="domain" use="required" type="{http://www.CIP4.org/JDFSchema_2_0}string" />
  *       &lt;attribute name="type" type="{http://www.CIP4.org/JDFSchema_2_0}string" />
@@ -53,9 +53,9 @@ public class Credential
     protected CXMLSharedSecret sharedSecret;
     @XmlElement(name = "CredentialMac")
     protected CXMLCredentialMac credentialMac;
-    @XmlAttribute(required = true)
+    @XmlAttribute(name = "domain", required = true)
     protected String domain;
-    @XmlAttribute
+    @XmlAttribute(name = "type")
     protected String type;
 
     /**

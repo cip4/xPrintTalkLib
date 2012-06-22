@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PrintTalk Timestamp="2012-06-22T11:09:45+01:00" payloadID="pid" version="2.0">
+	<Request>
+		<PurchaseOrder BusinessID="PT_12345" Currency="EUR">
+			<XJDF Category="Web2Print" JobID="JB_12345">
+				<GeneralID IDUsage="CatalogID" IDValue="49" />
+				<ProductList>
+					<Product Amount="1000" />
+				</ProductList>
+				<ParameterSet Name="CustomerInfo">
+					<Parameter>
+						<CustomerInfo CustomerID="42" />
+					</Parameter>
+				</ParameterSet>
+				<ParameterSet Name="RunList">
+					<Parameter>
+						<RunList>
+							<FileSpec URL="http://www.example.org:8080/artwork.pdf" />
+						</RunList>
+					</Parameter>
+				</ParameterSet>
+			</XJDF>
+		</PurchaseOrder>
+	</Request>
+</PrintTalk>

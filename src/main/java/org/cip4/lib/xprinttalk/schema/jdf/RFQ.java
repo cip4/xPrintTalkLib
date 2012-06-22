@@ -7,9 +7,11 @@ import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import org.cip4.lib.xjdf.schema.jdf.XJDF;
 
 
 /**
@@ -20,7 +22,10 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * <pre>
  * &lt;complexType name="RFQ">
  *   &lt;complexContent>
- *     &lt;extension base="{http://www.printtalk.org/schema_13}BusinessObject">
+ *     &lt;extension base="{http://www.printtalk.org/schema_2_0}BusinessObject">
+ *       &lt;sequence>
+ *         &lt;element ref="{http://www.CIP4.org/JDFSchema_2_0}XJDF"/>
+ *       &lt;/sequence>
  *       &lt;attribute name="Currency" use="required" type="{http://www.CIP4.org/JDFSchema_2_0}NMTOKEN" />
  *       &lt;attribute name="Estimate" type="{http://www.CIP4.org/JDFSchema_2_0}boolean" />
  *       &lt;attribute name="Expires" use="required" type="{http://www.CIP4.org/JDFSchema_2_0}dateTime" />
@@ -34,12 +39,16 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "RFQ")
+@XmlType(name = "RFQ", propOrder = {
+    "xjdf"
+})
 public class RFQ
     extends BusinessObject
     implements Serializable
 {
 
+    @XmlElement(name = "XJDF", namespace = "http://www.CIP4.org/JDFSchema_2_0", required = true)
+    protected XJDF xjdf;
     @XmlAttribute(name = "Currency", required = true)
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected String currency;
@@ -52,6 +61,30 @@ public class RFQ
     @XmlAttribute(name = "ReplaceID")
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected String replaceID;
+
+    /**
+     * Gets the value of the xjdf property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link XJDF }
+     *     
+     */
+    public XJDF getXJDF() {
+        return xjdf;
+    }
+
+    /**
+     * Sets the value of the xjdf property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link XJDF }
+     *     
+     */
+    public void setXJDF(XJDF value) {
+        this.xjdf = value;
+    }
 
     /**
      * Gets the value of the currency property.

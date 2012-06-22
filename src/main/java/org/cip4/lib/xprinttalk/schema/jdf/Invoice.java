@@ -9,6 +9,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import org.cip4.lib.xjdf.schema.jdf.XJDF;
 
 
 /**
@@ -19,9 +20,10 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * <pre>
  * &lt;complexType name="Invoice">
  *   &lt;complexContent>
- *     &lt;extension base="{http://www.printtalk.org/schema_13}BusinessObject">
+ *     &lt;extension base="{http://www.printtalk.org/schema_2_0}BusinessObject">
  *       &lt;sequence>
- *         &lt;element name="Pricing" type="{http://www.printtalk.org/schema_13}Pricing"/>
+ *         &lt;element ref="{http://www.CIP4.org/JDFSchema_2_0}XJDF" minOccurs="0"/>
+ *         &lt;element name="Pricing" type="{http://www.printtalk.org/schema_2_0}Pricing"/>
  *       &lt;/sequence>
  *       &lt;attribute name="Currency" use="required" type="{http://www.CIP4.org/JDFSchema_2_0}NMTOKEN" />
  *       &lt;attribute name="Expires" use="required" type="{http://www.CIP4.org/JDFSchema_2_0}dateTime" />
@@ -34,6 +36,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Invoice", propOrder = {
+    "xjdf",
     "pricing"
 })
 public class Invoice
@@ -41,6 +44,8 @@ public class Invoice
     implements Serializable
 {
 
+    @XmlElement(name = "XJDF", namespace = "http://www.CIP4.org/JDFSchema_2_0")
+    protected XJDF xjdf;
     @XmlElement(name = "Pricing", required = true)
     protected Pricing pricing;
     @XmlAttribute(name = "Currency", required = true)
@@ -48,6 +53,30 @@ public class Invoice
     protected String currency;
     @XmlAttribute(name = "Expires", required = true)
     protected String expires;
+
+    /**
+     * Gets the value of the xjdf property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link XJDF }
+     *     
+     */
+    public XJDF getXJDF() {
+        return xjdf;
+    }
+
+    /**
+     * Sets the value of the xjdf property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link XJDF }
+     *     
+     */
+    public void setXJDF(XJDF value) {
+        this.xjdf = value;
+    }
 
     /**
      * Gets the value of the pricing property.

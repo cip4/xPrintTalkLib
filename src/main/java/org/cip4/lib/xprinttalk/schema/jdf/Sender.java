@@ -20,8 +20,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="Credential" type="{http://www.printtalk.org/schema_13}Credential" maxOccurs="unbounded"/>
- *         &lt;element name="UserAgent" type="{http://www.printtalk.org/schema_13}cXML-UserAgent"/>
+ *         &lt;element name="Credential" type="{http://www.printtalk.org/schema_2_0}Credential" maxOccurs="unbounded"/>
+ *         &lt;element name="UserAgent" type="{http://www.printtalk.org/schema_2_0}cXML-UserAgent"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>

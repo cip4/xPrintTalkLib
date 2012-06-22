@@ -21,9 +21,9 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * <pre>
  * &lt;complexType name="Quotation">
  *   &lt;complexContent>
- *     &lt;extension base="{http://www.printtalk.org/schema_13}BusinessObject">
+ *     &lt;extension base="{http://www.printtalk.org/schema_2_0}BusinessObject">
  *       &lt;sequence>
- *         &lt;element name="Quote" type="{http://www.printtalk.org/schema_13}QuoteType" maxOccurs="unbounded"/>
+ *         &lt;element name="Quote" type="{http://www.printtalk.org/schema_2_0}QuoteType" maxOccurs="unbounded"/>
  *       &lt;/sequence>
  *       &lt;attribute name="Currency" use="required" type="{http://www.CIP4.org/JDFSchema_2_0}NMTOKEN" />
  *       &lt;attribute name="Estimate" use="required" type="{http://www.CIP4.org/JDFSchema_2_0}boolean" />
