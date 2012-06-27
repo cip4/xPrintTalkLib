@@ -10,6 +10,7 @@
  */
 package org.cip4.lib.xprinttalk;
 
+import org.cip4.lib.xprinttalk.schema.jdf.Additional;
 import org.cip4.lib.xprinttalk.schema.jdf.ObjectFactory;
 import org.cip4.lib.xprinttalk.schema.jdf.PurchaseOrder;
 
@@ -65,6 +66,25 @@ public class PrintTalkNodeFactory extends ObjectFactory {
 
 		// return PurchaseOrder
 		return purchaseOrder;
+	}
+
+	/**
+	 * Create a new Additional Node which already contains the attributes Price and Amount.
+	 * @param price Value of Price attribute.
+	 * @param amount Value of amount attribute.
+	 * @return Additional Node which already contains the attributes Price and Amount.
+	 */
+	public Additional createAdditional(double price, int amount) {
+
+		// create additional node
+		Additional additional = super.createAdditional();
+
+		// set attributes
+		additional.setPrice(price);
+		additional.setAmount(amount);
+
+		// return Additional
+		return additional;
 	}
 
 }
