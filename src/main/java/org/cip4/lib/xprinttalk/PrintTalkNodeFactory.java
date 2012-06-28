@@ -10,9 +10,9 @@
  */
 package org.cip4.lib.xprinttalk;
 
-import org.cip4.lib.xprinttalk.schema.jdf.Additional;
-import org.cip4.lib.xprinttalk.schema.jdf.ObjectFactory;
-import org.cip4.lib.xprinttalk.schema.jdf.PurchaseOrder;
+import org.cip4.lib.xprinttalk.schema.Additional;
+import org.cip4.lib.xprinttalk.schema.ObjectFactory;
+import org.cip4.lib.xprinttalk.schema.PurchaseOrder;
 
 /**
  * Static Factory Class which is managing the creation of PrintTalkNodes.
