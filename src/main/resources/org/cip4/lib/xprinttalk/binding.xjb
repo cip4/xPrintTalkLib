@@ -12,7 +12,7 @@
 			<xjc:serializable />
 		</jxb:globalBindings>
 		<jxb:schemaBindings>
-			<jxb:package name="org.cip4.lib.xprinttalk.schema.jdf" />
+			<jxb:package name="org.cip4.lib.xprinttalk.schema" />
 		</jxb:schemaBindings>
 	</jxb:bindings>
 

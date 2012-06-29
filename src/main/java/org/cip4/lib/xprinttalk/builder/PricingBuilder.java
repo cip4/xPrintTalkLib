@@ -12,8 +12,8 @@ package org.cip4.lib.xprinttalk.builder;
 
 import org.cip4.lib.xjdf.builder.AbstractNodeBuilder;
 import org.cip4.lib.xprinttalk.PrintTalkNodeFactory;
-import org.cip4.lib.xprinttalk.schema.jdf.Price;
-import org.cip4.lib.xprinttalk.schema.jdf.Pricing;
+import org.cip4.lib.xprinttalk.schema.Price;
+import org.cip4.lib.xprinttalk.schema.Pricing;
 
 /**
  * Implementation of a Pricing builder class.

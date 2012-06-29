@@ -14,7 +14,7 @@ import javax.xml.bind.JAXBException;
 
 import org.cip4.lib.xjdf.xml.internal.AbstractXmlParser;
 import org.cip4.lib.xjdf.xml.internal.JAXBContextFactory;
-import org.cip4.lib.xprinttalk.schema.jdf.PrintTalk;
+import org.cip4.lib.xprinttalk.schema.PrintTalk;
 
 /**
  * Parsing logic for building a XML Document from PrintTalk DOM-Tree and the way around.

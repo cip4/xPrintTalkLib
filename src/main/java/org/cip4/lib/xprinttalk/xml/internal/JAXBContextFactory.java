@@ -13,7 +13,7 @@ package org.cip4.lib.xprinttalk.xml.internal;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 
-import org.cip4.lib.xprinttalk.schema.jdf.PrintTalk;
+import org.cip4.lib.xprinttalk.schema.PrintTalk;
 
 /**
  * Static Factory Class which is managing a JAXB2 Marshaller instance.
