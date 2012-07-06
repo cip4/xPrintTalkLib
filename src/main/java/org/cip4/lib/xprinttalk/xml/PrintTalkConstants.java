@@ -68,4 +68,14 @@ public class PrintTalkConstants {
 		// return result
 		return result;
 	}
+
+	/**
+	 * Load and returns schema as input stream object.
+	 * @return schema as input stream
+	 */
+	public static InputStream loadSchema() {
+
+		// load and return
+		return PrintTalkConstants.class.getResourceAsStream(RES_PTK20_XSD);
+	}
 }
