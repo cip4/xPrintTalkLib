@@ -52,7 +52,7 @@ public class PrintTalkValidatorTest {
 	public void setUp() throws Exception {
 
 		// init instance variables
-		printTalkValidator = PrintTalkValidator.newInstance();
+
 	}
 
 	/**
@@ -81,7 +81,8 @@ public class PrintTalkValidatorTest {
 		InputStream is = PrintTalkValidatorTest.class.getResourceAsStream(RES_TEST_PTK);
 
 		// act
-		boolean isValid = printTalkValidator.check(is).isValid();
+		printTalkValidator = PrintTalkValidator.newInstance(is);
+		boolean isValid = printTalkValidator.isValid();
 
 		// assert
 		System.out.println(printTalkValidator.getMessagesText());

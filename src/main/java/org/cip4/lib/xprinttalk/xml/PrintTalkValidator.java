@@ -28,8 +28,8 @@ public class PrintTalkValidator extends AbstractXmlValidator<PrintTalkValidator>
 	/**
 	 * Custom private constructor. Accepting XML Schema for initializing.
 	 */
-	private PrintTalkValidator(byte[] xsdFile) {
-		super(xsdFile);
+	private PrintTalkValidator(byte[] xsdFile, InputStream printTalkStream) {
+		super(xsdFile, printTalkStream);
 	}
 
 	/**
@@ -37,7 +37,7 @@ public class PrintTalkValidator extends AbstractXmlValidator<PrintTalkValidator>
 	 * @return New XJdfValidator Instance
 	 * @throws IOException
 	 */
-	public static PrintTalkValidator newInstance() throws IOException {
+	public static PrintTalkValidator newInstance(InputStream printTalkStream) throws IOException {
 
 		// load xsd file
 		InputStream is = PrintTalkValidator.class.getResourceAsStream(PrintTalkConstants.RES_PTK20_XSD);
@@ -50,7 +50,7 @@ public class PrintTalkValidator extends AbstractXmlValidator<PrintTalkValidator>
 		bos.close();
 
 		// return new instance
-		return new PrintTalkValidator(bos.toByteArray());
+		return new PrintTalkValidator(bos.toByteArray(), printTalkStream);
 	}
 
 	/**
