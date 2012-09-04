@@ -1,10 +1,9 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.cip4.lib.xprinttalk</groupId>
 	<artifactId>xPrintTalkLib</artifactId>
-	<version>0.3-SNAPSHOT</version>
+	<version>0.3</version>
 	<packaging>jar</packaging>
 	<name>xPrintTalkLib</name>
 	<url>http://maven.apache.org</url>
@@ -23,9 +22,9 @@
 		</license>
 	</licenses>
 	<scm>
-		<url>http://svn.cip4.org/svnroot/trunk/xPrintTalkLib</url>
-		<developerConnection>scm:svn:http://svn.cip4.org/svnroot/trunk/xPrintTalkLib</developerConnection>
-		<connection>scm:svn:http://svn.cip4.org/svnroot/trunk/xPrintTalkLib</connection>
+		<url>http://svn.cip4.org/svnroot/tags/xPrintTalkLib-0.3</url>
+		<developerConnection>scm:svn:http://svn.cip4.org/svnroot/tags/xPrintTalkLib-0.3</developerConnection>
+		<connection>scm:svn:http://svn.cip4.org/svnroot/tags/xPrintTalkLib-0.3</connection>
 	</scm>
 	<issueManagement>
 		<system>JIRA</system>
@@ -128,34 +127,32 @@
 								<!-- Prepare -->
 								<echo message="Remove old directory" />
 								<delete dir="target/generated-sources/jaxb" />
-								<mkdir dir="target/generated-sources/jaxb"/>
+								<mkdir dir="target/generated-sources/jaxb" />
 								
 								<!-- Generate java classes from XSD -->
 								<echo message="Generate classes..." />
-								<property environment="env"/>
-								<property name="jdk.dir" value="${env.JAVA_HOME}"/>
+								<property environment="env" />
+								<property name="jdk.dir" value="${env.JAVA_HOME}" />
 								<exec executable="${jdk.dir}/bin/xjc.exe"> 
 									<!-- binding file -->
-									<arg value="-b"/> 
-							        <arg value="src/main/resources/org/cip4/lib/xprinttalk/binding.xjb"/>
+									<arg value="-b" /> 
+							        <arg value="src/main/resources/org/cip4/lib/xprinttalk/binding.xjb" />
 							        
 							        <!-- further arguments --> 
-							        <arg value="-no-header"/>
-							        <arg value="-extension"/>
+							        <arg value="-no-header" />
+							        <arg value="-extension" />
 							        
 							        <!-- target directory -->
-							        <arg value="-d"/> 
-							        <arg value="target\generated-sources\jaxb"/> 
+							        <arg value="-d" /> 
+							        <arg value="target\generated-sources\jaxb" /> 
 									
 									<!-- XSD -->
-							        <arg value="src/main/resources/org/cip4/lib/xprinttalk/xsd/PrintTalk20.xsd"/> 
+							        <arg value="src/main/resources/org/cip4/lib/xprinttalk/xsd/PrintTalk20.xsd" /> 
 							    </exec> 
 								
 								<!-- Adjust package names -->
 								<echo message="Modify package names..." />
-								<replace
-									dir="target/generated-sources/jaxb/org/cip4/lib/xprinttalk/schema"
-									value="org.cip4.lib.xjdf.schema">
+								<replace dir="target/generated-sources/jaxb/org/cip4/lib/xprinttalk/schema" value="org.cip4.lib.xjdf.schema">
 									<include name="**/*.java" />
 									<replacetoken>org.cip4.jdfschema_2_0</replacetoken>
 								</replace>
@@ -163,8 +160,7 @@
 								<!-- Remove old classes -->
 								<echo message="Remove old classes..." />
 								<delete>
-									<fileset dir="src/main/java/org/cip4/lib/xprinttalk/schema"
-										includes="**/*.java" />
+									<fileset dir="src/main/java/org/cip4/lib/xprinttalk/schema" includes="**/*.java" />
 								</delete>
 
 								<!-- Copy new classes to target location -->
