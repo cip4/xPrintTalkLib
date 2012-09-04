@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PrintTalk Timestamp="2012-06-22T11:09:45+01:00" payloadID="pid" version="2.0" xmlns="http://www.printtalk.org/schema_2_0" xmlns:xjdf="http://www.CIP4.org/JDFSchema_2_0">
+	<Request>
+		<PurchaseOrder BusinessID="PT_12345" Currency="EUR">
+			<xjdf:XJDF Category="Web2Print" JobID="JB_12345">
+				<xjdf:GeneralID IDUsage="CatalogID" IDValue="42" />
+				<xjdf:ProductList>
+					<xjdf:Product Amount="1500" />
+				</xjdf:ProductList>
+				<xjdf:ParameterSet Name="CustomerInfo">
+					<xjdf:Parameter>
+						<xjdf:CustomerInfo CustomerID="42" />
+					</xjdf:Parameter>
+				</xjdf:ParameterSet>
+				<xjdf:ParameterSet Name="RunList">
+					<xjdf:Parameter>
+						<xjdf:RunList>
+							<xjdf:FileSpec URL="http://www.example.org:8080/artwork.pdf" />
+						</xjdf:RunList>
+					</xjdf:Parameter>
+				</xjdf:ParameterSet>
+			</xjdf:XJDF>
+		</PurchaseOrder>
+	</Request>
+</PrintTalk>
