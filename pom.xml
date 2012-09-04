@@ -3,16 +3,18 @@
 
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.cip4.lib.xprinttalk</groupId>
-	<artifactId>xPrintTalk</artifactId>
+	<artifactId>xPrintTalkLib</artifactId>
 	<version>0.3-SNAPSHOT</version>
 	<packaging>jar</packaging>
-	<name>xPrintTalk</name>
+	<name>xPrintTalkLib</name>
 	<url>http://maven.apache.org</url>
+	
 	<parent>
-		<groupId>org.sonatype.oss</groupId>
-		<artifactId>oss-parent</artifactId>
-		<version>7</version>
+		<groupId>org.cip4.tools</groupId>
+		<artifactId>xCIP4Master</artifactId>
+		<version>1.0</version>
 	</parent>
+	
 	<licenses>
 		<license>
 			<name>CIP4 Software License</name>
@@ -21,9 +23,9 @@
 		</license>
 	</licenses>
 	<scm>
-		<url>http://svn.cip4.org/svnroot/trunk/xPrintTalk</url>
-		<developerConnection>scm:svn:http://svn.cip4.org/svnroot/trunk/xPrintTalk</developerConnection>
-		<connection>scm:svn:http://svn.cip4.org/svnroot/trunk/xPrintTalk</connection>
+		<url>http://svn.cip4.org/svnroot/trunk/xPrintTalkLib</url>
+		<developerConnection>scm:svn:http://svn.cip4.org/svnroot/trunk/xPrintTalkLib</developerConnection>
+		<connection>scm:svn:http://svn.cip4.org/svnroot/trunk/xPrintTalkLib</connection>
 	</scm>
 	<issueManagement>
 		<system>JIRA</system>
@@ -48,12 +50,16 @@
 	<developers>
 		<developer>
 			<id>r.prosi</id>
-			<name>Rainer Prosi</name>
+			<name>Dr. Rainer Prosi</name>
+			<organization>Heidelberger Druckmaschinen AG</organization>
+			<organizationUrl>http://www.heidelberg.com</organizationUrl>
 			<email>rainer.prosi@heidelberg.com</email>
 		</developer>
 		<developer>
 			<id>s.meissner</id>
 			<name>Stefan Meissner</name>
+			<organization>flyeralarm GmbH</organization>
+			<organizationUrl>http://www.flyeralarm.com</organizationUrl>
 			<email>s.meissner@flyeralarm.de</email>
 		</developer>
 	</developers>
@@ -78,6 +84,39 @@
 				<artifactId>maven-gpg-plugin</artifactId>
 				<version>1.4</version>
 			</plugin>
+
+			
+			<!-- doc book generation -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>com.agilejava.docbkx</groupId>
+				<artifactId>docbkx-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<version>${maven-assembly-plugin.version}</version>
+				<executions>
+					<execution>
+						<id>zip documentation</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<finalName>${project.artifactId}-${project.version}</finalName>
+					<appendAssemblyId>false</appendAssemblyId>
+					<descriptors>
+						<descriptor>${workDirectory}/assembly/userguide-zip.xml</descriptor>
+					</descriptors>
+				</configuration>
+			</plugin>
+
+			<!-- Ant Script: Update XSD -->
 			<plugin>
 				<artifactId>maven-antrun-plugin</artifactId>
 				<version>1.7</version>
@@ -148,7 +187,7 @@
 		<dependency>
 			<groupId>org.cip4.lib.xjdf</groupId>
 			<artifactId>xJdfLib</artifactId>
-			<version>0.3-SNAPSHOT</version>
+			<version>0.3</version>
 		</dependency>
 		<dependency>
 			<groupId>javax.xml.bind</groupId>
