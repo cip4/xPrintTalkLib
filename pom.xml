@@ -83,6 +83,19 @@
 				<artifactId>maven-gpg-plugin</artifactId>
 				<version>1.4</version>
 			</plugin>
+			<plugin> 
+			    <groupId>org.apache.maven.plugins</groupId> 
+			    <artifactId>maven-jar-plugin</artifactId> 
+			    <inherited>true</inherited> 
+			    <configuration> 
+			        <archive>                    
+			            <manifest> 
+			                <addDefaultImplementationEntries>true</addDefaultImplementationEntries> 
+			                <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries> 
+			            </manifest> 
+			        </archive> 
+			    </configuration> 
+			</plugin>
 
 			
 			<!-- doc book generation -->
@@ -183,7 +196,7 @@
 		<dependency>
 			<groupId>org.cip4.lib.xjdf</groupId>
 			<artifactId>xJdfLib</artifactId>
-			<version>0.3</version>
+			<version>0.4-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>javax.xml.bind</groupId>

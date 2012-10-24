@@ -54,4 +54,19 @@ public class PrintTalkConstantsTest {
 		Assert.assertEquals("Namespace PTK20 is wrong.", expectedNs, actualNs);
 	}
 
+	/**
+	 * JUnit test
+	 * @throws IOException
+	 */
+	@Test
+	public void testLoadLibraryVersion() throws IOException {
+
+		// arrange
+
+		// act
+		String val = PrintTalkConstants.PTK_LIB_VERSION;
+
+		// assert
+		Assert.assertEquals("PTK library version is wrong.", "[version not specified]", val);
+	}
 }

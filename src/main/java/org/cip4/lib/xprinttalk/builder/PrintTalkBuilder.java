@@ -11,6 +11,7 @@
 package org.cip4.lib.xprinttalk.builder;
 
 import java.util.Calendar;
+import java.util.UUID;
 
 import javax.xml.bind.JAXBElement;
 import javax.xml.namespace.QName;
@@ -50,7 +51,7 @@ public class PrintTalkBuilder extends AbstractNodeBuilder<PrintTalk> {
 	public static PrintTalkBuilder newInstance() {
 
 		// return new instance
-		return new PrintTalkBuilder();
+		return newInstance(UUID.randomUUID().toString());
 	}
 
 	/**
@@ -61,7 +62,7 @@ public class PrintTalkBuilder extends AbstractNodeBuilder<PrintTalk> {
 	public static PrintTalkBuilder newInstance(String payloadID) {
 
 		// create instance
-		PrintTalkBuilder printTalkBuilder = newInstance();
+		PrintTalkBuilder printTalkBuilder = new PrintTalkBuilder();
 
 		// preconfiguration
 		printTalkBuilder.getPrintTalk().setTimestamp(DateConverter.date2String(Calendar.getInstance()));
