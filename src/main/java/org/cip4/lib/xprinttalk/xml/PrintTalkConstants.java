@@ -32,6 +32,8 @@ public class PrintTalkConstants {
 	 */
 	public static final String NAMESPACE_PTK20 = loadNamespacePtk20();
 
+	public static final String PTK_LIB_VERSION = loadLibraryVersion();
+
 	public static final String PTK_CURRENT_VERSION = "2.0";
 
 	static final String RES_PTK20_XSD = "/org/cip4/lib/xprinttalk/xsd/PrintTalk20.xsd";
@@ -77,5 +79,23 @@ public class PrintTalkConstants {
 
 		// load and return
 		return PrintTalkConstants.class.getResourceAsStream(RES_PTK20_XSD);
+	}
+
+	/**
+	 * Load Version Number from Package.
+	 * @return Version Number as String
+	 */
+	private static String loadLibraryVersion() {
+
+		// load Version
+		String result = PrintTalkConstants.class.getPackage().getImplementationVersion();
+
+		// default
+		if (result == null || result == "") {
+			result = "[version not specified]";
+		}
+
+		// return result
+		return result;
 	}
 }
