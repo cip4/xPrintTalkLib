@@ -29,7 +29,7 @@ import org.cip4.lib.xprinttalk.xml.PrintTalkConstants;
  * @author s.meissner
  * @date 22.06.2012
  */
-public class PrintTalkBuilder extends AbstractNodeBuilder<PrintTalk> {
+public final class PrintTalkBuilder extends AbstractNodeBuilder<PrintTalk> {
 
 	private final PrintTalkNodeFactory ptkNodeFactory;
 
@@ -40,7 +40,7 @@ public class PrintTalkBuilder extends AbstractNodeBuilder<PrintTalk> {
 
 		super(PrintTalkNodeFactory.newInstance().createPrintTalk());
 
-		// initialize instance parameters
+		// init node factory
 		ptkNodeFactory = PrintTalkNodeFactory.newInstance();
 	}
 
@@ -102,8 +102,7 @@ public class PrintTalkBuilder extends AbstractNodeBuilder<PrintTalk> {
 	 * Getter for PrintTalk attribute.
 	 * @return the PrintTalk
 	 */
-	public PrintTalk getPrintTalk() {
+	protected PrintTalk getPrintTalk() {
 		return getNode();
 	}
-
 }

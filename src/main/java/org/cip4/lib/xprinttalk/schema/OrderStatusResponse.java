@@ -10,6 +10,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 import org.cip4.lib.xjdf.schema.Contact;
 import org.cip4.lib.xjdf.schema.DeliveryParams;
+import org.cip4.lib.xjdf.schema.Notification;
 
 
 /**
@@ -22,6 +23,7 @@ import org.cip4.lib.xjdf.schema.DeliveryParams;
  *   &lt;complexContent>
  *     &lt;extension base="{http://www.printtalk.org/schema_2_0}BusinessObject">
  *       &lt;sequence>
+ *         &lt;element ref="{http://www.CIP4.org/JDFSchema_2_0}Notification" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element ref="{http://www.CIP4.org/JDFSchema_2_0}Contact" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element ref="{http://www.CIP4.org/JDFSchema_2_0}DeliveryParams" minOccurs="0"/>
  *         &lt;element name="Status" type="{http://www.printtalk.org/schema_2_0}Status" maxOccurs="unbounded" minOccurs="0"/>
@@ -35,6 +37,7 @@ import org.cip4.lib.xjdf.schema.DeliveryParams;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "OrderStatusResponse", propOrder = {
+    "notifications",
     "contacts",
     "deliveryParams",
     "statuses"
@@ -44,12 +47,43 @@ public class OrderStatusResponse
     implements Serializable
 {
 
+    @XmlElement(name = "Notification", namespace = "http://www.CIP4.org/JDFSchema_2_0")
+    protected List<Notification> notifications;
     @XmlElement(name = "Contact", namespace = "http://www.CIP4.org/JDFSchema_2_0")
     protected List<Contact> contacts;
     @XmlElement(name = "DeliveryParams", namespace = "http://www.CIP4.org/JDFSchema_2_0")
     protected DeliveryParams deliveryParams;
     @XmlElement(name = "Status")
     protected List<Status> statuses;
+
+    /**
+     * Gets the value of the notifications property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the notifications property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getNotifications().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link Notification }
+     * 
+     * 
+     */
+    public List<Notification> getNotifications() {
+        if (notifications == null) {
+            notifications = new ArrayList<Notification>();
+        }
+        return this.notifications;
+    }
 
     /**
      * Gets the value of the contacts property.
