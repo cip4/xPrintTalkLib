@@ -12,6 +12,7 @@ package org.cip4.lib.xprinttalk;
 
 import org.cip4.lib.xprinttalk.schema.Additional;
 import org.cip4.lib.xprinttalk.schema.ObjectFactory;
+import org.cip4.lib.xprinttalk.schema.OrderStatusResponse;
 import org.cip4.lib.xprinttalk.schema.PurchaseOrder;
 
 /**
@@ -37,6 +38,23 @@ public class PrintTalkNodeFactory extends ObjectFactory {
 	}
 
 	/**
+	 * Create a new OrderStatusResponse Node which already contains the attribute BusinessID.
+	 * @param BusinessID Value of BusinessID attribute.
+	 * @return OrderStatusResponse Node which already contains the attribute BusinessID.
+	 */
+	public OrderStatusResponse createOrderStatusResponse(String businessID) {
+
+		// create OrderStatusResponse Node
+		OrderStatusResponse orderStatusResponse = super.createOrderStatusResponse();
+
+		// set attributes
+		orderStatusResponse.setBusinessID(businessID);
+
+		// return OrderStatusResponse
+		return orderStatusResponse;
+	}
+
+	/**
 	 * Create a new PurchaseOrder Node which already contains the attributes BusinessID, Currency and BusinessRefID.
 	 * @param BusinessID Value of BusinessID attribute.
 	 * @param Currency Value of Currency attribute.
@@ -44,7 +62,7 @@ public class PrintTalkNodeFactory extends ObjectFactory {
 	 */
 	public PurchaseOrder createPurchaseOrder(String businessID, String currency) {
 
-		// return runList
+		// return PurchaseOrder
 		return createPurchaseOrder(businessID, currency, null);
 	}
 

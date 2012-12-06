@@ -571,7 +571,8 @@
 		<xs:complexContent>
 			<xs:extension base="pt:BusinessObject">
 				<xs:sequence>
-					<xs:element ref="xjdf:Contact" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="xjdf:Notification" minOccurs="0" maxOccurs="unbounded" />
+					<xs:element ref="xjdf:Contact" minOccurs="0" maxOccurs="unbounded" />
 					<xs:element ref="xjdf:DeliveryParams" minOccurs="0"/>
 					<!-- <xs:element name="Notification" type="xjdf:NotificationAudit" minOccurs="0" maxOccurs="unbounded"/> -->
 					<xs:element name="Status" type="pt:Status" minOccurs="0" maxOccurs="unbounded"/>					
