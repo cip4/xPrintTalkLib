@@ -8,9 +8,10 @@
  * Email: info@flyeralarm.com
  * Website: http://www.flyeralarm.com
  */
-package org.cip4.lib.xprinttalk.builder.extended;
+package org.cip4.lib.xprinttalk.builder.msg;
 
 import org.cip4.lib.xprinttalk.builder.AbstractBuilderTest;
+import org.cip4.lib.xprinttalk.builder.msg.MilestoneMsgBuilder;
 import org.cip4.lib.xprinttalk.schema.PrintTalk;
 import org.junit.After;
 import org.junit.Assert;
@@ -22,7 +23,7 @@ import org.junit.Test;
  * @author stefan.meissner
  * @date 06.12.2012
  */
-public class MilestoneBuilderTest extends AbstractBuilderTest<PrintTalk> {
+public class MilestoneMsgBuilderTest extends AbstractBuilderTest<PrintTalk> {
 
 	/**
 	 * Setup unit test.
@@ -54,7 +55,7 @@ public class MilestoneBuilderTest extends AbstractBuilderTest<PrintTalk> {
 		final String MILESTONE_TYPE = "milestoneType";
 
 		// act
-		MilestoneBuilder builder = MilestoneBuilder.newInstance(BUSINESS_ID, JOB_ID, MILESTONE_TYPE);
+		MilestoneMsgBuilder builder = MilestoneMsgBuilder.newInstance(BUSINESS_ID, JOB_ID, MILESTONE_TYPE);
 
 		// assert
 		byte[] bytes = marsahlResult(builder);
