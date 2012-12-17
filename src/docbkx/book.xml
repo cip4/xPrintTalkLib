@@ -43,8 +43,8 @@
     include all this stuff mentioned getting JDF working.</para>
 
     <para>Over the last two decades XML has become very popular. Many tools
-    were designed and many conceptual enhancements in XML has been done. For
-    example one significant enhancement has been XPath. More details about the
+    have been designed and many conceptual enhancements in XML have been done. For
+    example, one significant enhancement has been XPath. More details about the
     XPath W3C Standard later in this document or on the W3C website:
     http://www.w3.org/TR/xpath/.</para>
 
@@ -64,7 +64,7 @@
 
     <para>The CIP4 xPrintTalkLib Java Library is based on Java 7. The latest
     stable version is being published on the CIP4 Website on page “Technical
-    Resources -&gt; Downloads -&gt; Internal Source”. Further xPrintTalkLib is
+    Resources -&gt; Downloads -&gt; Internal Source”. Further more, xPrintTalkLib is
     an Apache Maven project. So the latest stable version also is available in
     the public Central Maven Repositroy:</para>
 
