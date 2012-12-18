@@ -55,7 +55,7 @@ public final class MilestoneMsgBuilder extends AbstractNodeBuilder<PrintTalk> {
 		Notification notification = xJdfNodeFactory.createNotification();
 		notification.setJobID(jobID);
 		notification.setType("Milestone");
-		notification.getMilestones().add(milestone);
+		notification.getMilestone().add(milestone);
 
 		PrintTalkNodeFactory ptkNodeFactory = PrintTalkNodeFactory.newInstance();
 		OrderStatusResponse orderStatusResponse = ptkNodeFactory.createOrderStatusResponse(businessID);
