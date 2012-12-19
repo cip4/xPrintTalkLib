@@ -33,8 +33,8 @@ import org.cip4.lib.xjdf.schema.Contact;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "OrderStatusRequest", propOrder = {
-    "contacts",
-    "statusRequests"
+    "contact",
+    "statusRequest"
 })
 public class OrderStatusRequest
     extends BusinessObject
@@ -42,23 +42,23 @@ public class OrderStatusRequest
 {
 
     @XmlElement(name = "Contact", namespace = "http://www.CIP4.org/JDFSchema_2_0")
-    protected List<Contact> contacts;
+    protected List<Contact> contact;
     @XmlElement(name = "StatusRequest")
-    protected List<StatusRequest> statusRequests;
+    protected List<StatusRequest> statusRequest;
 
     /**
-     * Gets the value of the contacts property.
+     * Gets the value of the contact property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the contacts property.
+     * This is why there is not a <CODE>set</CODE> method for the contact property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getContacts().add(newItem);
+     *    getContact().add(newItem);
      * </pre>
      * 
      * 
@@ -68,26 +68,26 @@ public class OrderStatusRequest
      * 
      * 
      */
-    public List<Contact> getContacts() {
-        if (contacts == null) {
-            contacts = new ArrayList<Contact>();
+    public List<Contact> getContact() {
+        if (contact == null) {
+            contact = new ArrayList<Contact>();
         }
-        return this.contacts;
+        return this.contact;
     }
 
     /**
-     * Gets the value of the statusRequests property.
+     * Gets the value of the statusRequest property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the statusRequests property.
+     * This is why there is not a <CODE>set</CODE> method for the statusRequest property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getStatusRequests().add(newItem);
+     *    getStatusRequest().add(newItem);
      * </pre>
      * 
      * 
@@ -97,11 +97,11 @@ public class OrderStatusRequest
      * 
      * 
      */
-    public List<StatusRequest> getStatusRequests() {
-        if (statusRequests == null) {
-            statusRequests = new ArrayList<StatusRequest>();
+    public List<StatusRequest> getStatusRequest() {
+        if (statusRequest == null) {
+            statusRequest = new ArrayList<StatusRequest>();
         }
-        return this.statusRequests;
+        return this.statusRequest;
     }
 
 }

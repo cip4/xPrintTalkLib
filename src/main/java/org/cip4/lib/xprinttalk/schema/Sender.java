@@ -32,7 +32,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Sender", propOrder = {
-    "credentials",
+    "credential",
     "userAgent"
 })
 public class Sender
@@ -40,23 +40,23 @@ public class Sender
 {
 
     @XmlElement(name = "Credential", required = true)
-    protected List<Credential> credentials;
+    protected List<Credential> credential;
     @XmlElement(name = "UserAgent", required = true)
     protected CXMLUserAgent userAgent;
 
     /**
-     * Gets the value of the credentials property.
+     * Gets the value of the credential property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the credentials property.
+     * This is why there is not a <CODE>set</CODE> method for the credential property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getCredentials().add(newItem);
+     *    getCredential().add(newItem);
      * </pre>
      * 
      * 
@@ -66,11 +66,11 @@ public class Sender
      * 
      * 
      */
-    public List<Credential> getCredentials() {
-        if (credentials == null) {
-            credentials = new ArrayList<Credential>();
+    public List<Credential> getCredential() {
+        if (credential == null) {
+            credential = new ArrayList<Credential>();
         }
-        return this.credentials;
+        return this.credential;
     }
 
     /**

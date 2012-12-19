@@ -42,7 +42,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Price", propOrder = {
-    "additionals"
+    "additional"
 })
 public class Price
     extends AbstractPtA
@@ -50,7 +50,7 @@ public class Price
 {
 
     @XmlElement(name = "Additional")
-    protected List<Additional> additionals;
+    protected List<Additional> additional;
     @XmlAttribute(name = "Amount")
     protected Double amount;
     @XmlAttribute(name = "ItemRefs")
@@ -69,18 +69,18 @@ public class Price
     protected Double unitPrice;
 
     /**
-     * Gets the value of the additionals property.
+     * Gets the value of the additional property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the additionals property.
+     * This is why there is not a <CODE>set</CODE> method for the additional property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getAdditionals().add(newItem);
+     *    getAdditional().add(newItem);
      * </pre>
      * 
      * 
@@ -90,11 +90,11 @@ public class Price
      * 
      * 
      */
-    public List<Additional> getAdditionals() {
-        if (additionals == null) {
-            additionals = new ArrayList<Additional>();
+    public List<Additional> getAdditional() {
+        if (additional == null) {
+            additional = new ArrayList<Additional>();
         }
-        return this.additionals;
+        return this.additional;
     }
 
     /**

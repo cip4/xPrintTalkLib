@@ -34,7 +34,7 @@ import org.cip4.lib.xjdf.schema.Telem;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Payment", propOrder = {
-    "payTermsAndCreditCards"
+    "payTermAndCreditCard"
 })
 public class Payment
     extends AbstractPt
@@ -45,21 +45,21 @@ public class Payment
         @XmlElement(name = "PayTerm", type = Telem.class),
         @XmlElement(name = "CreditCard", type = CreditCard.class)
     })
-    protected List<Serializable> payTermsAndCreditCards;
+    protected List<Serializable> payTermAndCreditCard;
 
     /**
-     * Gets the value of the payTermsAndCreditCards property.
+     * Gets the value of the payTermAndCreditCard property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the payTermsAndCreditCards property.
+     * This is why there is not a <CODE>set</CODE> method for the payTermAndCreditCard property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getPayTermsAndCreditCards().add(newItem);
+     *    getPayTermAndCreditCard().add(newItem);
      * </pre>
      * 
      * 
@@ -70,11 +70,11 @@ public class Payment
      * 
      * 
      */
-    public List<Serializable> getPayTermsAndCreditCards() {
-        if (payTermsAndCreditCards == null) {
-            payTermsAndCreditCards = new ArrayList<Serializable>();
+    public List<Serializable> getPayTermAndCreditCard() {
+        if (payTermAndCreditCard == null) {
+            payTermAndCreditCard = new ArrayList<Serializable>();
         }
-        return this.payTermsAndCreditCards;
+        return this.payTermAndCreditCard;
     }
 
 }

@@ -37,10 +37,10 @@ import org.cip4.lib.xjdf.schema.Notification;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "OrderStatusResponse", propOrder = {
-    "notifications",
-    "contacts",
+    "notification",
+    "contact",
     "deliveryParams",
-    "statuses"
+    "status"
 })
 public class OrderStatusResponse
     extends BusinessObject
@@ -48,27 +48,27 @@ public class OrderStatusResponse
 {
 
     @XmlElement(name = "Notification", namespace = "http://www.CIP4.org/JDFSchema_2_0")
-    protected List<Notification> notifications;
+    protected List<Notification> notification;
     @XmlElement(name = "Contact", namespace = "http://www.CIP4.org/JDFSchema_2_0")
-    protected List<Contact> contacts;
+    protected List<Contact> contact;
     @XmlElement(name = "DeliveryParams", namespace = "http://www.CIP4.org/JDFSchema_2_0")
     protected DeliveryParams deliveryParams;
     @XmlElement(name = "Status")
-    protected List<Status> statuses;
+    protected List<Status> status;
 
     /**
-     * Gets the value of the notifications property.
+     * Gets the value of the notification property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the notifications property.
+     * This is why there is not a <CODE>set</CODE> method for the notification property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getNotifications().add(newItem);
+     *    getNotification().add(newItem);
      * </pre>
      * 
      * 
@@ -78,26 +78,26 @@ public class OrderStatusResponse
      * 
      * 
      */
-    public List<Notification> getNotifications() {
-        if (notifications == null) {
-            notifications = new ArrayList<Notification>();
+    public List<Notification> getNotification() {
+        if (notification == null) {
+            notification = new ArrayList<Notification>();
         }
-        return this.notifications;
+        return this.notification;
     }
 
     /**
-     * Gets the value of the contacts property.
+     * Gets the value of the contact property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the contacts property.
+     * This is why there is not a <CODE>set</CODE> method for the contact property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getContacts().add(newItem);
+     *    getContact().add(newItem);
      * </pre>
      * 
      * 
@@ -107,11 +107,11 @@ public class OrderStatusResponse
      * 
      * 
      */
-    public List<Contact> getContacts() {
-        if (contacts == null) {
-            contacts = new ArrayList<Contact>();
+    public List<Contact> getContact() {
+        if (contact == null) {
+            contact = new ArrayList<Contact>();
         }
-        return this.contacts;
+        return this.contact;
     }
 
     /**
@@ -139,18 +139,18 @@ public class OrderStatusResponse
     }
 
     /**
-     * Gets the value of the statuses property.
+     * Gets the value of the status property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the statuses property.
+     * This is why there is not a <CODE>set</CODE> method for the status property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getStatuses().add(newItem);
+     *    getStatus().add(newItem);
      * </pre>
      * 
      * 
@@ -160,11 +160,11 @@ public class OrderStatusResponse
      * 
      * 
      */
-    public List<Status> getStatuses() {
-        if (statuses == null) {
-            statuses = new ArrayList<Status>();
+    public List<Status> getStatus() {
+        if (status == null) {
+            status = new ArrayList<Status>();
         }
-        return this.statuses;
+        return this.status;
     }
 
 }
