@@ -16,8 +16,10 @@ import org.cip4.lib.xjdf.schema.GeneralID;
 
 /**
  * 
- * 				All Elements in the PrintTalk namespace inherit from the Abstract pt Element. 
- * 				That is, every descendant of the Request Element inherits from the Abstract pt Element, 
+ * 				All Elements in the PrintTalk namespace inherit
+ * 				from the Abstract pt Element.
+ * 				That is, every descendant of the Request Element inherits from the
+ * 				Abstract pt Element,
  * 				either directly or indirectly through the Abstract BusinessObject
  * 			
  * 

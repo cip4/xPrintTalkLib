@@ -9,7 +9,8 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * 
- * 				The cXML Type from which all other cXML types are derived.
+ * 				The cXML Type from which all other cXML types are
+ * 				derived.
  * 			
  * 
  * <p>Java class for cXML-baseType complex type.

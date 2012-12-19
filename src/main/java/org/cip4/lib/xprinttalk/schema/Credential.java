@@ -12,7 +12,8 @@ import org.cip4.lib.xjdf.schema.Telem;
 
 /**
  * 
- * 				A Credential identifies and authenticates the various parties involved in a transaction.
+ * 				A Credential identifies and authenticates the
+ * 				various parties involved in a transaction.
  * 			
  * 
  * <p>Java class for Credential complex type.

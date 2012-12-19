@@ -18,7 +18,8 @@ import org.cip4.lib.xjdf.schema.GeneralID;
 
 /**
  * 
- * 				This is a special version of the Abstract pt Element
+ * 				This is a special version of the Abstract pt
+ * 				Element
  * 				It permits the derived type to contain mixed content
  * 			
  * 
@@ -64,7 +65,8 @@ public abstract class AbstractPtB
 
     /**
      * 
-     * 				This is a special version of the Abstract pt Element
+     * 				This is a special version of the Abstract pt
+     * 				Element
      * 				It permits the derived type to contain mixed content
      * 			Gets the value of the content property.
      * 
@@ -83,9 +85,9 @@ public abstract class AbstractPtB
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
+     * {@link Comment }
      * {@link String }
      * {@link GeneralID }
-     * {@link Comment }
      * 
      * 
      */
