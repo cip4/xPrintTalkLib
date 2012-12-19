@@ -10,7 +10,8 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * 
- * 				This is a special version of the Abstract pt Element without the optional DescriptiveName attribute 
+ * 				This is a special version of the Abstract pt
+ * 				Element without the optional DescriptiveName attribute
  * 			
  * 
  * <p>Java class for Abstract_pt_A complex type.

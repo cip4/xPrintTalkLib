@@ -35,7 +35,6 @@ public class ObjectFactory {
     private final static QName _ProofApprovalRequest_QNAME = new QName("http://www.printtalk.org/schema_2_0", "ProofApprovalRequest");
     private final static QName _BusinessObject_QNAME = new QName("http://www.printtalk.org/schema_2_0", "BusinessObject");
     private final static QName _Confirmation_QNAME = new QName("http://www.printtalk.org/schema_2_0", "Confirmation");
-    private final static QName _PrintTalk_QNAME = new QName("http://www.printtalk.org/schema_2_0", "PrintTalk");
     private final static QName _Quotation_QNAME = new QName("http://www.printtalk.org/schema_2_0", "Quotation");
     private final static QName _Invoice_QNAME = new QName("http://www.printtalk.org/schema_2_0", "Invoice");
     private final static QName _ReturnJob_QNAME = new QName("http://www.printtalk.org/schema_2_0", "ReturnJob");
@@ -136,6 +135,22 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link Header }
+     * 
+     */
+    public Header createHeader() {
+        return new Header();
+    }
+
+    /**
+     * Create an instance of {@link Request }
+     * 
+     */
+    public Request createRequest() {
+        return new Request();
+    }
+
+    /**
      * Create an instance of {@link OrderStatusRequest }
      * 
      */
@@ -165,14 +180,6 @@ public class ObjectFactory {
      */
     public ProofRequest createProofRequest() {
         return new ProofRequest();
-    }
-
-    /**
-     * Create an instance of {@link Request }
-     * 
-     */
-    public Request createRequest() {
-        return new Request();
     }
 
     /**
@@ -221,14 +228,6 @@ public class ObjectFactory {
      */
     public Credential createCredential() {
         return new Credential();
-    }
-
-    /**
-     * Create an instance of {@link Header }
-     * 
-     */
-    public Header createHeader() {
-        return new Header();
     }
 
     /**
@@ -408,15 +407,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://www.printtalk.org/schema_2_0", name = "Confirmation", substitutionHeadNamespace = "http://www.printtalk.org/schema_2_0", substitutionHeadName = "BusinessObject")
     public JAXBElement<Confirmation> createConfirmation(Confirmation value) {
         return new JAXBElement<Confirmation>(_Confirmation_QNAME, Confirmation.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link PrintTalk }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://www.printtalk.org/schema_2_0", name = "PrintTalk")
-    public JAXBElement<PrintTalk> createPrintTalk(PrintTalk value) {
-        return new JAXBElement<PrintTalk>(_PrintTalk_QNAME, PrintTalk.class, null, value);
     }
 
     /**
