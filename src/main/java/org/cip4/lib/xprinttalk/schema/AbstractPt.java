@@ -43,8 +43,8 @@ import org.cip4.lib.xjdf.schema.GeneralID;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Abstract_pt", propOrder = {
-    "comments",
-    "generalIDs"
+    "comment",
+    "generalID"
 })
 @XmlSeeAlso({
     BusinessObject.class,
@@ -62,25 +62,25 @@ public abstract class AbstractPt implements Serializable
 {
 
     @XmlElement(name = "Comment", namespace = "http://www.CIP4.org/JDFSchema_2_0")
-    protected List<Comment> comments;
+    protected List<Comment> comment;
     @XmlElement(name = "GeneralID", namespace = "http://www.CIP4.org/JDFSchema_2_0")
-    protected List<GeneralID> generalIDs;
+    protected List<GeneralID> generalID;
     @XmlAttribute(name = "DescriptiveName")
     protected String descriptiveName;
 
     /**
-     * Gets the value of the comments property.
+     * Gets the value of the comment property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the comments property.
+     * This is why there is not a <CODE>set</CODE> method for the comment property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getComments().add(newItem);
+     *    getComment().add(newItem);
      * </pre>
      * 
      * 
@@ -90,26 +90,26 @@ public abstract class AbstractPt implements Serializable
      * 
      * 
      */
-    public List<Comment> getComments() {
-        if (comments == null) {
-            comments = new ArrayList<Comment>();
+    public List<Comment> getComment() {
+        if (comment == null) {
+            comment = new ArrayList<Comment>();
         }
-        return this.comments;
+        return this.comment;
     }
 
     /**
-     * Gets the value of the generalIDs property.
+     * Gets the value of the generalID property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the generalIDs property.
+     * This is why there is not a <CODE>set</CODE> method for the generalID property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getGeneralIDs().add(newItem);
+     *    getGeneralID().add(newItem);
      * </pre>
      * 
      * 
@@ -119,11 +119,11 @@ public abstract class AbstractPt implements Serializable
      * 
      * 
      */
-    public List<GeneralID> getGeneralIDs() {
-        if (generalIDs == null) {
-            generalIDs = new ArrayList<GeneralID>();
+    public List<GeneralID> getGeneralID() {
+        if (generalID == null) {
+            generalID = new ArrayList<GeneralID>();
         }
-        return this.generalIDs;
+        return this.generalID;
     }
 
     /**

@@ -61,7 +61,7 @@ public final class MilestoneMsgBuilder extends AbstractNodeBuilder<PrintTalk> {
 		OrderStatusResponse orderStatusResponse = ptkNodeFactory.createOrderStatusResponse(businessID);
 		ptkBuilder.addRequest(orderStatusResponse);
 
-		orderStatusResponse.getNotifications().add(notification);
+		orderStatusResponse.getNotification().add(notification);
 
 		// return instance
 		return milestoneBuilder;

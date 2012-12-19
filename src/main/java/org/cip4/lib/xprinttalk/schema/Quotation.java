@@ -39,7 +39,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Quotation", propOrder = {
-    "quotes"
+    "quote"
 })
 public class Quotation
     extends BusinessObject
@@ -47,7 +47,7 @@ public class Quotation
 {
 
     @XmlElement(name = "Quote", required = true)
-    protected List<QuoteType> quotes;
+    protected List<QuoteType> quote;
     @XmlAttribute(name = "Currency", required = true)
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected String currency;
@@ -56,24 +56,24 @@ public class Quotation
     @XmlAttribute(name = "Expires", required = true)
     protected String expires;
     @XmlAttribute(name = "ReorderID")
-    protected List<String> reorderIDs;
+    protected List<String> reorderID;
     @XmlAttribute(name = "ReplaceID")
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected String replaceID;
 
     /**
-     * Gets the value of the quotes property.
+     * Gets the value of the quote property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the quotes property.
+     * This is why there is not a <CODE>set</CODE> method for the quote property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getQuotes().add(newItem);
+     *    getQuote().add(newItem);
      * </pre>
      * 
      * 
@@ -83,11 +83,11 @@ public class Quotation
      * 
      * 
      */
-    public List<QuoteType> getQuotes() {
-        if (quotes == null) {
-            quotes = new ArrayList<QuoteType>();
+    public List<QuoteType> getQuote() {
+        if (quote == null) {
+            quote = new ArrayList<QuoteType>();
         }
-        return this.quotes;
+        return this.quote;
     }
 
     /**
@@ -155,18 +155,18 @@ public class Quotation
     }
 
     /**
-     * Gets the value of the reorderIDs property.
+     * Gets the value of the reorderID property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the reorderIDs property.
+     * This is why there is not a <CODE>set</CODE> method for the reorderID property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getReorderIDs().add(newItem);
+     *    getReorderID().add(newItem);
      * </pre>
      * 
      * 
@@ -176,11 +176,11 @@ public class Quotation
      * 
      * 
      */
-    public List<String> getReorderIDs() {
-        if (reorderIDs == null) {
-            reorderIDs = new ArrayList<String>();
+    public List<String> getReorderID() {
+        if (reorderID == null) {
+            reorderID = new ArrayList<String>();
         }
-        return this.reorderIDs;
+        return this.reorderID;
     }
 
     /**

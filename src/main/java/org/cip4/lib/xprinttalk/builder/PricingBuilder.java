@@ -86,7 +86,7 @@ public class PricingBuilder extends AbstractNodeBuilder<Pricing> {
 		obj.setLineID(lineIDRefs);
 
 		// append to pricing
-		getNode().getPrices().add(obj);
+		getNode().getPrice().add(obj);
 
 		// return price object
 		return obj;

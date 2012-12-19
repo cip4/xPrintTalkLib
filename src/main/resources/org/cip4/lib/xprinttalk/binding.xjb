@@ -8,7 +8,7 @@
 	<jxb:bindings schemaLocation="xsd/PrintTalk20.xsd" node="/xs:schema">
 	
 		<jxb:globalBindings localScoping="toplevel">
-			<xjc:simple />
+			<!-- <xjc:simple /> -->
 			<xjc:serializable />
 		</jxb:globalBindings>
 		<jxb:schemaBindings>
