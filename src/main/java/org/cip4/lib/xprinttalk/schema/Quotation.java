@@ -54,7 +54,8 @@ public class Quotation
     @XmlAttribute(name = "Estimate", required = true)
     protected boolean estimate;
     @XmlAttribute(name = "Expires", required = true)
-    protected String expires;
+    @XmlJavaTypeAdapter(org.cip4.lib.xjdf.type.DateTime.class)
+    protected org.cip4.lib.xjdf.type.DateTime expires;
     @XmlAttribute(name = "ReorderID")
     protected List<String> reorderID;
     @XmlAttribute(name = "ReplaceID")
@@ -138,7 +139,7 @@ public class Quotation
      *     {@link String }
      *     
      */
-    public String getExpires() {
+    public org.cip4.lib.xjdf.type.DateTime getExpires() {
         return expires;
     }
 
@@ -150,7 +151,7 @@ public class Quotation
      *     {@link String }
      *     
      */
-    public void setExpires(String value) {
+    public void setExpires(org.cip4.lib.xjdf.type.DateTime value) {
         this.expires = value;
     }
 

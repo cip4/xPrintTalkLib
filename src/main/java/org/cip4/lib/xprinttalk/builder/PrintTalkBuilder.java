@@ -10,14 +10,13 @@
  */
 package org.cip4.lib.xprinttalk.builder;
 
-import java.util.Calendar;
 import java.util.UUID;
 
 import javax.xml.bind.JAXBElement;
 import javax.xml.namespace.QName;
 
 import org.cip4.lib.xjdf.builder.AbstractNodeBuilder;
-import org.cip4.lib.xjdf.convert.DateConverter;
+import org.cip4.lib.xjdf.type.DateTime;
 import org.cip4.lib.xprinttalk.PrintTalkNodeFactory;
 import org.cip4.lib.xprinttalk.schema.BusinessObject;
 import org.cip4.lib.xprinttalk.schema.PrintTalk;
@@ -65,7 +64,7 @@ public final class PrintTalkBuilder extends AbstractNodeBuilder<PrintTalk> {
 		PrintTalkBuilder printTalkBuilder = new PrintTalkBuilder();
 
 		// preconfiguration
-		printTalkBuilder.getPrintTalk().setTimestamp(DateConverter.date2String(Calendar.getInstance()));
+		printTalkBuilder.getPrintTalk().setTimestamp(DateTime.newInstance());
 		printTalkBuilder.getPrintTalk().setPayloadID(payloadID);
 		printTalkBuilder.getPrintTalk().setVersion(PrintTalkConstants.PTK_CURRENT_VERSION);
 

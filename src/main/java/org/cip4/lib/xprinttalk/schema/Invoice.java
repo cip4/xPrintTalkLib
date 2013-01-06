@@ -52,7 +52,8 @@ public class Invoice
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected String currency;
     @XmlAttribute(name = "Expires", required = true)
-    protected String expires;
+    @XmlJavaTypeAdapter(org.cip4.lib.xjdf.type.DateTime.class)
+    protected org.cip4.lib.xjdf.type.DateTime expires;
 
     /**
      * Gets the value of the xjdf property.
@@ -134,7 +135,7 @@ public class Invoice
      *     {@link String }
      *     
      */
-    public String getExpires() {
+    public org.cip4.lib.xjdf.type.DateTime getExpires() {
         return expires;
     }
 
@@ -146,7 +147,7 @@ public class Invoice
      *     {@link String }
      *     
      */
-    public void setExpires(String value) {
+    public void setExpires(org.cip4.lib.xjdf.type.DateTime value) {
         this.expires = value;
     }
 
