@@ -69,7 +69,8 @@ public abstract class BusinessObject
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected String businessRefID;
     @XmlAttribute(name = "RequestDate")
-    protected String requestDate;
+    @XmlJavaTypeAdapter(org.cip4.lib.xjdf.type.DateTime.class)
+    protected org.cip4.lib.xjdf.type.DateTime requestDate;
 
     /**
      * Gets the value of the agentID property.
@@ -199,7 +200,7 @@ public abstract class BusinessObject
      *     {@link String }
      *     
      */
-    public String getRequestDate() {
+    public org.cip4.lib.xjdf.type.DateTime getRequestDate() {
         return requestDate;
     }
 
@@ -211,7 +212,7 @@ public abstract class BusinessObject
      *     {@link String }
      *     
      */
-    public void setRequestDate(String value) {
+    public void setRequestDate(org.cip4.lib.xjdf.type.DateTime value) {
         this.requestDate = value;
     }
 

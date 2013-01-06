@@ -8,6 +8,7 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 
 /**
@@ -52,7 +53,8 @@ public class PrintTalk
     @XmlAttribute(name = "payloadID", required = true)
     protected String payloadID;
     @XmlAttribute(name = "Timestamp")
-    protected String timestamp;
+    @XmlJavaTypeAdapter(org.cip4.lib.xjdf.type.DateTime.class)
+    protected org.cip4.lib.xjdf.type.DateTime timestamp;
 
     /**
      * Gets the value of the header property.
@@ -158,7 +160,7 @@ public class PrintTalk
      *     {@link String }
      *     
      */
-    public String getTimestamp() {
+    public org.cip4.lib.xjdf.type.DateTime getTimestamp() {
         return timestamp;
     }
 
@@ -170,7 +172,7 @@ public class PrintTalk
      *     {@link String }
      *     
      */
-    public void setTimestamp(String value) {
+    public void setTimestamp(org.cip4.lib.xjdf.type.DateTime value) {
         this.timestamp = value;
     }
 

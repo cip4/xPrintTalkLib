@@ -61,7 +61,8 @@ public class QuoteType
     @XmlAttribute(name = "Estimate")
     protected Boolean estimate;
     @XmlAttribute(name = "Expires")
-    protected String expires;
+    @XmlJavaTypeAdapter(org.cip4.lib.xjdf.type.DateTime.class)
+    protected org.cip4.lib.xjdf.type.DateTime expires;
     @XmlAttribute(name = "QuoteID", required = true)
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected String quoteID;
@@ -177,7 +178,7 @@ public class QuoteType
      *     {@link String }
      *     
      */
-    public String getExpires() {
+    public org.cip4.lib.xjdf.type.DateTime getExpires() {
         return expires;
     }
 
@@ -189,7 +190,7 @@ public class QuoteType
      *     {@link String }
      *     
      */
-    public void setExpires(String value) {
+    public void setExpires(org.cip4.lib.xjdf.type.DateTime value) {
         this.expires = value;
     }
 

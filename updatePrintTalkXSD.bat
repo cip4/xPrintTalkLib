@@ -33,7 +33,10 @@ IF "%doUpdate%"=="y" copy %rootPath%%xsdSource% %rootPath%%xsdTarget%
 
 :: update schema
 echo.
-echo Update Schema...
+echo   Update Schema...
 echo.
 chdir /D %rootPath%
 mvn antrun:run
+
+:: wait
+pause
