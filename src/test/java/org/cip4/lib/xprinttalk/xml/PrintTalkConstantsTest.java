@@ -42,7 +42,7 @@ public class PrintTalkConstantsTest {
 		IOUtils.copy(is, os);
 		String doc = new String(os.toByteArray());
 
-		int i = doc.indexOf("xmlns:pt=\"") + 10;
+		int i = doc.indexOf("xmlns:ptk=\"") + 11;
 		int n = doc.indexOf("\"", i);
 
 		String expectedNs = doc.substring(i, n);
