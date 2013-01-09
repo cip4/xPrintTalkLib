@@ -20,8 +20,8 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * &lt;complexType name="BusinessObject">
  *   &lt;complexContent>
  *     &lt;extension base="{http://www.printtalk.org/schema_2_0}Abstract_pt">
- *       &lt;attribute name="AgentID" use="required" type="{http://www.CIP4.org/JDFSchema_2_0}NMTOKEN" />
- *       &lt;attribute name="AgentDisplayName" use="required" type="{http://www.CIP4.org/JDFSchema_2_0}string" />
+ *       &lt;attribute name="AgentID" type="{http://www.CIP4.org/JDFSchema_2_0}NMTOKEN" />
+ *       &lt;attribute name="AgentDisplayName" type="{http://www.CIP4.org/JDFSchema_2_0}string" />
  *       &lt;attribute name="AuxID" type="{http://www.CIP4.org/JDFSchema_2_0}NMTOKEN" />
  *       &lt;attribute name="BusinessID" use="required" type="{http://www.CIP4.org/JDFSchema_2_0}NMTOKEN" />
  *       &lt;attribute name="BusinessRefID" type="{http://www.CIP4.org/JDFSchema_2_0}NMTOKEN" />
@@ -54,10 +54,10 @@ public abstract class BusinessObject
     implements Serializable
 {
 
-    @XmlAttribute(name = "AgentID", required = true)
+    @XmlAttribute(name = "AgentID")
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected String agentID;
-    @XmlAttribute(name = "AgentDisplayName", required = true)
+    @XmlAttribute(name = "AgentDisplayName")
     protected String agentDisplayName;
     @XmlAttribute(name = "AuxID")
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)

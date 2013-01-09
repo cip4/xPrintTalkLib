@@ -10,6 +10,7 @@
  */
 package org.cip4.lib.xprinttalk;
 
+import org.cip4.lib.xjdf.schema.XJDF;
 import org.cip4.lib.xprinttalk.schema.Additional;
 import org.cip4.lib.xprinttalk.schema.ObjectFactory;
 import org.cip4.lib.xprinttalk.schema.OrderStatusResponse;
@@ -63,23 +64,51 @@ public class PrintTalkNodeFactory extends ObjectFactory {
 	public PurchaseOrder createPurchaseOrder(String businessID, String currency) {
 
 		// return PurchaseOrder
-		return createPurchaseOrder(businessID, currency, null);
+		return createPurchaseOrder(businessID, currency, null, null);
 	}
 
 	/**
-	 * Create a new PurchaseOrder Node which already contains the attributes BusinessID, Currency and BusinessRefID.
+	 * Create a new PurchaseOrder Node which already contains the attributes BusinessID, Currency and XJDF.
 	 * @param BusinessID Value of BusinessID attribute.
 	 * @param Currency Value of Currency attribute.
-	 * @param BueinssRefID Valoue of BusinessRefID attribute.
+	 * @param XJDF XJDF Document.
+	 * @return PurchaseOrder Node which already contains the attributes BusinessID, Currency and BusinessRefID.
+	 */
+	public PurchaseOrder createPurchaseOrder(String businessID, String currency, XJDF xjdf) {
+
+		// return PurchaseOrder
+		return createPurchaseOrder(businessID, currency, xjdf, null);
+	}
+
+	/**
+	 * Create a new PurchaseOrder Node which already contains the attributes BusinessID, Currency and XJDF.
+	 * @param BusinessID Value of BusinessID attribute.
+	 * @param Currency Value of Currency attribute.
+	 * @param BueinssRefID Value of BusinessRefID attribute.
 	 * @return PurchaseOrder Node which already contains the attributes BusinessID, Currency and BusinessRefID.
 	 */
 	public PurchaseOrder createPurchaseOrder(String businessID, String currency, String businessRefID) {
+
+		// return PurchaseOrder
+		return createPurchaseOrder(businessID, currency, null, null);
+	}
+
+	/**
+	 * Create a new PurchaseOrder Node which already contains the attributes BusinessID, Currency, XJDF and BusinessRefID.
+	 * @param BusinessID Value of BusinessID attribute.
+	 * @param Currency Value of Currency attribute.
+	 * @param XJDF XJDF Document.
+	 * @param BueinssRefID Value of BusinessRefID attribute.
+	 * @return PurchaseOrder Node which already contains the attributes BusinessID, Currency, XJDF and BusinessRefID.
+	 */
+	public PurchaseOrder createPurchaseOrder(String businessID, String currency, XJDF xjdf, String businessRefID) {
 		// create PurchaseOrder Node
 		PurchaseOrder purchaseOrder = super.createPurchaseOrder();
 
 		// set attriubtes
 		purchaseOrder.setBusinessID(businessID);
 		purchaseOrder.setCurrency(currency);
+		purchaseOrder.setXJDF(xjdf);
 		purchaseOrder.setBusinessRefID(businessRefID);
 
 		// return PurchaseOrder

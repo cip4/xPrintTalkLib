@@ -69,7 +69,7 @@ public class PrintTalkParser extends AbstractXmlParser<PrintTalk> {
 	 * @throws Exception Is thrown in case an exception occurs.
 	 */
 	public void parsePrintTalk(PrintTalk printTalk, OutputStream os) throws Exception {
-		parseXml(printTalk, os);
+		parseXml(printTalk, os, PrintTalkValidator.class);
 	}
 
 	/**
@@ -81,7 +81,7 @@ public class PrintTalkParser extends AbstractXmlParser<PrintTalk> {
 	 * @throws Exception Is thrown in case an exception occurs.
 	 */
 	public void parsePrintTalk(PrintTalk printTalk, OutputStream os, boolean skipValidation) throws Exception {
-		parseXml(printTalk, os, skipValidation);
+		parseXml(printTalk, os, skipValidation, PrintTalkValidator.class);
 	}
 
 	/**
