@@ -69,7 +69,7 @@
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="Header" type="ptk:Header" minOccurs="1" />
+				<xs:element name="Header" type="ptk:Header" minOccurs="0" maxOccurs="unbounded" />
 				<xs:element name="Request" type="ptk:Request" minOccurs="1" />
 			</xs:sequence>
 			<xs:attribute name="version" type="ptk:Version" use="required" />
@@ -240,9 +240,9 @@
 	<xs:complexType name="BusinessObject" abstract="true">
 		<xs:complexContent>
 			<xs:extension base="ptk:Abstract_pt">
-				<xs:attribute name="AgentID" type="xjdf:NMTOKEN" use="required" />
+				<xs:attribute name="AgentID" type="xjdf:NMTOKEN" use="optional" />
 				<xs:attribute name="AgentDisplayName" type="xjdf:string"
-					use="required" />
+					use="optional" />
 				<xs:attribute name="AuxID" type="xjdf:NMTOKEN" use="optional" />
 				<xs:attribute name="BusinessID" type="xjdf:NMTOKEN"
 					use="required" />
@@ -532,7 +532,7 @@
 					<xs:element name="Pricing" type="ptk:Pricing" minOccurs="0" />
 				</xs:sequence>
 				<xs:attribute name="Currency" type="xjdf:NMTOKEN" use="optional" />
-				<xs:attribute name="Expires" type="xjdf:dateTime" use="required" />
+				<xs:attribute name="Expires" type="xjdf:dateTime" use="optional" />
 				<xs:attribute name="QuoteID" type="xjdf:NMTOKEN" use="optional" />
 				<xs:attribute name="ReorderID" type="xjdf:NMTOKENS"
 					use="optional" />
