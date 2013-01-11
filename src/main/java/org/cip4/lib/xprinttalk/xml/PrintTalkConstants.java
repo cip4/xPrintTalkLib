@@ -92,7 +92,8 @@ public class PrintTalkConstants {
 
 		// default
 		if (result == null || result == "") {
-			result = "[version not specified]";
+			// result = "[version not specified]";
+			result = "";
 		}
 
 		// return result
