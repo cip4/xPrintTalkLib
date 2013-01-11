@@ -64,7 +64,7 @@ public final class PrintTalkBuilder extends AbstractNodeBuilder<PrintTalk> {
 		PrintTalkBuilder printTalkBuilder = new PrintTalkBuilder();
 
 		// preconfiguration
-		printTalkBuilder.getPrintTalk().setTimestamp(DateTime.newInstance());
+		printTalkBuilder.getPrintTalk().setTimestamp(new DateTime());
 		printTalkBuilder.getPrintTalk().setPayloadID(payloadID);
 		printTalkBuilder.getPrintTalk().setVersion(PrintTalkConstants.PTK_CURRENT_VERSION);
 
