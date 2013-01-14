@@ -85,8 +85,8 @@ public abstract class AbstractPtB
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link String }
      * {@link Comment }
+     * {@link String }
      * {@link GeneralID }
      * 
      * 

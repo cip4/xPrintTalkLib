@@ -28,7 +28,7 @@ import org.cip4.lib.xjdf.schema.XJDF;
  *         &lt;element name="Pricing" type="{http://www.printtalk.org/schema_2_0}Pricing" minOccurs="0"/>
  *       &lt;/sequence>
  *       &lt;attribute name="Currency" type="{http://www.CIP4.org/JDFSchema_2_0}NMTOKEN" />
- *       &lt;attribute name="Expires" use="required" type="{http://www.CIP4.org/JDFSchema_2_0}dateTime" />
+ *       &lt;attribute name="Expires" type="{http://www.CIP4.org/JDFSchema_2_0}dateTime" />
  *       &lt;attribute name="QuoteID" type="{http://www.CIP4.org/JDFSchema_2_0}NMTOKEN" />
  *       &lt;attribute name="ReorderID" type="{http://www.CIP4.org/JDFSchema_2_0}NMTOKENS" />
  *       &lt;attribute name="ReplaceID" type="{http://www.CIP4.org/JDFSchema_2_0}NMTOKEN" />
@@ -57,7 +57,7 @@ public class PurchaseOrder
     @XmlAttribute(name = "Currency")
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected String currency;
-    @XmlAttribute(name = "Expires", required = true)
+    @XmlAttribute(name = "Expires")
     @XmlJavaTypeAdapter(org.cip4.lib.xjdf.type.DateTime.class)
     protected org.cip4.lib.xjdf.type.DateTime expires;
     @XmlAttribute(name = "QuoteID")
