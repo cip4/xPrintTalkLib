@@ -11,7 +11,6 @@
 package org.cip4.lib.xprinttalk.builder.msg;
 
 import org.cip4.lib.xprinttalk.builder.AbstractBuilderTest;
-import org.cip4.lib.xprinttalk.builder.msg.MilestoneMsgBuilder;
 import org.cip4.lib.xprinttalk.schema.PrintTalk;
 import org.junit.After;
 import org.junit.Assert;

@@ -28,7 +28,7 @@ import org.cip4.lib.xjdf.schema.XJDF;
  *       &lt;/sequence>
  *       &lt;attribute name="Currency" use="required" type="{http://www.CIP4.org/JDFSchema_2_0}NMTOKEN" />
  *       &lt;attribute name="Estimate" type="{http://www.CIP4.org/JDFSchema_2_0}boolean" />
- *       &lt;attribute name="Expires" type="{http://www.CIP4.org/JDFSchema_2_0}dateTime" />
+ *       &lt;attribute name="Expires" use="required" type="{http://www.CIP4.org/JDFSchema_2_0}dateTime" />
  *       &lt;attribute name="ReorderID" type="{http://www.CIP4.org/JDFSchema_2_0}NMTOKENS" />
  *       &lt;attribute name="ReplaceID" type="{http://www.CIP4.org/JDFSchema_2_0}NMTOKEN" />
  *     &lt;/extension>
@@ -54,7 +54,7 @@ public class RFQ
     protected String currency;
     @XmlAttribute(name = "Estimate")
     protected Boolean estimate;
-    @XmlAttribute(name = "Expires")
+    @XmlAttribute(name = "Expires", required = true)
     @XmlJavaTypeAdapter(org.cip4.lib.xjdf.type.DateTime.class)
     protected org.cip4.lib.xjdf.type.DateTime expires;
     @XmlAttribute(name = "ReorderID")

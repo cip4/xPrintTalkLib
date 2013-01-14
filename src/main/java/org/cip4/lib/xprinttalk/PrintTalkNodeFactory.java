@@ -14,6 +14,7 @@ import org.cip4.lib.xjdf.schema.XJDF;
 import org.cip4.lib.xprinttalk.schema.Additional;
 import org.cip4.lib.xprinttalk.schema.ObjectFactory;
 import org.cip4.lib.xprinttalk.schema.OrderStatusResponse;
+import org.cip4.lib.xprinttalk.schema.Pricing;
 import org.cip4.lib.xprinttalk.schema.PurchaseOrder;
 
 /**
@@ -64,7 +65,7 @@ public class PrintTalkNodeFactory extends ObjectFactory {
 	public PurchaseOrder createPurchaseOrder(String businessID, String currency) {
 
 		// return PurchaseOrder
-		return createPurchaseOrder(businessID, currency, null, null);
+		return createPurchaseOrder(businessID, currency, null, null, null);
 	}
 
 	/**
@@ -77,7 +78,21 @@ public class PrintTalkNodeFactory extends ObjectFactory {
 	public PurchaseOrder createPurchaseOrder(String businessID, String currency, XJDF xjdf) {
 
 		// return PurchaseOrder
-		return createPurchaseOrder(businessID, currency, xjdf, null);
+		return createPurchaseOrder(businessID, currency, xjdf, null, null);
+	}
+
+	/**
+	 * Create a new PurchaseOrder Node which already contains the attributes BusinessID, Currency and XJDF.
+	 * @param BusinessID Value of BusinessID attribute.
+	 * @param Currency Value of Currency attribute.
+	 * @param XJDF XJDF Document.
+	 * @Param pricing Pricing Node
+	 * @return PurchaseOrder Node which already contains the attributes BusinessID, Currency and BusinessRefID.
+	 */
+	public PurchaseOrder createPurchaseOrder(String businessID, String currency, XJDF xjdf, Pricing pricing) {
+
+		// return PurchaseOrder
+		return createPurchaseOrder(businessID, currency, xjdf, null, pricing);
 	}
 
 	/**
@@ -90,7 +105,7 @@ public class PrintTalkNodeFactory extends ObjectFactory {
 	public PurchaseOrder createPurchaseOrder(String businessID, String currency, String businessRefID) {
 
 		// return PurchaseOrder
-		return createPurchaseOrder(businessID, currency, null, null);
+		return createPurchaseOrder(businessID, currency, null, null, null);
 	}
 
 	/**
@@ -99,9 +114,10 @@ public class PrintTalkNodeFactory extends ObjectFactory {
 	 * @param Currency Value of Currency attribute.
 	 * @param XJDF XJDF Document.
 	 * @param BueinssRefID Value of BusinessRefID attribute.
+	 * @param Pricing Pricing Node.
 	 * @return PurchaseOrder Node which already contains the attributes BusinessID, Currency, XJDF and BusinessRefID.
 	 */
-	public PurchaseOrder createPurchaseOrder(String businessID, String currency, XJDF xjdf, String businessRefID) {
+	public PurchaseOrder createPurchaseOrder(String businessID, String currency, XJDF xjdf, String businessRefID, Pricing pricing) {
 		// create PurchaseOrder Node
 		PurchaseOrder purchaseOrder = super.createPurchaseOrder();
 
@@ -110,6 +126,7 @@ public class PrintTalkNodeFactory extends ObjectFactory {
 		purchaseOrder.setCurrency(currency);
 		purchaseOrder.setXJDF(xjdf);
 		purchaseOrder.setBusinessRefID(businessRefID);
+		purchaseOrder.setPricing(pricing);
 
 		// return PurchaseOrder
 		return purchaseOrder;

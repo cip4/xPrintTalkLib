@@ -2,6 +2,8 @@
 package org.cip4.lib.xprinttalk.schema;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
@@ -21,7 +23,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="Header" type="{http://www.printtalk.org/schema_2_0}Header"/>
+ *         &lt;element name="Header" type="{http://www.printtalk.org/schema_2_0}Header" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element name="Request" type="{http://www.printtalk.org/schema_2_0}Request"/>
  *       &lt;/sequence>
  *       &lt;attribute name="version" use="required" type="{http://www.printtalk.org/schema_2_0}Version" />
@@ -44,8 +46,8 @@ public class PrintTalk
     implements Serializable
 {
 
-    @XmlElement(name = "Header", required = true)
-    protected Header header;
+    @XmlElement(name = "Header")
+    protected List<Header> header;
     @XmlElement(name = "Request", required = true)
     protected Request request;
     @XmlAttribute(name = "version", required = true)
@@ -59,25 +61,30 @@ public class PrintTalk
     /**
      * Gets the value of the header property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Header }
-     *     
-     */
-    public Header getHeader() {
-        return header;
-    }
-
-    /**
-     * Sets the value of the header property.
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the header property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Header }
-     *     
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getHeader().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link Header }
+     * 
+     * 
      */
-    public void setHeader(Header value) {
-        this.header = value;
+    public List<Header> getHeader() {
+        if (header == null) {
+            header = new ArrayList<Header>();
+        }
+        return this.header;
     }
 
     /**
