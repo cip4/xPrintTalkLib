@@ -33,43 +33,30 @@ public final class PrintTalkBuilder extends AbstractNodeBuilder<PrintTalk> {
 	private final PrintTalkNodeFactory ptkNodeFactory;
 
 	/**
-	 * Private default constructor. Class cannot being instantiated from external.
+	 * Default constructor.
 	 */
-	private PrintTalkBuilder() {
+	public PrintTalkBuilder() {
 
-		super(PrintTalkNodeFactory.newInstance().createPrintTalk());
-
-		// init node factory
-		ptkNodeFactory = PrintTalkNodeFactory.newInstance();
+		this(UUID.randomUUID().toString());
 	}
 
 	/**
-	 * Create and return a new instance of PrintTalkBuilder.
+	 * Custom Constructor. Creates a new instance of PrintTalkBuilder preconfigured with attributes Timestamp (current Time), payloadID (paramter) and the
+	 * latest version number.
 	 * @return New PrintTalkBuilder instance.
 	 */
-	public static PrintTalkBuilder newInstance() {
+	public PrintTalkBuilder(String payloadID) {
 
-		// return new instance
-		return newInstance(UUID.randomUUID().toString());
-	}
+		super(new PrintTalkNodeFactory().createPrintTalk());
 
-	/**
-	 * Create and return a new instance of PrintTalkBuilder preconfigured with attributes Timestamp (current Time), payloadID (paramter) and the latest version
-	 * number.
-	 * @return New PrintTalkBuilder instance.
-	 */
-	public static PrintTalkBuilder newInstance(String payloadID) {
-
-		// create instance
-		PrintTalkBuilder printTalkBuilder = new PrintTalkBuilder();
+		// init
+		this.ptkNodeFactory = new PrintTalkNodeFactory();
 
 		// preconfiguration
-		printTalkBuilder.getPrintTalk().setTimestamp(new DateTime());
-		printTalkBuilder.getPrintTalk().setPayloadID(payloadID);
-		printTalkBuilder.getPrintTalk().setVersion(PrintTalkConstants.PTK_CURRENT_VERSION);
+		getPrintTalk().setTimestamp(new DateTime());
+		getPrintTalk().setPayloadID(payloadID);
+		getPrintTalk().setVersion(PrintTalkConstants.PTK_CURRENT_VERSION);
 
-		// return instance
-		return printTalkBuilder;
 	}
 
 	/**

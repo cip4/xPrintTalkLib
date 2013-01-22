@@ -25,18 +25,10 @@ import org.cip4.lib.xprinttalk.schema.PurchaseOrder;
 public class PrintTalkNodeFactory extends ObjectFactory {
 
 	/**
-	 * Private default constructor. Class cannot being instantiated from external.
+	 * Default constructor.
 	 */
-	private PrintTalkNodeFactory() {
+	public PrintTalkNodeFactory() {
 		// no action
-	}
-
-	/**
-	 * Get instance of PrintTalkNodeFactory.
-	 * @return New insatnce of PrintTalkNodeFactory
-	 */
-	public static PrintTalkNodeFactory newInstance() {
-		return new PrintTalkNodeFactory();
 	}
 
 	/**

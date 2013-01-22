@@ -35,7 +35,7 @@ public class PrintTalkParser extends AbstractXmlParser<PrintTalk> {
 	 * Private default constructor.
 	 * @throws JAXBException Thrown in case a JAXBException occurs.
 	 */
-	private PrintTalkParser() throws JAXBException {
+	public PrintTalkParser() throws JAXBException {
 
 		// call super class
 		super(JAXBContextFactory.getInstance());

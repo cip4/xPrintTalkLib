@@ -32,25 +32,15 @@ public class PricingBuilder extends AbstractNodeBuilder<Pricing> {
 	private int lineCounter = 0;
 
 	/**
-	 * Private default constructor. Class cannot being instantiated from external.
+	 * Default constructor.
 	 */
-	private PricingBuilder() {
+	public PricingBuilder() {
 
-		super(PrintTalkNodeFactory.newInstance().createPricing());
+		super(new PrintTalkNodeFactory().createPricing());
 
 		// initialize instance parameters
-		ptkNodeFactory = PrintTalkNodeFactory.newInstance();
-		xjdfNodeFactory = XJdfNodeFactory.newInstance();
-	}
-
-	/**
-	 * Create and return a new instance of PrintTalkBuilder.
-	 * @return New PrintTalkBuilder instance.
-	 */
-	public static PricingBuilder newInstance() {
-
-		// return new instance
-		return new PricingBuilder();
+		ptkNodeFactory = new PrintTalkNodeFactory();
+		xjdfNodeFactory = new XJdfNodeFactory();
 	}
 
 	/**
