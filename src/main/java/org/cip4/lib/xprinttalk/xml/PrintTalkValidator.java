@@ -10,12 +10,9 @@
  */
 package org.cip4.lib.xprinttalk.xml;
 
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-import org.apache.commons.io.FilenameUtils;
-import org.apache.commons.io.IOUtils;
 import org.cip4.lib.xjdf.xml.internal.AbstractXmlValidator;
 
 /**
@@ -26,40 +23,11 @@ import org.cip4.lib.xjdf.xml.internal.AbstractXmlValidator;
 public class PrintTalkValidator extends AbstractXmlValidator<PrintTalkValidator> {
 
 	/**
-	 * Custom private constructor. Accepting XML Schema for initializing.
-	 */
-	private PrintTalkValidator(byte[] xsdFile, InputStream printTalkStream) {
-		super(xsdFile, printTalkStream);
-	}
-
-	/**
-	 * Factory method for getting a new XJdfValidator instance.
-	 * @return New XJdfValidator Instance
+	 * Custom constructor. Accepting PrintTalk Stream for initializing.
 	 * @throws IOException
 	 */
-	public static PrintTalkValidator newInstance(InputStream printTalkStream) throws IOException {
-
-		// load xsd file
-		InputStream is = PrintTalkValidator.class.getResourceAsStream(PrintTalkConstants.RES_PTK20_XSD);
-
-		ByteArrayOutputStream bos;
-
-		// convert input stream to byte array
-		bos = new ByteArrayOutputStream();
-		IOUtils.copy(is, bos);
-		bos.close();
-
-		// return new instance
-		return new PrintTalkValidator(bos.toByteArray(), printTalkStream);
+	public PrintTalkValidator(InputStream printTalkStream) throws IOException {
+		super(PrintTalkConstants.RES_PTK20_XSD, printTalkStream);
 	}
 
-	/**
-	 * @see org.cip4.lib.xjdf.xml.internal.AbstractXmlValidator#getXsdPath()
-	 */
-	@Override
-	protected String getXsdPath() {
-
-		// extract XSD Path
-		return FilenameUtils.getFullPath(PrintTalkConstants.RES_PTK20_XSD);
-	}
 }

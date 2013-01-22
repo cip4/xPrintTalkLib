@@ -81,7 +81,7 @@ public class PrintTalkValidatorTest {
 		InputStream is = PrintTalkValidatorTest.class.getResourceAsStream(RES_TEST_PTK);
 
 		// act
-		printTalkValidator = PrintTalkValidator.newInstance(is);
+		printTalkValidator = new PrintTalkValidator(is);
 		boolean isValid = printTalkValidator.isValid();
 
 		// assert

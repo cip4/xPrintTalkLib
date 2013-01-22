@@ -69,20 +69,20 @@ public class PrintTalkParserTest {
 		final String JOB_ID = "JB_1234";
 		final String AMOUNT = "1500";
 
-		PrintTalkNodeFactory ptkNodeFactory = PrintTalkNodeFactory.newInstance();
-		XJdfNodeFactory xJdfNodeFactory = XJdfNodeFactory.newInstance();
+		PrintTalkNodeFactory ptkNodeFactory = new PrintTalkNodeFactory();
+		XJdfNodeFactory xJdfNodeFactory = new XJdfNodeFactory();
 
-		PrintTalkBuilder builder = PrintTalkBuilder.newInstance(PAYLOAD_ID);
+		PrintTalkBuilder builder = new PrintTalkBuilder(PAYLOAD_ID);
 
 		PurchaseOrder purchaseOrder = ptkNodeFactory.createPurchaseOrder(BUSINESS_ID, "EUR");
 		builder.addRequest(purchaseOrder);
 
-		XJdfBuilder xJdfBuilder = XJdfBuilder.newInstance(JOB_ID);
+		XJdfBuilder xJdfBuilder = new XJdfBuilder(JOB_ID);
 
 		GeneralID generalId = xJdfNodeFactory.createGeneralID("CatalogID", "49");
 		xJdfBuilder.addGeneralID(generalId);
 
-		ProductBuilder productBuilder = ProductBuilder.newInstance(Integer.valueOf(AMOUNT).intValue());
+		ProductBuilder productBuilder = new ProductBuilder(Integer.valueOf(AMOUNT).intValue());
 		xJdfBuilder.addProduct(productBuilder.build());
 
 		RunList runList = xJdfNodeFactory.createRunList("http://www.example.org:8080/artwork.pdf");

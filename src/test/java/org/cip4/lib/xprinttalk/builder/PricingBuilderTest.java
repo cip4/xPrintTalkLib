@@ -37,7 +37,7 @@ public class PricingBuilderTest extends AbstractBuilderTest<PrintTalk> {
 	 */
 	@Before
 	public void setUp() throws Exception {
-		pricingBuilder = PricingBuilder.newInstance();
+		pricingBuilder = new PricingBuilder();
 	}
 
 	/**
@@ -57,12 +57,12 @@ public class PricingBuilderTest extends AbstractBuilderTest<PrintTalk> {
 	public void testPricingIntegration() throws Exception {
 
 		// arrange
-		XJdfNodeFactory nf = XJdfNodeFactory.newInstance();
+		XJdfNodeFactory nf = new XJdfNodeFactory();
 
-		ProductBuilder productBuilder = ProductBuilder.newInstance(1000);
+		ProductBuilder productBuilder = new ProductBuilder(1000);
 		productBuilder.addIntent(nf.createLayoutIntent(22));
 
-		XJdfBuilder xJdfBuilder = XJdfBuilder.newInstance("Job387943", "Web2Print", "MyProduct");
+		XJdfBuilder xJdfBuilder = new XJdfBuilder("Job387943", "Web2Print", "MyProduct");
 		xJdfBuilder.addGeneralID(nf.createGeneralID("CatalogID", "ID_Whatever"));
 		xJdfBuilder.addParameter(nf.createRunList("http://www.hei-cloud.com/w2pvalidate/examples/w2p%20interface.pdf"));
 		xJdfBuilder.addProduct(productBuilder.build());
@@ -94,12 +94,12 @@ public class PricingBuilderTest extends AbstractBuilderTest<PrintTalk> {
 	public void testPricingTaxIntegration() throws Exception {
 
 		// arrange
-		XJdfNodeFactory nf = XJdfNodeFactory.newInstance();
+		XJdfNodeFactory nf = new XJdfNodeFactory();
 
-		ProductBuilder productBuilder = ProductBuilder.newInstance(1000);
+		ProductBuilder productBuilder = new ProductBuilder(1000);
 		productBuilder.addIntent(nf.createLayoutIntent(22));
 
-		XJdfBuilder xJdfBuilder = XJdfBuilder.newInstance("Job387943", "Web2Print", "MyProduct");
+		XJdfBuilder xJdfBuilder = new XJdfBuilder("Job387943", "Web2Print", "MyProduct");
 		xJdfBuilder.addGeneralID(nf.createGeneralID("CatalogID", "ID_Whatever"));
 		xJdfBuilder.addParameter(nf.createRunList("http://www.hei-cloud.com/w2pvalidate/examples/w2p%20interface.pdf"));
 		xJdfBuilder.addProduct(productBuilder.build());
@@ -120,7 +120,7 @@ public class PricingBuilderTest extends AbstractBuilderTest<PrintTalk> {
 		Assert.assertEquals("DescriptiveName is wrong.", "MyProduct", actualDescName);
 
 		String actualTotal = getXPathValue(bytes, "/ptk:PrintTalk/ptk:Request/ptk:PurchaseOrder/ptk:Pricing/ptk:Price[@LineID='Line_3']/@Price");
-		Assert.assertEquals("Price is wrong.", "28.83", actualTotal);
+		Assert.assertEquals("Price is wrong.", "5.62", actualTotal);
 	}
 
 	/**
@@ -129,8 +129,8 @@ public class PricingBuilderTest extends AbstractBuilderTest<PrintTalk> {
 	 */
 	private byte[] marshalPricing(PricingBuilder pricingBuilder, XJDF xjdf) throws Exception {
 
-		PrintTalkNodeFactory ptkNf = PrintTalkNodeFactory.newInstance();
-		PrintTalkBuilder ptkBuilder = PrintTalkBuilder.newInstance();
+		PrintTalkNodeFactory ptkNf = new PrintTalkNodeFactory();
+		PrintTalkBuilder ptkBuilder = new PrintTalkBuilder();
 
 		// create purchase order object
 		PurchaseOrder purchaseOrder = ptkNf.createPurchaseOrder("businessID", "EUR");

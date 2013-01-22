@@ -43,11 +43,11 @@ public final class MilestoneMsgBuilder extends AbstractNodeBuilder<PrintTalk> {
 	public static MilestoneMsgBuilder newInstance(String businessID, String jobID, String milestoneType) {
 
 		// create instance
-		PrintTalkBuilder ptkBuilder = PrintTalkBuilder.newInstance();
+		PrintTalkBuilder ptkBuilder = new PrintTalkBuilder();
 		MilestoneMsgBuilder milestoneBuilder = new MilestoneMsgBuilder(ptkBuilder.build());
 
 		// preconfiguration
-		XJdfNodeFactory xJdfNodeFactory = XJdfNodeFactory.newInstance();
+		XJdfNodeFactory xJdfNodeFactory = new XJdfNodeFactory();
 
 		Milestone milestone = xJdfNodeFactory.createMilestone();
 		milestone.setMilestoneType(milestoneType);
@@ -57,7 +57,7 @@ public final class MilestoneMsgBuilder extends AbstractNodeBuilder<PrintTalk> {
 		notification.setType("Milestone");
 		notification.getMilestone().add(milestone);
 
-		PrintTalkNodeFactory ptkNodeFactory = PrintTalkNodeFactory.newInstance();
+		PrintTalkNodeFactory ptkNodeFactory = new PrintTalkNodeFactory();
 		OrderStatusResponse orderStatusResponse = ptkNodeFactory.createOrderStatusResponse(businessID);
 		ptkBuilder.addRequest(orderStatusResponse);
 
