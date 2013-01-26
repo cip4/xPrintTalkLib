@@ -10,13 +10,22 @@
  */
 package org.cip4.lib.xprinttalk.xml;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
 import javax.xml.bind.JAXBException;
 import javax.xml.parsers.ParserConfigurationException;
 
+import org.cip4.lib.xjdf.XJdfNodeFactory;
+import org.cip4.lib.xjdf.builder.ProductBuilder;
+import org.cip4.lib.xjdf.builder.XJdfBuilder;
+import org.cip4.lib.xjdf.schema.Product;
+import org.cip4.lib.xjdf.schema.XJDF;
 import org.cip4.lib.xjdf.xml.internal.JAXBContextFactory;
+import org.cip4.lib.xprinttalk.PrintTalkNodeFactory;
+import org.cip4.lib.xprinttalk.builder.PrintTalkBuilder;
+import org.cip4.lib.xprinttalk.schema.PrintTalk;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -91,4 +100,34 @@ public class PrintTalkValidatorTest {
 		// Assert.assertTrue("Validation result is wrong", isValid);
 	}
 
+	@Test
+	public void testValidateXJDF() throws Exception {
+
+		// arrange
+		XJdfNodeFactory nf = new XJdfNodeFactory();
+		PrintTalkNodeFactory ptkNf = new PrintTalkNodeFactory();
+
+		ProductBuilder productBuilder = new ProductBuilder(1000);
+		Product product = productBuilder.build();
+
+		XJdfBuilder xJdfBuilder = new XJdfBuilder("MyJobId");
+		xJdfBuilder.addProduct(product);
+		xJdfBuilder.addParameter(nf.createRunList("MyContent"));
+		XJDF xjdf = xJdfBuilder.build();
+
+		PrintTalkBuilder ptkBuilder = new PrintTalkBuilder();
+		ptkBuilder.addRequest(ptkNf.createPurchaseOrder("MyJobId", null, xjdf));
+		PrintTalk ptk = ptkBuilder.build();
+
+		// act
+		ByteArrayOutputStream bos = new ByteArrayOutputStream();
+
+		PrintTalkParser parser = new PrintTalkParser();
+		parser.parsePrintTalk(ptk, bos);
+
+		bos.close();
+
+		// assert
+		System.out.println(new String(bos.toByteArray()));
+	}
 }

@@ -44,19 +44,19 @@ public class Request
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link OrderStatusResponse }{@code >}
-     *     {@link JAXBElement }{@code <}{@link ReturnJob }{@code >}
-     *     {@link JAXBElement }{@code <}{@link Quotation }{@code >}
-     *     {@link JAXBElement }{@code <}{@link RFQ }{@code >}
-     *     {@link JAXBElement }{@code <}{@link OrderStatusRequest }{@code >}
-     *     {@link JAXBElement }{@code <}{@link ProofApprovalResponse }{@code >}
-     *     {@link JAXBElement }{@code <}{@link Confirmation }{@code >}
      *     {@link JAXBElement }{@code <}{@link ProofApprovalRequest }{@code >}
+     *     {@link JAXBElement }{@code <}{@link Quotation }{@code >}
+     *     {@link JAXBElement }{@code <}{@link Quotation }{@code >}
+     *     {@link JAXBElement }{@code <}{@link Refusal }{@code >}
      *     {@link JAXBElement }{@code <}{@link Invoice }{@code >}
      *     {@link JAXBElement }{@code <}{@link BusinessObject }{@code >}
-     *     {@link JAXBElement }{@code <}{@link Quotation }{@code >}
+     *     {@link JAXBElement }{@code <}{@link ReturnJob }{@code >}
+     *     {@link JAXBElement }{@code <}{@link OrderStatusResponse }{@code >}
+     *     {@link JAXBElement }{@code <}{@link RFQ }{@code >}
      *     {@link JAXBElement }{@code <}{@link PurchaseOrder }{@code >}
-     *     {@link JAXBElement }{@code <}{@link Refusal }{@code >}
+     *     {@link JAXBElement }{@code <}{@link ProofApprovalResponse }{@code >}
+     *     {@link JAXBElement }{@code <}{@link Confirmation }{@code >}
+     *     {@link JAXBElement }{@code <}{@link OrderStatusRequest }{@code >}
      *     {@link JAXBElement }{@code <}{@link Cancellation }{@code >}
      *     
      */
@@ -69,24 +69,24 @@ public class Request
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link OrderStatusResponse }{@code >}
-     *     {@link JAXBElement }{@code <}{@link ReturnJob }{@code >}
-     *     {@link JAXBElement }{@code <}{@link Quotation }{@code >}
-     *     {@link JAXBElement }{@code <}{@link RFQ }{@code >}
-     *     {@link JAXBElement }{@code <}{@link OrderStatusRequest }{@code >}
-     *     {@link JAXBElement }{@code <}{@link ProofApprovalResponse }{@code >}
-     *     {@link JAXBElement }{@code <}{@link Confirmation }{@code >}
      *     {@link JAXBElement }{@code <}{@link ProofApprovalRequest }{@code >}
+     *     {@link JAXBElement }{@code <}{@link Quotation }{@code >}
+     *     {@link JAXBElement }{@code <}{@link Quotation }{@code >}
+     *     {@link JAXBElement }{@code <}{@link Refusal }{@code >}
      *     {@link JAXBElement }{@code <}{@link Invoice }{@code >}
      *     {@link JAXBElement }{@code <}{@link BusinessObject }{@code >}
-     *     {@link JAXBElement }{@code <}{@link Quotation }{@code >}
+     *     {@link JAXBElement }{@code <}{@link ReturnJob }{@code >}
+     *     {@link JAXBElement }{@code <}{@link OrderStatusResponse }{@code >}
+     *     {@link JAXBElement }{@code <}{@link RFQ }{@code >}
      *     {@link JAXBElement }{@code <}{@link PurchaseOrder }{@code >}
-     *     {@link JAXBElement }{@code <}{@link Refusal }{@code >}
+     *     {@link JAXBElement }{@code <}{@link ProofApprovalResponse }{@code >}
+     *     {@link JAXBElement }{@code <}{@link Confirmation }{@code >}
+     *     {@link JAXBElement }{@code <}{@link OrderStatusRequest }{@code >}
      *     {@link JAXBElement }{@code <}{@link Cancellation }{@code >}
      *     
      */
     public void setBusinessObject(JAXBElement<? extends BusinessObject> value) {
-        this.businessObject = ((JAXBElement<? extends BusinessObject> ) value);
+        this.businessObject = value;
     }
 
 }

@@ -14,6 +14,11 @@
 		<version>1.0</version>
 	</parent>
 	
+	<properties>
+		<timestamp>${maven.build.timestamp}</timestamp>
+		<maven.build.timestamp.format>yyyy-MM-dd HH:mm</maven.build.timestamp.format>
+	</properties>
+	
 	<licenses>
 		<license>
 			<name>CIP4 Software License</name>
@@ -63,6 +68,12 @@
 		</developer>
 	</developers>
 	<build>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
