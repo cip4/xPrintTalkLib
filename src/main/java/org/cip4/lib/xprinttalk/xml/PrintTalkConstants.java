@@ -10,7 +10,9 @@
  */
 package org.cip4.lib.xprinttalk.xml;
 
+import java.io.IOException;
 import java.io.InputStream;
+import java.util.Properties;
 
 import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathExpression;
@@ -34,7 +36,11 @@ public class PrintTalkConstants {
 
 	public static final String PTK_LIB_VERSION = loadLibraryVersion();
 
+	public static final String PTK_LIB_BUILD_DATE = loadLibraryBuildDate();
+
 	public static final String PTK_CURRENT_VERSION = "2.0";
+
+	private static final String RES_BUILD_PROPS = "/org/cip4/lib/xprinttalk/build.properties";
 
 	static final String RES_PTK20_XSD = "/org/cip4/lib/xprinttalk/xsd/PrintTalk20.xsd";
 
@@ -87,12 +93,48 @@ public class PrintTalkConstants {
 	 */
 	private static String loadLibraryVersion() {
 
+		String result = null;
+
 		// load Version
-		String result = PrintTalkConstants.class.getPackage().getImplementationVersion();
+		Properties props = new Properties();
+
+		try {
+			props.load(XJdfConstants.class.getResourceAsStream(RES_BUILD_PROPS));
+			result = props.getProperty("version", "UNKNOWN");
+
+		} catch (IOException e) {
+		}
 
 		// default
-		if (result == null || result == "") {
+		if (result == null) {
 			// result = "[version not specified]";
+			result = "";
+		}
+
+		// return result
+		return result;
+	}
+
+	/**
+	 * Load Build Date from Package.
+	 * @return Version Number as String
+	 */
+	private static String loadLibraryBuildDate() {
+
+		String result = null;
+
+		// load Version
+		Properties props = new Properties();
+
+		try {
+			props.load(XJdfConstants.class.getResourceAsStream(RES_BUILD_PROPS));
+			result = props.getProperty("build.date", "UNKNOWN");
+
+		} catch (IOException e) {
+		}
+
+		// default
+		if (result == null) {
 			result = "";
 		}
 
