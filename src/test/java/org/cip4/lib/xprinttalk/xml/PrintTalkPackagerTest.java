@@ -13,6 +13,7 @@ package org.cip4.lib.xprinttalk.xml;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -110,6 +111,11 @@ public class PrintTalkPackagerTest {
 
 		Assert.assertTrue("PrintTalk File does not exist.", xPtk.exists());
 		Assert.assertTrue("PrintTalk File size is 0.", xPtk.length() > 0);
+
+		PrintTalkNavigator ptkNav = new PrintTalkNavigator(new FileInputStream(xPtk));
+		String pdfPath = ptkNav.readAttribute("//FileSpec/@URL");
+
+		Assert.assertEquals("URL attribute is wrong.", "artwork/test.pdf", pdfPath);
 
 		Assert.assertTrue("PDF File does not exist.", pdf.exists());
 		Assert.assertTrue("PDF File size is 0.", pdf.length() > 0);

@@ -10,7 +10,6 @@
  */
 package org.cip4.lib.xprinttalk.xml;
 
-import java.io.IOException;
 import java.io.InputStream;
 
 import javax.xml.xpath.XPathExpressionException;
@@ -46,22 +45,10 @@ public class PrintTalkNavigator extends XPathNavigatorBase {
 
 	/**
 	 * Custom private default constructor. Accepting a XJdf InputStream for initializing.
-	 * @param xJdfStream The XJDF Input Stream.
+	 * @param xPrintTalkStream The PrintTalk Input Stream.
 	 */
-	private PrintTalkNavigator(InputStream xPrintTalkStream) throws Exception {
+	public PrintTalkNavigator(InputStream xPrintTalkStream) throws Exception {
 		super(xPrintTalkStream);
-	}
-
-	/**
-	 * Factory method for creating a new XJdfNavigator object.
-	 * @param xmlStream XML document as input stream.
-	 * @return Initialized XPathNavigator instance.
-	 * @throws IOException Is being thrown in case an exception occurs.
-	 */
-	public static PrintTalkNavigator newInstance(InputStream xmlStream) throws Exception {
-
-		// create and return new instance
-		return new PrintTalkNavigator(xmlStream);
 	}
 
 	/**

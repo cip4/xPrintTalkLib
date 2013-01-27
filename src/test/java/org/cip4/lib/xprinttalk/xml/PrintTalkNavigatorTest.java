@@ -38,7 +38,7 @@ public class PrintTalkNavigatorTest {
 	public void setUp() throws Exception {
 
 		InputStream is = PrintTalkNavigatorTest.class.getResourceAsStream(RES_TEST_PTK);
-		printTalkNavigator = PrintTalkNavigator.newInstance(is);
+		printTalkNavigator = new PrintTalkNavigator(is);
 	}
 
 	/**
