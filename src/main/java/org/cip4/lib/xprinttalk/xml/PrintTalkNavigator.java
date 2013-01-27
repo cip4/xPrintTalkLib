@@ -15,14 +15,14 @@ import java.io.InputStream;
 
 import javax.xml.xpath.XPathExpressionException;
 
-import org.cip4.lib.xjdf.xml.internal.AbstractXPathNavigator;
+import org.cip4.lib.xjdf.xml.internal.XPathNavigatorBase;
 
 /**
  * Navigator class which simplify XPath handling using PrintTalk Documents.
  * @author s.meissner
  * @date 03.07.2012
  */
-public class PrintTalkNavigator extends AbstractXPathNavigator {
+public class PrintTalkNavigator extends XPathNavigatorBase {
 
 	/**
 	 * XPath to attribute 'TimeStamp' in PrintTalk Document.
