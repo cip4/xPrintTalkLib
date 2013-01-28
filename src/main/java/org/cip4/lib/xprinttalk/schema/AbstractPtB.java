@@ -55,8 +55,8 @@ public abstract class AbstractPtB
 {
 
     @XmlElementRefs({
-        @XmlElementRef(name = "Comment", namespace = "http://www.CIP4.org/JDFSchema_2_0", type = Comment.class, required = false),
-        @XmlElementRef(name = "GeneralID", namespace = "http://www.CIP4.org/JDFSchema_2_0", type = GeneralID.class, required = false)
+        @XmlElementRef(name = "GeneralID", namespace = "http://www.CIP4.org/JDFSchema_2_0", type = GeneralID.class, required = false),
+        @XmlElementRef(name = "Comment", namespace = "http://www.CIP4.org/JDFSchema_2_0", type = Comment.class, required = false)
     })
     @XmlMixed
     protected List<Serializable> content;

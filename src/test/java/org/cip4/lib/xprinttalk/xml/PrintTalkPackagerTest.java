@@ -114,7 +114,6 @@ public class PrintTalkPackagerTest {
 
 		PrintTalkNavigator ptkNav = new PrintTalkNavigator(new FileInputStream(xPtk));
 		String pdfPath = ptkNav.readAttribute("//FileSpec/@URL");
-
 		Assert.assertEquals("URL attribute is wrong.", "artwork/test.pdf", pdfPath);
 
 		Assert.assertTrue("PDF File does not exist.", pdf.exists());
