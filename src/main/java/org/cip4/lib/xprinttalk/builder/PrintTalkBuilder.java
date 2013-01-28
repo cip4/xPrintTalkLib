@@ -28,7 +28,7 @@ import org.cip4.lib.xprinttalk.xml.PrintTalkConstants;
  * @author s.meissner
  * @date 22.06.2012
  */
-public final class PrintTalkBuilder extends AbstractNodeBuilder<PrintTalk> {
+public class PrintTalkBuilder extends AbstractNodeBuilder<PrintTalk> {
 
 	private final PrintTalkNodeFactory ptkNodeFactory;
 
