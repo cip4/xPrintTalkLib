@@ -54,7 +54,7 @@ public class MilestoneMsgBuilderTest extends AbstractBuilderTest<PrintTalk> {
 		final String MILESTONE_TYPE = "milestoneType";
 
 		// act
-		MilestoneMsgBuilder builder = MilestoneMsgBuilder.newInstance(BUSINESS_ID, JOB_ID, MILESTONE_TYPE);
+		MilestoneMsgBuilder builder = new MilestoneMsgBuilder(BUSINESS_ID, JOB_ID, MILESTONE_TYPE);
 
 		// assert
 		byte[] bytes = marsahlResult(builder);
