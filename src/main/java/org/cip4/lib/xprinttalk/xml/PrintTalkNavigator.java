@@ -44,11 +44,20 @@ public class PrintTalkNavigator extends XPathNavigatorBase {
 	public static final String XJDF = "/PrintTalk/Request/PurchaseOrder";
 
 	/**
-	 * Custom private default constructor. Accepting a XJdf InputStream for initializing.
+	 * Custom constructor. Accepting a XJDF as Input Stream for initializing.
 	 * @param xPrintTalkStream The PrintTalk Input Stream.
 	 */
 	public PrintTalkNavigator(InputStream xPrintTalkStream) throws Exception {
 		super(xPrintTalkStream);
+	}
+
+	/**
+	 * Custom constructor. Accepting a XJDF as byte array for initializing.
+	 * @param xPrintTalkBytes
+	 * @throws Exception
+	 */
+	public PrintTalkNavigator(byte[] xPrintTalkBytes) throws Exception {
+		super(xPrintTalkBytes);
 	}
 
 	/**
