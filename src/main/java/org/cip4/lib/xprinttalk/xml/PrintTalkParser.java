@@ -117,6 +117,14 @@ public class PrintTalkParser extends AbstractXmlParser<PrintTalk> {
 	}
 
 	/**
+	 * @see org.cip4.lib.xjdf.xml.internal.AbstractXmlParser#parseBytes(byte[])
+	 */
+	@Override
+	protected PrintTalk parseBytes(byte[] bytes) throws Exception {
+		return super.parseBytes(bytes);
+	}
+
+	/**
 	 * Returns a new specific NamespacePrefixMapper implementation.
 	 * @return New specific NamespacePrefixMapper implementation.
 	 */

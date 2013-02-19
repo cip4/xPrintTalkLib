@@ -61,6 +61,24 @@ public class PrintTalkNavigator extends XPathNavigatorBase {
 	}
 
 	/**
+	 * Returns the PrintTalk Document as Byte Array.
+	 * @return PrintTalk Document as Byte Array.
+	 * @throws Exception Is thrown in case an exception occurs.
+	 */
+	public byte[] getPtkBytes() throws Exception {
+		return super.getXmlBytes();
+	}
+
+	/**
+	 * Returns the PrintTalk Document as Stream.
+	 * @return PrintTalk Document as Stream.
+	 * @throws Exception Is thrown in case an exception occurs.
+	 */
+	public InputStream getPtkStream() throws Exception {
+		return super.getXmlStream();
+	}
+
+	/**
 	 * Read attribute from embedded XJdf Document in PrintTalk.
 	 * @param xPath XPath expression of XJDF attribute needed.
 	 * @return Value of attribute as String.
