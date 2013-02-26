@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.cip4.lib.xprinttalk</groupId>
 	<artifactId>xPrintTalkLib</artifactId>
-	<version>0.4-SNAPSHOT</version>
+	<version>0.4</version>
 	<packaging>jar</packaging>
 	<name>xPrintTalkLib</name>
 	<url>http://maven.apache.org</url>
@@ -27,9 +27,9 @@
 		</license>
 	</licenses>
 	<scm>
-		<url>http://svn.cip4.org/svnroot/trunk/xPrintTalkLib</url>
-		<developerConnection>scm:svn:http://svn.cip4.org/svnroot/trunk/xPrintTalkLib</developerConnection>
-		<connection>scm:svn:http://svn.cip4.org/svnroot/trunk/xPrintTalkLib</connection>
+		<url>http://svn.cip4.org/svnroot/tags/xPrintTalkLib-0.4</url>
+		<developerConnection>scm:svn:http://svn.cip4.org/svnroot/tags/xPrintTalkLib-0.4</developerConnection>
+		<connection>scm:svn:http://svn.cip4.org/svnroot/tags/xPrintTalkLib-0.4</connection>
 	</scm>
 	<issueManagement>
 		<system>JIRA</system>
@@ -222,7 +222,7 @@
 										</goals>
 									</pluginExecutionFilter>
 									<action>
-										<ignore></ignore>
+										<ignore />
 									</action>
 								</pluginExecution>
 								<pluginExecution>
@@ -235,7 +235,7 @@
 										</goals>
 									</pluginExecutionFilter>
 									<action>
-										<ignore></ignore>
+										<ignore />
 									</action>
 								</pluginExecution>
 							</pluginExecutions>
