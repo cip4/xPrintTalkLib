@@ -47,11 +47,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Confirmation }
+     * Create an instance of {@link To }
      * 
      */
-    public Confirmation createConfirmation() {
-        return new Confirmation();
+    public To createTo() {
+        return new To();
     }
 
     /**
@@ -63,107 +63,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ProofApprovalRequest }
+     * Create an instance of {@link CreditCard }
      * 
      */
-    public ProofApprovalRequest createProofApprovalRequest() {
-        return new ProofApprovalRequest();
-    }
-
-    /**
-     * Create an instance of {@link OrderStatusResponse }
-     * 
-     */
-    public OrderStatusResponse createOrderStatusResponse() {
-        return new OrderStatusResponse();
-    }
-
-    /**
-     * Create an instance of {@link Quotation }
-     * 
-     */
-    public Quotation createQuotation() {
-        return new Quotation();
-    }
-
-    /**
-     * Create an instance of {@link Invoice }
-     * 
-     */
-    public Invoice createInvoice() {
-        return new Invoice();
-    }
-
-    /**
-     * Create an instance of {@link PurchaseOrder }
-     * 
-     */
-    public PurchaseOrder createPurchaseOrder() {
-        return new PurchaseOrder();
-    }
-
-    /**
-     * Create an instance of {@link ProofApprovalResponse }
-     * 
-     */
-    public ProofApprovalResponse createProofApprovalResponse() {
-        return new ProofApprovalResponse();
-    }
-
-    /**
-     * Create an instance of {@link Refusal }
-     * 
-     */
-    public Refusal createRefusal() {
-        return new Refusal();
-    }
-
-    /**
-     * Create an instance of {@link ReturnJob }
-     * 
-     */
-    public ReturnJob createReturnJob() {
-        return new ReturnJob();
-    }
-
-    /**
-     * Create an instance of {@link PrintTalk }
-     * 
-     */
-    public PrintTalk createPrintTalk() {
-        return new PrintTalk();
-    }
-
-    /**
-     * Create an instance of {@link Header }
-     * 
-     */
-    public Header createHeader() {
-        return new Header();
-    }
-
-    /**
-     * Create an instance of {@link Request }
-     * 
-     */
-    public Request createRequest() {
-        return new Request();
-    }
-
-    /**
-     * Create an instance of {@link OrderStatusRequest }
-     * 
-     */
-    public OrderStatusRequest createOrderStatusRequest() {
-        return new OrderStatusRequest();
-    }
-
-    /**
-     * Create an instance of {@link RFQ }
-     * 
-     */
-    public RFQ createRFQ() {
-        return new RFQ();
+    public CreditCard createCreditCard() {
+        return new CreditCard();
     }
 
     /**
@@ -172,6 +76,14 @@ public class ObjectFactory {
      */
     public Pricing createPricing() {
         return new Pricing();
+    }
+
+    /**
+     * Create an instance of {@link Payment }
+     * 
+     */
+    public Payment createPayment() {
+        return new Payment();
     }
 
     /**
@@ -191,99 +103,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link CreditCard }
+     * Create an instance of {@link Invoice }
      * 
      */
-    public CreditCard createCreditCard() {
-        return new CreditCard();
-    }
-
-    /**
-     * Create an instance of {@link Payment }
-     * 
-     */
-    public Payment createPayment() {
-        return new Payment();
-    }
-
-    /**
-     * Create an instance of {@link Sender }
-     * 
-     */
-    public Sender createSender() {
-        return new Sender();
-    }
-
-    /**
-     * Create an instance of {@link ProofResponse }
-     * 
-     */
-    public ProofResponse createProofResponse() {
-        return new ProofResponse();
-    }
-
-    /**
-     * Create an instance of {@link Credential }
-     * 
-     */
-    public Credential createCredential() {
-        return new Credential();
-    }
-
-    /**
-     * Create an instance of {@link QuoteType }
-     * 
-     */
-    public QuoteType createQuoteType() {
-        return new QuoteType();
-    }
-
-    /**
-     * Create an instance of {@link CXMLCredentialMac }
-     * 
-     */
-    public CXMLCredentialMac createCXMLCredentialMac() {
-        return new CXMLCredentialMac();
-    }
-
-    /**
-     * Create an instance of {@link From }
-     * 
-     */
-    public From createFrom() {
-        return new From();
-    }
-
-    /**
-     * Create an instance of {@link To }
-     * 
-     */
-    public To createTo() {
-        return new To();
-    }
-
-    /**
-     * Create an instance of {@link CXMLUserAgent }
-     * 
-     */
-    public CXMLUserAgent createCXMLUserAgent() {
-        return new CXMLUserAgent();
-    }
-
-    /**
-     * Create an instance of {@link Status }
-     * 
-     */
-    public Status createStatus() {
-        return new Status();
-    }
-
-    /**
-     * Create an instance of {@link CXMLTextOnly }
-     * 
-     */
-    public CXMLTextOnly createCXMLTextOnly() {
-        return new CXMLTextOnly();
+    public Invoice createInvoice() {
+        return new Invoice();
     }
 
     /**
@@ -295,11 +119,91 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Additional }
+     * Create an instance of {@link CXMLTextOnly }
      * 
      */
-    public Additional createAdditional() {
-        return new Additional();
+    public CXMLTextOnly createCXMLTextOnly() {
+        return new CXMLTextOnly();
+    }
+
+    /**
+     * Create an instance of {@link ProofApprovalResponse }
+     * 
+     */
+    public ProofApprovalResponse createProofApprovalResponse() {
+        return new ProofApprovalResponse();
+    }
+
+    /**
+     * Create an instance of {@link OrderStatusRequest }
+     * 
+     */
+    public OrderStatusRequest createOrderStatusRequest() {
+        return new OrderStatusRequest();
+    }
+
+    /**
+     * Create an instance of {@link Quotation }
+     * 
+     */
+    public Quotation createQuotation() {
+        return new Quotation();
+    }
+
+    /**
+     * Create an instance of {@link Request }
+     * 
+     */
+    public Request createRequest() {
+        return new Request();
+    }
+
+    /**
+     * Create an instance of {@link PrintTalk }
+     * 
+     */
+    public PrintTalk createPrintTalk() {
+        return new PrintTalk();
+    }
+
+    /**
+     * Create an instance of {@link ProofApprovalRequest }
+     * 
+     */
+    public ProofApprovalRequest createProofApprovalRequest() {
+        return new ProofApprovalRequest();
+    }
+
+    /**
+     * Create an instance of {@link Credential }
+     * 
+     */
+    public Credential createCredential() {
+        return new Credential();
+    }
+
+    /**
+     * Create an instance of {@link Sender }
+     * 
+     */
+    public Sender createSender() {
+        return new Sender();
+    }
+
+    /**
+     * Create an instance of {@link RFQ }
+     * 
+     */
+    public RFQ createRFQ() {
+        return new RFQ();
+    }
+
+    /**
+     * Create an instance of {@link CXMLUserAgent }
+     * 
+     */
+    public CXMLUserAgent createCXMLUserAgent() {
+        return new CXMLUserAgent();
     }
 
     /**
@@ -308,6 +212,102 @@ public class ObjectFactory {
      */
     public StatusRequest createStatusRequest() {
         return new StatusRequest();
+    }
+
+    /**
+     * Create an instance of {@link ReturnJob }
+     * 
+     */
+    public ReturnJob createReturnJob() {
+        return new ReturnJob();
+    }
+
+    /**
+     * Create an instance of {@link Status }
+     * 
+     */
+    public Status createStatus() {
+        return new Status();
+    }
+
+    /**
+     * Create an instance of {@link QuoteType }
+     * 
+     */
+    public QuoteType createQuoteType() {
+        return new QuoteType();
+    }
+
+    /**
+     * Create an instance of {@link Additional }
+     * 
+     */
+    public Additional createAdditional() {
+        return new Additional();
+    }
+
+    /**
+     * Create an instance of {@link Confirmation }
+     * 
+     */
+    public Confirmation createConfirmation() {
+        return new Confirmation();
+    }
+
+    /**
+     * Create an instance of {@link Header }
+     * 
+     */
+    public Header createHeader() {
+        return new Header();
+    }
+
+    /**
+     * Create an instance of {@link OrderStatusResponse }
+     * 
+     */
+    public OrderStatusResponse createOrderStatusResponse() {
+        return new OrderStatusResponse();
+    }
+
+    /**
+     * Create an instance of {@link From }
+     * 
+     */
+    public From createFrom() {
+        return new From();
+    }
+
+    /**
+     * Create an instance of {@link CXMLCredentialMac }
+     * 
+     */
+    public CXMLCredentialMac createCXMLCredentialMac() {
+        return new CXMLCredentialMac();
+    }
+
+    /**
+     * Create an instance of {@link PurchaseOrder }
+     * 
+     */
+    public PurchaseOrder createPurchaseOrder() {
+        return new PurchaseOrder();
+    }
+
+    /**
+     * Create an instance of {@link Refusal }
+     * 
+     */
+    public Refusal createRefusal() {
+        return new Refusal();
+    }
+
+    /**
+     * Create an instance of {@link ProofResponse }
+     * 
+     */
+    public ProofResponse createProofResponse() {
+        return new ProofResponse();
     }
 
     /**
