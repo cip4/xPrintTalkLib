@@ -5,7 +5,8 @@
 	<artifactId>xPrintTalkLib</artifactId>
 	<version>0.5-SNAPSHOT</version>
 	<packaging>jar</packaging>
-	<name>xPrintTalkLib</name>
+	<name>CIP4 xPrintTalkLib</name>
+	<description>CIP4 PrintTalk Java Library</description>
 	<url>http://maven.apache.org</url>
 	
 	<parent>
