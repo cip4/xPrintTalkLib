@@ -54,9 +54,9 @@ public class Credential
     protected CXMLSharedSecret sharedSecret;
     @XmlElement(name = "CredentialMac")
     protected CXMLCredentialMac credentialMac;
-    @XmlAttribute(name = "domain", required = true)
+    @XmlAttribute(required = true)
     protected String domain;
-    @XmlAttribute(name = "type")
+    @XmlAttribute
     protected String type;
 
     /**
