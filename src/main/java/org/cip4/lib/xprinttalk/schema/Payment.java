@@ -42,10 +42,10 @@ public class Payment
 {
 
     @XmlElements({
-        @XmlElement(name = "CreditCard", type = CreditCard.class),
-        @XmlElement(name = "PayTerm", type = Telem.class)
+        @XmlElement(name = "PayTerm", type = Telem.class),
+        @XmlElement(name = "CreditCard", type = CreditCard.class)
     })
-    protected List<Object> payTermAndCreditCard;
+    protected List<Serializable> payTermAndCreditCard;
 
     /**
      * Gets the value of the payTermAndCreditCard property.
@@ -65,14 +65,14 @@ public class Payment
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link CreditCard }
      * {@link Telem }
+     * {@link CreditCard }
      * 
      * 
      */
-    public List<Object> getPayTermAndCreditCard() {
+    public List<Serializable> getPayTermAndCreditCard() {
         if (payTermAndCreditCard == null) {
-            payTermAndCreditCard = new ArrayList<Object>();
+            payTermAndCreditCard = new ArrayList<Serializable>();
         }
         return this.payTermAndCreditCard;
     }
