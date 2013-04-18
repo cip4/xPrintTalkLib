@@ -14,14 +14,14 @@ import java.io.InputStream;
 
 import javax.xml.xpath.XPathExpressionException;
 
-import org.cip4.lib.xjdf.xml.internal.XPathNavigatorBase;
+import org.cip4.lib.xjdf.xml.internal.XmlNavigator;
 
 /**
  * Navigator class which simplify XPath handling using PrintTalk Documents.
  * @author s.meissner
  * @date 03.07.2012
  */
-public class PrintTalkNavigator extends XPathNavigatorBase {
+public class PrintTalkNavigator extends XmlNavigator {
 
 	/**
 	 * XPath to attribute 'TimeStamp' in PrintTalk Document.
@@ -45,7 +45,16 @@ public class PrintTalkNavigator extends XPathNavigatorBase {
 
 	/**
 	 * Custom constructor. Accepting a XJDF as Input Stream for initializing.
-	 * @param xPrintTalkStream The PrintTalk Input Stream.
+	 * @param xPrintTalkStream The PrintTalk Document as Input Stream.
+	 * @param namespaceAware True if navigator should be XML Namespace aware.
+	 */
+	public PrintTalkNavigator(InputStream xPrintTalkStream, boolean namespaceAware) throws Exception {
+		super(xPrintTalkStream, namespaceAware);
+	}
+
+	/**
+	 * Custom constructor. Accepting a XJDF as Input Stream for initializing.
+	 * @param xPrintTalkStream The PrintTalk Document as Input Stream.
 	 */
 	public PrintTalkNavigator(InputStream xPrintTalkStream) throws Exception {
 		super(xPrintTalkStream);
@@ -53,11 +62,21 @@ public class PrintTalkNavigator extends XPathNavigatorBase {
 
 	/**
 	 * Custom constructor. Accepting a XJDF as byte array for initializing.
-	 * @param xPrintTalkBytes
+	 * @param xPrintTalkBytes The PrintTalk Document as Byte Array.
 	 * @throws Exception
 	 */
 	public PrintTalkNavigator(byte[] xPrintTalkBytes) throws Exception {
 		super(xPrintTalkBytes);
+	}
+
+	/**
+	 * Custom constructor. Accepting a XJDF as byte array for initializing.
+	 * @param xPrintTalkBytes The PrintTalk Document as Byte Array.
+	 * @param namespaceAware True if navigator should be XML Namespace aware.
+	 * @throws Exception
+	 */
+	public PrintTalkNavigator(byte[] xPrintTalkBytes, boolean namespaceAware) throws Exception {
+		super(xPrintTalkBytes, namespaceAware);
 	}
 
 	/**
