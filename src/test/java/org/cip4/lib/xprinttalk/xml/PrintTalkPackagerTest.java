@@ -123,6 +123,64 @@ public class PrintTalkPackagerTest {
 	}
 
 	/**
+	 * Test method for {@link org.cip4.lib.xjdf.xml.XJdfPackager#packageXJdf(org.cip4.lib.xjdf.schema.XJDF, java.io.OutputStream)}.
+	 * @throws Exception
+	 */
+	@Test
+	public void testPackagePrintTalkWithoutHierarchy() throws Exception {
+
+		// arrange
+		String resPdf = PrintTalkPackagerTest.class.getResource(RES_PDF).getFile();
+
+		XJdfNodeFactory nf = new XJdfNodeFactory();
+		PrintTalkNodeFactory ptkNf = new PrintTalkNodeFactory();
+
+		ProductBuilder productBuilder = new ProductBuilder(1000);
+		Product product = productBuilder.build();
+
+		XJdfBuilder xJdfBuilder = new XJdfBuilder("MyJobId");
+		xJdfBuilder.addProduct(product);
+		xJdfBuilder.addParameter(nf.createRunList(resPdf));
+		XJDF xjdf = xJdfBuilder.build();
+
+		PrintTalkBuilder ptkBuilder = new PrintTalkBuilder();
+		ptkBuilder.addRequest(ptkNf.createPurchaseOrder("MyBusinessId", null, xjdf));
+		PrintTalk ptk = ptkBuilder.build();
+
+		PrintTalkParser parser = new PrintTalkParser();
+		ByteArrayOutputStream bosPtk = new ByteArrayOutputStream();
+		parser.parsePrintTalk(ptk, bosPtk);
+		bosPtk.close();
+
+		// act
+		ByteArrayOutputStream bos = new ByteArrayOutputStream();
+
+		PrintTalkPackager packager = new PrintTalkPackager(bosPtk.toByteArray());
+		packager.setCompressionLevel(CompressionLevel.BEST_SPEED);
+		packager.packagePrintTalk(bos, "MyJobFile.ptk", true);
+
+		bos.close();
+
+		// assert
+		String dir = unzipStream(new ByteArrayInputStream(bos.toByteArray()));
+
+		File xPtk = new File(FilenameUtils.concat(dir, "MyJobFile.ptk"));
+		File pdf = new File(FilenameUtils.concat(dir, "test.pdf"));
+
+		Assert.assertTrue("PrintTalk File does not exist.", xPtk.exists());
+		Assert.assertTrue("PrintTalk File size is 0.", xPtk.length() > 0);
+
+		PrintTalkNavigator ptkNav = new PrintTalkNavigator(new FileInputStream(xPtk));
+		String pdfPath = ptkNav.readAttribute("//FileSpec/@URL");
+		Assert.assertEquals("URL attribute is wrong.", "test.pdf", pdfPath);
+
+		Assert.assertTrue("PDF File does not exist.", pdf.exists());
+		Assert.assertTrue("PDF File size is 0.", pdf.length() > 0);
+
+		FileUtils.deleteDirectory(new File(dir));
+	}
+
+	/**
 	 * Private helper method for unpackaging zip stream.
 	 * @param inputStream ZipStream as InputStream.
 	 * @param dir Target directory.

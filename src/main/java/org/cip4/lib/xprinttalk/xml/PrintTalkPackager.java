@@ -36,12 +36,23 @@ public class PrintTalkPackager extends XJdfPackager {
 	/**
 	 * Packages an XJDF Document to a zipped binary output stream.
 	 * @param os Target OutputStream where XJdfDocument is being packaged.
+	 * @param docName Documents name in ZIP Package.
 	 * @throws Exception
 	 */
 	public void packagePrintTalk(OutputStream os, String docName) throws Exception {
 
-		// register files
-		// registerFiles("//FileSpec/@URL", "artwork");
+		// package xml
+		packageXJdf(os, docName, false);
+	}
+
+	/**
+	 * Packages an XJDF Document to a zipped binary output stream.
+	 * @param os Target OutputStream where XJdfDocument is being packaged.
+	 * @param docName Documents name in ZIP Package.
+	 * @param withoutHierarchy Put all files into the ZIP Root.
+	 * @throws Exception
+	 */
+	public void packagePrintTalk(OutputStream os, String docName, boolean withoutHierarchy) throws Exception {
 
 		// create main doc Name
 		if (docName == null || docName.equals("")) {
@@ -49,7 +60,7 @@ public class PrintTalkPackager extends XJdfPackager {
 		}
 
 		// package xml
-		packageXJdf(os, docName);
+		packageXJdf(os, docName, withoutHierarchy);
 	}
 
 }
