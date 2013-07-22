@@ -12,6 +12,8 @@ package org.cip4.lib.xprinttalk.xml;
 
 import java.io.OutputStream;
 
+import org.apache.commons.io.FilenameUtils;
+import org.apache.commons.lang.StringUtils;
 import org.cip4.lib.xjdf.util.IDGeneratorUtil;
 import org.cip4.lib.xjdf.xml.XJdfPackager;
 
@@ -23,14 +25,31 @@ import org.cip4.lib.xjdf.xml.XJdfPackager;
 public class PrintTalkPackager extends XJdfPackager {
 
 	/**
+	 * Custom constructor. Accepting a PrintTalk Path for initializing.
+	 * @param ptkPath Path to PrintTalk Document.
+	 * @throws Exception
+	 */
+	public PrintTalkPackager(String ptkPath) throws Exception {
+		super(ptkPath);
+	}
+
+	/**
 	 * Custom constructor. Accepting an PrintTalk Document for initializing.
 	 * @param ptk PrintTalk Document byte array for packaging.
 	 * @throws Exception
 	 */
 	public PrintTalkPackager(byte[] ptk) throws Exception {
+		this(ptk, null);
+	}
 
-		super(ptk);
-
+	/**
+	 * Custom constructor. Accepting an PrintTalk Document for initializing.
+	 * @param ptk PrintTalk Document byte array for packaging.
+	 * @param rootPath The documents root path.
+	 * @throws Exception
+	 */
+	public PrintTalkPackager(byte[] ptk, String rootPath) throws Exception {
+		super(ptk, rootPath);
 	}
 
 	/**
@@ -42,7 +61,7 @@ public class PrintTalkPackager extends XJdfPackager {
 	public void packagePrintTalk(OutputStream os, String docName) throws Exception {
 
 		// package xml
-		packageXJdf(os, docName, false);
+		packagePrintTalk(os, docName, false);
 	}
 
 	/**
@@ -57,10 +76,12 @@ public class PrintTalkPackager extends XJdfPackager {
 		// create main doc Name
 		if (docName == null || docName.equals("")) {
 			docName = IDGeneratorUtil.generateID("PTK") + ".ptk";
+
+		} else if (StringUtils.isEmpty(FilenameUtils.getExtension(docName))) {
+			docName = docName + ".ptk";
 		}
 
 		// package xml
 		packageXJdf(os, docName, withoutHierarchy);
 	}
-
 }
