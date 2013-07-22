@@ -12,7 +12,10 @@ package org.cip4.lib.xprinttalk.xml;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.HashMap;
+import java.util.Map;
 
+import org.cip4.lib.xjdf.xml.XJdfConstants;
 import org.cip4.lib.xjdf.xml.internal.AbstractXmlValidator;
 
 /**
@@ -27,7 +30,20 @@ public class PrintTalkValidator extends AbstractXmlValidator<PrintTalkValidator>
 	 * @throws IOException
 	 */
 	public PrintTalkValidator(InputStream printTalkStream) throws IOException {
-		super(PrintTalkConstants.RES_PTK20_XSD, printTalkStream);
+		super(PrintTalkConstants.PTK_XSD_BYTES, printTalkStream, loadXsdDependencies());
 	}
 
+	/**
+	 * Private helper method for load XSD Dependencies.
+	 * @return XSD Dependencies
+	 */
+	private static Map<String, byte[]> loadXsdDependencies() {
+
+		// init map
+		Map<String, byte[]> map = new HashMap<String, byte[]>(2);
+		map.put("./JDF20.xsd", XJdfConstants.XJDF_XSD_BYTES);
+
+		// return result
+		return map;
+	}
 }
