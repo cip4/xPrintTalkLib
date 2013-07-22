@@ -18,6 +18,7 @@ import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathFactory;
 
+import org.apache.commons.io.IOUtils;
 import org.cip4.lib.xjdf.xml.XJdfConstants;
 import org.cip4.lib.xjdf.xml.internal.NamespaceManager;
 import org.xml.sax.InputSource;
@@ -40,9 +41,31 @@ public class PrintTalkConstants {
 
 	public static final String PTK_CURRENT_VERSION = "2.0";
 
+	public static final byte[] PTK_XSD_BYTES = loadPtkByteArray();
+
 	private static final String RES_BUILD_PROPS = "/org/cip4/lib/xprinttalk/build.properties";
 
-	static final String RES_PTK20_XSD = "/org/cip4/lib/xprinttalk/xsd/PrintTalk20.xsd";
+	private static final String RES_PTK20_XSD = "/org/cip4/lib/xprinttalk/xsd/PrintTalk20.xsd";
+
+	/**
+	 * Load PrintTalk XSD as byte array.
+	 * @return PrintTalk Schema as byte array.
+	 */
+	private static byte[] loadPtkByteArray() {
+
+		// load xsd
+		byte[] bytes = null;
+
+		try {
+			InputStream is = PrintTalkConstants.class.getResourceAsStream(RES_PTK20_XSD);
+			bytes = IOUtils.toByteArray(is);
+			is.close();
+		} catch (Exception ex) {
+		}
+
+		// return
+		return bytes;
+	}
 
 	/**
 	 * Load the JDF20 Namespace from schema file.

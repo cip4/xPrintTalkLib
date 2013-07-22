@@ -72,6 +72,8 @@ public class PrintTalkFactory implements Runnable {
 		tmp = PrintTalkConstants.NAMESPACE_PTK20;
 		tmp = PrintTalkConstants.PTK_LIB_VERSION;
 		tmp = PrintTalkConstants.PTK_LIB_BUILD_DATE;
+
+		byte[] bytes = PrintTalkConstants.PTK_XSD_BYTES;
 	}
 
 	/**
