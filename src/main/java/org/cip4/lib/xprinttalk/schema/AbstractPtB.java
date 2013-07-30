@@ -55,11 +55,11 @@ public abstract class AbstractPtB
 {
 
     @XmlElementRefs({
-        @XmlElementRef(name = "Comment", namespace = "http://www.CIP4.org/JDFSchema_2_0", type = Comment.class),
-        @XmlElementRef(name = "GeneralID", namespace = "http://www.CIP4.org/JDFSchema_2_0", type = GeneralID.class)
+        @XmlElementRef(name = "GeneralID", namespace = "http://www.CIP4.org/JDFSchema_2_0", type = GeneralID.class),
+        @XmlElementRef(name = "Comment", namespace = "http://www.CIP4.org/JDFSchema_2_0", type = Comment.class)
     })
     @XmlMixed
-    protected List<Object> content;
+    protected List<Serializable> content;
     @XmlAttribute(name = "DescriptiveName")
     protected String descriptiveName;
 
@@ -85,15 +85,15 @@ public abstract class AbstractPtB
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
+     * {@link GeneralID }
      * {@link Comment }
      * {@link String }
-     * {@link GeneralID }
      * 
      * 
      */
-    public List<Object> getContent() {
+    public List<Serializable> getContent() {
         if (content == null) {
-            content = new ArrayList<Object>();
+            content = new ArrayList<Serializable>();
         }
         return this.content;
     }
