@@ -59,7 +59,7 @@ public abstract class AbstractPtB
         @XmlElementRef(name = "Comment", namespace = "http://www.CIP4.org/JDFSchema_2_0", type = Comment.class)
     })
     @XmlMixed
-    protected List<Serializable> content;
+    protected List<Object> content;
     @XmlAttribute(name = "DescriptiveName")
     protected String descriptiveName;
 
@@ -91,9 +91,9 @@ public abstract class AbstractPtB
      * 
      * 
      */
-    public List<Serializable> getContent() {
+    public List<Object> getContent() {
         if (content == null) {
-            content = new ArrayList<Serializable>();
+            content = new ArrayList<Object>();
         }
         return this.content;
     }
