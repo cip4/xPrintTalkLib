@@ -22,9 +22,26 @@ import org.cip4.lib.xjdf.xml.internal.AbstractXmlUnpackager;
 public class PrintTalkUnpackager extends AbstractXmlUnpackager {
 
 	/**
-	 * Default constructor.
+	 * Custom constructor. Accepting a PrintTalk Package Path for initializing.
+	 * @param pathPackage Path to XJDF Package.
+	 * @throws IOException
 	 */
-	public PrintTalkUnpackager() {
+	public PrintTalkUnpackager(String pathPackage) throws IOException {
+		super(pathPackage);
+	}
+
+	/**
+	 * Returns the PrintTalk Master Document covered by the PrintTalkNavigator.
+	 * @return PrintTalk Document covered by the PrintTalkNavigator.
+	 * @throws Exception
+	 */
+	public PrintTalkNavigator getPrintTalkDocument() throws Exception {
+
+		// find XJDF master document
+		byte[] bytes = super.findMasterDocument("ptk");
+
+		// return as navigator
+		return new PrintTalkNavigator(bytes);
 	}
 
 	/**
@@ -33,10 +50,10 @@ public class PrintTalkUnpackager extends AbstractXmlUnpackager {
 	 * @return The target directory
 	 * @throws IOException
 	 */
-	public String unpackagePrintTAlk(String pathPackage) throws IOException {
+	public String unpackagePrintTalk() throws IOException {
 
 		// unpackge
-		return super.unpackageZip(pathPackage);
+		return super.unpackageZip();
 	}
 
 	/**
@@ -46,9 +63,9 @@ public class PrintTalkUnpackager extends AbstractXmlUnpackager {
 	 * @return The target directory
 	 * @throws IOException
 	 */
-	public String unpackagePrintTAlk(String pathPackage, String targetDir) throws IOException {
+	public String unpackagePrintTalk(String targetDir) throws IOException {
 
 		// unpackge
-		return super.unpackageZip(pathPackage, targetDir);
+		return super.unpackageZip(targetDir);
 	}
 }
