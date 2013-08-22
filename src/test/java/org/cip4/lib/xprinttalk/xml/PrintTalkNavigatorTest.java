@@ -10,12 +10,16 @@
  */
 package org.cip4.lib.xprinttalk.xml;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.InputStream;
 
-import junit.framework.Assert;
-
+import org.apache.commons.io.IOUtils;
+import org.cip4.lib.xjdf.schema.ProductList;
 import org.cip4.lib.xjdf.xml.XJdfNavigator;
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -27,6 +31,8 @@ import org.junit.Test;
 public class PrintTalkNavigatorTest {
 
 	private final String RES_TEST_PTK = "/org/cip4/lib/xprinttalk/simple_job.ptk";
+
+	private final String RES_TEST_SAMPLE = "/org/cip4/lib/xprinttalk/sample.ptk";
 
 	private PrintTalkNavigator printTalkNavigator;
 
@@ -80,6 +86,36 @@ public class PrintTalkNavigatorTest {
 
 		actual = printTalkNavigator.readXJdfAttribute(XJdfNavigator.AMOUNT);
 		Assert.assertEquals("Value 'Amount' is wrong.", "1500", actual);
+	}
+
+	@Test
+	public void testPrintTalkNodeModification() throws Exception {
+
+		// arrange
+		File testBefore = new File(PrintTalkNavigatorTest.class.getResource(RES_TEST_SAMPLE).getFile());
+		File fileAfter = File.createTempFile("cip4-test", ".ptk");
+		fileAfter.deleteOnExit();
+
+		PrintTalkNavigator ptkNavigator = new PrintTalkNavigator(new FileInputStream(testBefore), true);
+
+		// act
+		ProductList productList = (ProductList) ptkNavigator.extractNode("//xjdf:XJDF/xjdf:ProductList");
+		productList.getProduct().remove(0);
+		ptkNavigator.replaceNode("//xjdf:XJDF/xjdf:ProductList", productList);
+
+		FileOutputStream fos = new FileOutputStream(fileAfter);
+		IOUtils.write(ptkNavigator.getXmlBytes(), fos);
+		fos.close();
+
+		// assert
+		PrintTalkNavigator navBefore = new PrintTalkNavigator(testBefore);
+		int cntItemsBefore = navBefore.evaluateInt("count(//XJDF/ProductList/*[local-name()='Product'])");
+
+		PrintTalkNavigator navAfter = new PrintTalkNavigator(fileAfter);
+		int cntItemsAfter = navAfter.evaluateInt("count(//XJDF/ProductList/*[local-name()='Product'])");
+
+		Assert.assertEquals("Number of Intents before is wrong.", 2, cntItemsBefore);
+		Assert.assertEquals("Number of Intents after is wrong.", 1, cntItemsAfter);
 	}
 
 }

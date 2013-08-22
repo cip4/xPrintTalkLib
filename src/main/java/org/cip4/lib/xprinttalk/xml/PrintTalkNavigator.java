@@ -10,10 +10,16 @@
  */
 package org.cip4.lib.xprinttalk.xml;
 
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.InputStream;
 
+import javax.xml.bind.JAXBException;
+import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.xpath.XPathExpressionException;
 
+import org.cip4.lib.xjdf.xml.XJdfConstants;
 import org.cip4.lib.xjdf.xml.internal.XmlNavigator;
 
 /**
@@ -44,39 +50,84 @@ public class PrintTalkNavigator extends XmlNavigator {
 	public static final String XJDF = "/PrintTalk/Request/PurchaseOrder";
 
 	/**
-	 * Custom constructor. Accepting a XJDF as Input Stream for initializing.
-	 * @param xPrintTalkStream The PrintTalk Document as Input Stream.
-	 * @param namespaceAware True if navigator should be XML Namespace aware.
-	 */
-	public PrintTalkNavigator(InputStream xPrintTalkStream, boolean namespaceAware) throws Exception {
-		super(xPrintTalkStream, namespaceAware);
-	}
-
-	/**
-	 * Custom constructor. Accepting a XJDF as Input Stream for initializing.
+	 * Custom constructor. Accepting a PrintTalk as Input Stream for initializing.
 	 * @param xPrintTalkStream The PrintTalk Document as Input Stream.
 	 */
 	public PrintTalkNavigator(InputStream xPrintTalkStream) throws Exception {
+
+		// call super class
 		super(xPrintTalkStream);
 	}
 
 	/**
-	 * Custom constructor. Accepting a XJDF as byte array for initializing.
+	 * Custom constructor. Accepting a PrintTalk as Input Stream for initializing.
+	 * @param xPrintTalkStream The PrintTalk Document as Input Stream.
+	 * @param namespaceAware True if navigator should be XML Namespace aware.
+	 */
+	public PrintTalkNavigator(InputStream xPrintTalkStream, boolean namespaceAware) throws Exception {
+
+		// call super class
+		super(xPrintTalkStream, namespaceAware);
+
+		// add namespace
+		addNamespace("xjdf", XJdfConstants.NAMESPACE_JDF20);
+	}
+
+	/**
+	 * Custom constructor. Accepting a PrintTalk as byte array for initializing.
 	 * @param xPrintTalkBytes The PrintTalk Document as Byte Array.
 	 * @throws Exception
 	 */
 	public PrintTalkNavigator(byte[] xPrintTalkBytes) throws Exception {
-		super(xPrintTalkBytes);
+		super(new ByteArrayInputStream(xPrintTalkBytes));
 	}
 
 	/**
-	 * Custom constructor. Accepting a XJDF as byte array for initializing.
+	 * Custom constructor. Accepting a PrintTalk as byte array for initializing.
 	 * @param xPrintTalkBytes The PrintTalk Document as Byte Array.
 	 * @param namespaceAware True if navigator should be XML Namespace aware.
 	 * @throws Exception
 	 */
 	public PrintTalkNavigator(byte[] xPrintTalkBytes, boolean namespaceAware) throws Exception {
-		super(xPrintTalkBytes, namespaceAware);
+		this(new ByteArrayInputStream(xPrintTalkBytes), namespaceAware);
+	}
+
+	/**
+	 * Custom constructor. Accepting a path for initializing.
+	 * @param ptkPath The path to the PrintTalk Document.
+	 * @throws Exception
+	 */
+	public PrintTalkNavigator(String ptkPath) throws Exception {
+		this(new FileInputStream(ptkPath));
+	}
+
+	/**
+	 * Custom constructor. Accepting a path for initializing.
+	 * @param ptkPath The path to the PrintTalk Document.
+	 * @param namespaceAware True if navigator should be XML Namespace aware.
+	 * @throws Exception
+	 */
+	public PrintTalkNavigator(String ptkPath, boolean namespaceAware) throws Exception {
+		this(new FileInputStream(ptkPath), namespaceAware);
+	}
+
+	/**
+	 * Custom constructor. Accepting a file for initializing.
+	 * @param ptkPath The file of the PrintTalk Document.
+	 * @throws Exception
+	 */
+	public PrintTalkNavigator(File ptkFile) throws Exception {
+		this(new FileInputStream(ptkFile));
+	}
+
+	/**
+	 * Custom constructor. Accepting a file for initializing.
+	 * @param ptkPath The file of the PrintTalk Document.
+	 * @param namespaceAware True if navigator should be XML Namespace aware.
+	 * @throws Exception
+	 */
+	public PrintTalkNavigator(File ptkFile, boolean namespaceAware) throws Exception {
+		this(new FileInputStream(ptkFile), namespaceAware);
 	}
 
 	/**
@@ -110,5 +161,28 @@ public class PrintTalkNavigator extends XmlNavigator {
 
 		// return result
 		return readAttribute(xPath);
+	}
+
+	/**
+	 * Evaluates an XPath expression on PrintTalk Document and returns a parsed Node object as result.
+	 * @param xPath XPath expression to execute to.
+	 * @return The parsed PrintTalk Node object.
+	 * @throws XPathExpressionException
+	 * @throws JAXBException
+	 */
+	public Object extractNode(String xPath) throws XPathExpressionException, JAXBException {
+		return super.extractNode(xPath, new PrintTalkParser());
+	}
+
+	/**
+	 * Replace a node in PrintTalk Document located by the XPath expression.
+	 * @param xPath Location of the node to be replaced.
+	 * @param replacement The new node.
+	 * @throws ParserConfigurationException
+	 * @throws JAXBException
+	 * @throws XPathExpressionException
+	 */
+	public void replaceNode(String xPath, Object replacement) throws XPathExpressionException, JAXBException, ParserConfigurationException {
+		super.replaceNode(xPath, replacement, new PrintTalkParser());
 	}
 }
