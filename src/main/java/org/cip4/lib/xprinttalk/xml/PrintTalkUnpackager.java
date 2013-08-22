@@ -38,7 +38,7 @@ public class PrintTalkUnpackager extends AbstractXmlUnpackager {
 	public PrintTalkNavigator getPrintTalkDocument() throws Exception {
 
 		// find XJDF master document
-		byte[] bytes = super.findMasterDocument("ptk");
+		byte[] bytes = super.findMasterDocument();
 
 		// return as navigator
 		return new PrintTalkNavigator(bytes);
@@ -47,7 +47,7 @@ public class PrintTalkUnpackager extends AbstractXmlUnpackager {
 	/**
 	 * Unpackage an PrintTalk Package to a temporary directory.
 	 * @param pathPackage PrintTalk Package to be unpackaged.
-	 * @return The target directory
+	 * @return The path of the printtalk document.
 	 * @throws IOException
 	 */
 	public String unpackagePrintTalk() throws IOException {
@@ -60,12 +60,20 @@ public class PrintTalkUnpackager extends AbstractXmlUnpackager {
 	 * Unpackage an PrintTalk Package to a target directory.
 	 * @param pathPackage PrintTalk Package to be unpackaged.
 	 * @param targetDir Target directory for unpackaging.
-	 * @return The target directory
+	 * @return The path of the printtalk document.
 	 * @throws IOException
 	 */
 	public String unpackagePrintTalk(String targetDir) throws IOException {
 
 		// unpackge
 		return super.unpackageZip(targetDir);
+	}
+
+	/**
+	 * @see org.cip4.lib.xjdf.xml.internal.AbstractXmlUnpackager#getMasterExtension()
+	 */
+	@Override
+	protected String[] getMasterExtension() {
+		return new String[] { "ptk", "xjdf" };
 	}
 }
