@@ -92,7 +92,7 @@ public class PrintTalkUnpackagerTest {
 
 		// assert
 		PrintTalkUnpackager unpackager = new PrintTalkUnpackager(pathZip);
-		String targetDir = unpackager.unpackagePrintTalk();
+		String targetDir = FilenameUtils.getFullPath(unpackager.unpackagePrintTalk());
 
 		// act
 		File targetFile = new File(targetDir);
