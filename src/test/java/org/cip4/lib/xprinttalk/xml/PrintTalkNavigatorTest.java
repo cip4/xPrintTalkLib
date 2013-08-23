@@ -109,10 +109,38 @@ public class PrintTalkNavigatorTest {
 
 		// assert
 		PrintTalkNavigator navBefore = new PrintTalkNavigator(testBefore);
-		int cntItemsBefore = navBefore.evaluateInt("count(//XJDF/ProductList/*[local-name()='Product'])");
+		int cntItemsBefore = navBefore.evaluateInt("count(//XJDF/ProductList/Product)");
 
 		PrintTalkNavigator navAfter = new PrintTalkNavigator(fileAfter);
-		int cntItemsAfter = navAfter.evaluateInt("count(//XJDF/ProductList/*[local-name()='Product'])");
+		int cntItemsAfter = navAfter.evaluateInt("count(//XJDF/ProductList/Product)");
+
+		Assert.assertEquals("Number of Intents before is wrong.", 2, cntItemsBefore);
+		Assert.assertEquals("Number of Intents after is wrong.", 1, cntItemsAfter);
+	}
+
+	@Test
+	public void testPrintTalkNodeRemoval() throws Exception {
+
+		// arrange
+		File testBefore = new File(PrintTalkNavigatorTest.class.getResource(RES_TEST_SAMPLE).getFile());
+		File fileAfter = File.createTempFile("cip4-test", ".ptk");
+		fileAfter.deleteOnExit();
+
+		PrintTalkNavigator ptkNavigator = new PrintTalkNavigator(new FileInputStream(testBefore), false);
+
+		// act
+		ptkNavigator.removeNode("//XJDF/ProductList/Product[1]");
+
+		FileOutputStream fos = new FileOutputStream(fileAfter);
+		IOUtils.write(ptkNavigator.getXmlBytes(), fos);
+		fos.close();
+
+		// assert
+		PrintTalkNavigator navBefore = new PrintTalkNavigator(testBefore);
+		int cntItemsBefore = navBefore.evaluateInt("count(//XJDF/ProductList/Product)");
+
+		PrintTalkNavigator navAfter = new PrintTalkNavigator(fileAfter);
+		int cntItemsAfter = navAfter.evaluateInt("count(//XJDF/ProductList/Product)");
 
 		Assert.assertEquals("Number of Intents before is wrong.", 2, cntItemsBefore);
 		Assert.assertEquals("Number of Intents after is wrong.", 1, cntItemsAfter);
