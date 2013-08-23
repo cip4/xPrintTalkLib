@@ -56,7 +56,7 @@ public class PrintTalkNavigator extends XmlNavigator {
 	public PrintTalkNavigator(InputStream xPrintTalkStream) throws Exception {
 
 		// call super class
-		super(xPrintTalkStream);
+		this(xPrintTalkStream, false);
 	}
 
 	/**
@@ -71,6 +71,7 @@ public class PrintTalkNavigator extends XmlNavigator {
 
 		// add namespace
 		addNamespace("xjdf", XJdfConstants.NAMESPACE_JDF20);
+		addNamespace("ptk", PrintTalkConstants.NAMESPACE_PTK20);
 	}
 
 	/**
