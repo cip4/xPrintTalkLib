@@ -53,8 +53,28 @@ public class PrintTalkPackager extends XJdfPackager {
 	}
 
 	/**
-	 * Packages an XJDF Document to a zipped binary output stream.
-	 * @param os Target OutputStream where XJdfDocument is being packaged.
+	 * Packages an PrintTalk Document to a zipped binary output stream.
+	 * @param os Target OutputStream where PrintTalkDocument is being packaged.
+	 * @throws Exception
+	 */
+	public void packagePrintTalk(OutputStream os) throws Exception {
+
+		PrintTalkNavigator nav = new PrintTalkNavigator(getXmlDoc());
+
+		// get document name
+		String businessId = nav.readAttribute(PrintTalkNavigator.BUSINESS_ID);
+
+		if (businessId != null) {
+			businessId += ".ptk";
+		}
+
+		// package
+		packageXJdf(os, businessId);
+	}
+
+	/**
+	 * Packages an PrintTalk Document to a zipped binary output stream.
+	 * @param os Target OutputStream where PrintTalkDocument is being packaged.
 	 * @param docName Documents name in ZIP Package.
 	 * @throws Exception
 	 */
@@ -65,8 +85,8 @@ public class PrintTalkPackager extends XJdfPackager {
 	}
 
 	/**
-	 * Packages an XJDF Document to a zipped binary output stream.
-	 * @param os Target OutputStream where XJdfDocument is being packaged.
+	 * Packages an PrintTalk Document to a zipped binary output stream.
+	 * @param os Target OutputStream where PrintTalkDocument is being packaged.
 	 * @param docName Documents name in ZIP Package.
 	 * @param withoutHierarchy Put all files into the ZIP Root.
 	 * @throws Exception
