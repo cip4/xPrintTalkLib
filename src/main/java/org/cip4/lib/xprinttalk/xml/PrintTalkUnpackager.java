@@ -50,10 +50,22 @@ public class PrintTalkUnpackager extends AbstractXmlUnpackager {
 	 * @return The path of the printtalk document.
 	 * @throws IOException
 	 */
-	public String unpackagePrintTalk() throws IOException {
+	public String unpackagePrintTalkTemp() throws IOException {
 
-		// unpackge
-		return super.unpackageZip();
+		// unpackage
+		return super.unpackageZipTemp();
+	}
+
+	/**
+	 * Unpackage an PrintTalk Package to a temporary directory.
+	 * @param pathPackage PrintTalk Package to be unpackaged.
+	 * @return The path of the printtalk document.
+	 * @throws IOException
+	 */
+	public String unpackagePrintTalkTemp(String appName) throws IOException {
+
+		// unpackage
+		return super.unpackageZipTemp(appName);
 	}
 
 	/**
