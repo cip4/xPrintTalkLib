@@ -50,9 +50,9 @@ public class PrintTalk
     protected List<Header> header;
     @XmlElement(name = "Request", required = true)
     protected Request request;
-    @XmlAttribute(required = true)
+    @XmlAttribute(name = "version", required = true)
     protected String version;
-    @XmlAttribute(required = true)
+    @XmlAttribute(name = "payloadID", required = true)
     protected String payloadID;
     @XmlAttribute(name = "Timestamp")
     @XmlJavaTypeAdapter(org.cip4.lib.xjdf.type.DateTime.class)
