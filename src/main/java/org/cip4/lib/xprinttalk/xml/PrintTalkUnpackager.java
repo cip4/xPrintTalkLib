@@ -1,6 +1,6 @@
 /**
  * All rights reserved by
- * 
+ *
  * flyeralarm GmbH
  * Alfred-Nobel-Straße 18
  * 97080 Würzburg
@@ -37,11 +37,21 @@ public class PrintTalkUnpackager extends AbstractXmlUnpackager {
 	 */
 	public PrintTalkNavigator getPrintTalkDocument() throws Exception {
 
+		return getPrintTalkDocument(false);
+	}
+
+	/**
+	 * Returns the PrintTalk Master Document covered by the PrintTalkNavigator.
+	 * @return PrintTalk Document covered by the PrintTalkNavigator.
+	 * @throws Exception
+	 */
+	public PrintTalkNavigator getPrintTalkDocument(boolean namespaceAware) throws Exception {
+
 		// find XJDF master document
 		byte[] bytes = super.findMasterDocument();
 
 		// return as navigator
-		return new PrintTalkNavigator(bytes);
+		return new PrintTalkNavigator(bytes, namespaceAware);
 	}
 
 	/**
