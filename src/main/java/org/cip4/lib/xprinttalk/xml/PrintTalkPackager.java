@@ -10,12 +10,12 @@
  */
 package org.cip4.lib.xprinttalk.xml;
 
-import java.io.OutputStream;
-
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang.StringUtils;
 import org.cip4.lib.xjdf.util.IDGeneratorUtil;
 import org.cip4.lib.xjdf.xml.XJdfPackager;
+
+import java.io.OutputStream;
 
 /**
  * Packaging logic for PrintTalk Documents. Package an PrintTalk with all references in a ZIP Package.

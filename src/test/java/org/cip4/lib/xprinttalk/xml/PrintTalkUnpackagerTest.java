@@ -10,16 +10,16 @@
  */
 package org.cip4.lib.xprinttalk.xml;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 /**
  * JUnit test case for PrintTalkUnpackager class.
@@ -130,7 +130,7 @@ public class PrintTalkUnpackagerTest {
 
 		// assert
 		Assert.assertEquals("BusinessID is wrong.", "95733854", nav.evaluateString(PrintTalkNavigator.BUSINESS_ID));
-		Assert.assertNotEquals("Preview is null.", 0, bytes.length);
+        Assert.assertTrue("Preview is null.", 0 < bytes.length);
 	}
 
 }
