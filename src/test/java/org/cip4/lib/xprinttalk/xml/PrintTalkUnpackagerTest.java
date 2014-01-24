@@ -20,6 +20,7 @@ import org.junit.Test;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.URISyntaxException;
 
 /**
  * JUnit test case for PrintTalkUnpackager class.
@@ -51,10 +52,10 @@ public class PrintTalkUnpackagerTest {
 	 * @throws IOException
 	 */
 	@Test
-	public void testUnpackageZip() throws IOException {
+	public void testUnpackageZip() throws IOException, URISyntaxException {
 
 		// arrange
-		String pathZip = PrintTalkUnpackagerTest.class.getResource(RES_PGK).getFile();
+		String pathZip = PrintTalkUnpackagerTest.class.getResource(RES_PGK).toURI().getPath();
 
 		String tmpDir = FileUtils.getTempDirectoryPath();
 		String targetDir = FilenameUtils.concat(tmpDir, "xPrintTalkLib_UnpackageTest_" + System.currentTimeMillis());
@@ -85,10 +86,10 @@ public class PrintTalkUnpackagerTest {
 	 * @throws IOException
 	 */
 	@Test
-	public void testUnpackageZipTempDir() throws IOException {
+	public void testUnpackageZipTempDir() throws IOException, URISyntaxException {
 
 		// arrange
-		String pathZip = PrintTalkUnpackagerTest.class.getResource(RES_PGK).getFile();
+		String pathZip = PrintTalkUnpackagerTest.class.getResource(RES_PGK).toURI().getPath();
 
 		// assert
 		PrintTalkUnpackager unpackager = new PrintTalkUnpackager(pathZip);
@@ -119,7 +120,7 @@ public class PrintTalkUnpackagerTest {
 	public void testGetPrintTalkDocument() throws Exception {
 
 		// arrange
-		String path = PrintTalkUnpackagerTest.class.getResource(RES_PGK).getFile();
+		String path = PrintTalkUnpackagerTest.class.getResource(RES_PGK).toURI().getPath();
 		PrintTalkUnpackager unpackager = new PrintTalkUnpackager(path);
 
 		// act

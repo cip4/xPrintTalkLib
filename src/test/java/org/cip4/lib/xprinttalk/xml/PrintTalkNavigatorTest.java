@@ -92,7 +92,7 @@ public class PrintTalkNavigatorTest {
 	public void testPrintTalkNodeModification() throws Exception {
 
 		// arrange
-		File testBefore = new File(PrintTalkNavigatorTest.class.getResource(RES_TEST_SAMPLE).getFile());
+		File testBefore = new File(PrintTalkNavigatorTest.class.getResource(RES_TEST_SAMPLE).toURI());
 		File fileAfter = File.createTempFile("cip4-test", ".ptk");
 		fileAfter.deleteOnExit();
 
@@ -122,7 +122,7 @@ public class PrintTalkNavigatorTest {
 	public void testPrintTalkNodeRemoval() throws Exception {
 
 		// arrange
-		File testBefore = new File(PrintTalkNavigatorTest.class.getResource(RES_TEST_SAMPLE).getFile());
+		File testBefore = new File(PrintTalkNavigatorTest.class.getResource(RES_TEST_SAMPLE).toURI());
 		File fileAfter = File.createTempFile("cip4-test", ".ptk");
 		fileAfter.deleteOnExit();
 
