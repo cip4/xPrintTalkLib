@@ -72,7 +72,7 @@ public class PrintTalkPackagerTest {
 	public void testPackagePrintTalk() throws Exception {
 
 		// arrange
-		String resPdf = PrintTalkPackagerTest.class.getResource(RES_PDF).getFile();
+		String resPdf = PrintTalkPackagerTest.class.getResource(RES_PDF).toURI().getPath();
 
 		XJdfNodeFactory nf = new XJdfNodeFactory();
 		PrintTalkNodeFactory ptkNf = new PrintTalkNodeFactory();
@@ -130,7 +130,7 @@ public class PrintTalkPackagerTest {
 	public void testPackagePrintTalkWithoutHierarchy() throws Exception {
 
 		// arrange
-		String resPdf = PrintTalkPackagerTest.class.getResource(RES_PDF).getFile();
+		String resPdf = PrintTalkPackagerTest.class.getResource(RES_PDF).toURI().getPath();
 
 		XJdfNodeFactory nf = new XJdfNodeFactory();
 		PrintTalkNodeFactory ptkNf = new PrintTalkNodeFactory();
