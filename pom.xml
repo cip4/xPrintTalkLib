@@ -10,15 +10,16 @@
 	<description>CIP4 PrintTalk Java Library</description>
 	<url>http://maven.apache.org</url>
 
-	<parent>
-		<groupId>org.cip4.tools</groupId>
-		<artifactId>xCIP4Master</artifactId>
-		<version>1.0</version>
-	</parent>
+    <parent>
+        <groupId>org.sonatype.oss</groupId>
+        <artifactId>oss-parent</artifactId>
+        <version>7</version>
+    </parent>
 
 	<properties>
 		<timestamp>${maven.build.timestamp}</timestamp>
 		<maven.build.timestamp.format>yyyy-MM-dd HH:mm</maven.build.timestamp.format>
+        <buildDirectory>${project.basedir}/target</buildDirectory>
 	</properties>
 
 	<licenses>
@@ -65,22 +66,6 @@
 		<system>JIRA</system>
 		<url>http://jira.cip4.org/jira/browse/XJDFLIB</url>
 	</issueManagement>
-	<reporting>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-javadoc-plugin</artifactId>
-				<version>2.9.1</version>
-				<configuration>
-					<includeDependencySources>true</includeDependencySources>
-
-					<dependencySourceIncludes>
-						<dependencySourceInclude>org.cip4.lib.xjdf:xJdfLib</dependencySourceInclude>
-					</dependencySourceIncludes>
-				</configuration>
-			</plugin>
-		</plugins>
-	</reporting>
 	<developers>
 		<developer>
 			<id>r.prosi</id>
@@ -98,6 +83,7 @@
 		</developer>
 	</developers>
 	<build>
+        <directory>${buildDirectory}</directory>
 		<resources>
 			<resource>
 				<directory>src/main/resources</directory>
@@ -114,10 +100,15 @@
 					<target>1.7</target>
 				</configuration>
 			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-release-plugin</artifactId>
-			</plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <configuration>
+                    <mavenExecutorId>forked-path</mavenExecutorId>
+                    <useReleaseProfile>false</useReleaseProfile>
+                    <arguments>${arguments} -Psonatype-oss-release</arguments>
+                </configuration>
+            </plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-source-plugin</artifactId>
@@ -149,37 +140,6 @@
 							<addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
 						</manifest>
 					</archive>
-				</configuration>
-			</plugin>
-
-
-			<!-- doc book generation -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-dependency-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>com.agilejava.docbkx</groupId>
-				<artifactId>docbkx-maven-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<artifactId>maven-assembly-plugin</artifactId>
-				<version>${maven-assembly-plugin.version}</version>
-				<executions>
-					<execution>
-						<id>zip documentation</id>
-						<phase>prepare-package</phase>
-						<goals>
-							<goal>single</goal>
-						</goals>
-					</execution>
-				</executions>
-				<configuration>
-					<finalName>${project.artifactId}-${project.version}</finalName>
-					<appendAssemblyId>false</appendAssemblyId>
-					<descriptors>
-						<descriptor>${workDirectory}/assembly/userguide-zip.xml</descriptor>
-					</descriptors>
 				</configuration>
 			</plugin>
 
@@ -300,7 +260,7 @@
 		<dependency>
 			<groupId>org.cip4.lib.xjdf</groupId>
 			<artifactId>xJdfLib</artifactId>
-			<version>0.5-SNAPSHOT</version>
+			<version>0.6-SNAPSHOT</version>
 		</dependency>
 
 		<!-- JAXB -->
