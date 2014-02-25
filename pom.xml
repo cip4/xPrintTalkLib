@@ -260,7 +260,7 @@
 		<dependency>
 			<groupId>org.cip4.lib.xjdf</groupId>
 			<artifactId>xJdfLib</artifactId>
-			<version>0.6-SNAPSHOT</version>
+			<version>0.5</version>
 		</dependency>
 
 		<!-- JAXB -->
