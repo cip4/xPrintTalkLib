@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.cip4.lib.xprinttalk</groupId>
 	<artifactId>xPrintTalkLib</artifactId>
-	<version>0.5</version>
+	<version>0.6-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	<name>CIP4 xPrintTalkLib</name>
 	<description>CIP4 PrintTalk Java Library</description>
@@ -29,9 +29,9 @@
 		</license>
 	</licenses>
 	<scm>
-		<url>http://svn.cip4.org/svnroot/tags/xPrintTalkLib-0.5</url>
-		<developerConnection>scm:svn:http://svn.cip4.org/svnroot/tags/xPrintTalkLib-0.5</developerConnection>
-		<connection>scm:svn:http://svn.cip4.org/svnroot/tags/xPrintTalkLib-0.5</connection>
+		<url>http://svn.cip4.org/svnroot/trunk/xPrintTalkLib</url>
+		<developerConnection>scm:svn:http://svn.cip4.org/svnroot/trunk/xPrintTalkLib</developerConnection>
+		<connection>scm:svn:http://svn.cip4.org/svnroot/trunk/xPrintTalkLib</connection>
 	</scm>
 	<ciManagement>
 		<system>continuum</system>
