@@ -3,43 +3,54 @@
 	xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc" xmlns:xs="http://www.w3.org/2001/XMLSchema"
 	xmlns:xjdf="http://www.CIP4.org/JDFSchema_2_0" xmlns:ptk="http://www.printtalk.org/schema_2_0">
 
-	<!-- <jxb:bindings schemaLocation="xsd/PrintTalk20.xsd" node="/xs:schema"> 
-		 </jxb:bindings> -->
-
-	<jxb:bindings schemaLocation="PrintTalk20.xsd" node="/xs:schema">
-
-		<jxb:globalBindings localScoping="toplevel">
-			<!-- <xjc:simple /> -->
-			<xjc:serializable />
-
-			<xjc:javaType name="org.cip4.lib.xjdf.type.Matrix"
-                       xmlType="xjdf:matrix"
-                       adapter="org.cip4.lib.xjdf.type.Matrix" />
-
-			<xjc:javaType name="org.cip4.lib.xjdf.type.Rectangle"
-                       xmlType="xjdf:rectangle"
-                       adapter="org.cip4.lib.xjdf.type.Rectangle" />
-
-            <xjc:javaType name="org.cip4.lib.xjdf.type.Shape"
-                       xmlType="xjdf:shape"
-                       adapter="org.cip4.lib.xjdf.type.Shape" />
-
-            <xjc:javaType name="org.cip4.lib.xjdf.type.XYPair"
-                       xmlType="xjdf:XYPair"
-                       adapter="org.cip4.lib.xjdf.type.XYPair" />
+    <jxb:bindings schemaLocation="PrintTalk20.xsd" node="/xs:schema">
+        <jxb:globalBindings localScoping="toplevel">
+            <!-- <xjc:simple /> -->
+            <xjc:serializable/>
 
             <xjc:javaType name="org.cip4.lib.xjdf.type.DateTime"
-                       xmlType="xjdf:dateTime"
-                       adapter="org.cip4.lib.xjdf.type.DateTime" />
+                          xmlType="xjdf:dateTime"
+                          adapter="org.cip4.lib.xjdf.type.DateTime"/>
 
-		</jxb:globalBindings>
-		<jxb:schemaBindings>
-			<jxb:package name="org.cip4.lib.xprinttalk.schema" />
-		</jxb:schemaBindings>
-	</jxb:bindings>
+            <xjc:javaType name="org.cip4.lib.xjdf.type.Matrix"
+                          xmlType="xjdf:matrix"
+                          adapter="org.cip4.lib.xjdf.type.Matrix"/>
 
+            <xjc:javaType name="org.cip4.lib.xjdf.type.Rectangle"
+                          xmlType="xjdf:rectangle"
+                          adapter="org.cip4.lib.xjdf.type.Rectangle"/>
+
+            <xjc:javaType name="org.cip4.lib.xjdf.type.Shape"
+                          xmlType="xjdf:shape"
+                          adapter="org.cip4.lib.xjdf.type.Shape"/>
+
+            <xjc:javaType name="org.cip4.lib.xjdf.type.XYPair"
+                          xmlType="xjdf:XYPair"
+                          adapter="org.cip4.lib.xjdf.type.XYPair"/>
+
+            <xjc:javaType name="org.cip4.lib.xjdf.type.IntegerList"
+                          xmlType="xjdf:IntegerList"
+                          adapter="org.cip4.lib.xjdf.type.IntegerList"/>
+
+            <xjc:javaType name="org.cip4.lib.xjdf.type.Duration"
+                          xmlType="xjdf:duration"
+                          adapter="org.cip4.lib.xjdf.type.Duration"/>
+
+            <xjc:javaType name="org.cip4.lib.xjdf.type.IDREF"
+                          xmlType="xjdf:IDREF"
+                          adapter="org.cip4.lib.xjdf.type.IDREF"/>
+        </jxb:globalBindings>
+        <jxb:schemaBindings>
+            <jxb:package name="org.cip4.lib.xprinttalk.schema"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+
+    <jxb:bindings schemaLocation="JDF20.xsd" node="/xs:schema">
+        <jxb:schemaBindings>
+            <jxb:package name="org.cip4.lib.xjdf.schema"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
 
 </jxb:bindings>
-
 
 	
