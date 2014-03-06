@@ -6,12 +6,12 @@
 	<!-- <jxb:bindings schemaLocation="xsd/PrintTalk20.xsd" node="/xs:schema"> 
 		 </jxb:bindings> -->
 
-	<jxb:bindings schemaLocation="xsd/PrintTalk20.xsd" node="/xs:schema">
-	
+	<jxb:bindings schemaLocation="PrintTalk20.xsd" node="/xs:schema">
+
 		<jxb:globalBindings localScoping="toplevel">
 			<!-- <xjc:simple /> -->
 			<xjc:serializable />
-			
+
 			<xjc:javaType name="org.cip4.lib.xjdf.type.Matrix"
                        xmlType="xjdf:matrix"
                        adapter="org.cip4.lib.xjdf.type.Matrix" />
@@ -19,19 +19,19 @@
 			<xjc:javaType name="org.cip4.lib.xjdf.type.Rectangle"
                        xmlType="xjdf:rectangle"
                        adapter="org.cip4.lib.xjdf.type.Rectangle" />
-                       
+
             <xjc:javaType name="org.cip4.lib.xjdf.type.Shape"
                        xmlType="xjdf:shape"
                        adapter="org.cip4.lib.xjdf.type.Shape" />
-                       
+
             <xjc:javaType name="org.cip4.lib.xjdf.type.XYPair"
                        xmlType="xjdf:XYPair"
                        adapter="org.cip4.lib.xjdf.type.XYPair" />
-                       
+
             <xjc:javaType name="org.cip4.lib.xjdf.type.DateTime"
                        xmlType="xjdf:dateTime"
                        adapter="org.cip4.lib.xjdf.type.DateTime" />
-                       
+
 		</jxb:globalBindings>
 		<jxb:schemaBindings>
 			<jxb:package name="org.cip4.lib.xprinttalk.schema" />

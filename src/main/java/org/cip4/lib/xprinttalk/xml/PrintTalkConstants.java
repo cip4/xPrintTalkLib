@@ -45,7 +45,7 @@ public class PrintTalkConstants {
 
 	private static final String RES_BUILD_PROPS = "/org/cip4/lib/xprinttalk/build.properties";
 
-	private static final String RES_PTK20_XSD = "/org/cip4/lib/xprinttalk/xsd/PrintTalk20.xsd";
+	private static final String RES_PTK20_XSD = "/PrintTalk20.xsd";
 
 	/**
 	 * Load PrintTalk XSD as byte array.

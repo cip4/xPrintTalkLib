@@ -26,7 +26,7 @@ import org.junit.Test;
  */
 public class PrintTalkConstantsTest {
 
-	private static final String RES_PTK20_XSD = "/org/cip4/lib/xprinttalk/xsd/PrintTalk20.xsd";
+	private static final String RES_PTK20_XSD = "/PrintTalk20.xsd";
 
 	/**
 	 * JUnit test
