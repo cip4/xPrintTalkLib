@@ -219,22 +219,6 @@
 			</xs:restriction>
 		</xs:complexContent>
 	</xs:complexType>
-	<xs:complexType name="Abstract_pt_B" abstract="true"
-		mixed="true">
-		<xs:annotation>
-			<xs:documentation>
-				This is a special version of the Abstract pt
-				Element
-				It permits the derived type to contain mixed content
-			</xs:documentation>
-		</xs:annotation>
-		<xs:sequence>
-			<xs:element ref="xjdf:Comment" minOccurs="0" maxOccurs="unbounded" />
-			<xs:element ref="xjdf:GeneralID" minOccurs="0" maxOccurs="unbounded" />
-		</xs:sequence>
-		<xs:attribute name="DescriptiveName" type="xjdf:string"
-			use="optional" />
-	</xs:complexType>
 
 	<xs:complexType name="BusinessObject" abstract="true">
 		<xs:complexContent>
@@ -622,9 +606,9 @@
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
-	<xs:complexType name="Status" mixed="true">
+	<xs:complexType name="Status">
 		<xs:complexContent>
-			<xs:extension base="ptk:Abstract_pt_B">
+			<xs:extension base="ptk:Abstract_pt">
 				<xs:attribute name="JobIDRef" type="xjdf:string" use="required" />
 			</xs:extension>
 		</xs:complexContent>
