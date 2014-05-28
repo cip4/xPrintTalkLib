@@ -165,14 +165,12 @@
                     <markGenerated>true</markGenerated>
                     <episode>true</episode>
                     <!--<catalog>src/main/resources/org/cip4/lib/xprinttalk/catalog.cat</catalog>-->
-<!--
                     <episodes>
                         <episode>
                             <groupId>org.cip4.lib.xjdf</groupId>
                             <artifactId>xJdfLib</artifactId>
                         </episode>
                     </episodes>
--->
                 </configuration>
             </plugin>
 		</plugins>
