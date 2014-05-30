@@ -199,6 +199,7 @@
                 </configuration>
             </plugin>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-antrun-plugin</artifactId>
                 <version>1.7</version>
                 <executions>
@@ -207,7 +208,7 @@
                         <phase>process-sources</phase>
                         <configuration>
                             <target>
-                                <delete dir="target/generated-sources/xjc/org/cip4/lib/xjdf"/>
+                                <delete dir="${project.build.directory}/generated-sources/xjc/org/cip4/lib/xjdf"/>
                             </target>
                         </configuration>
                         <goals>
