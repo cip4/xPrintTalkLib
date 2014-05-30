@@ -1,23 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jxb:bindings version="1.0" xmlns:jxb="http://java.sun.com/xml/ns/jaxb"
-	xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc" xmlns:xs="http://www.w3.org/2001/XMLSchema"
-	xmlns:xjdf="http://www.CIP4.org/JDFSchema_2_0" xmlns:ptk="http://www.printtalk.org/schema_2_0">
+<bindings version="2.1" 
+              xmlns="http://java.sun.com/xml/ns/jaxb"
+              xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
+              xmlns:xjdf="http://www.CIP4.org/JDFSchema_2_0"
+              xmlns:ptk="http://www.printtalk.org/schema_2_0">
 
-    <jxb:bindings schemaLocation="PrintTalk20.xsd" node="/xs:schema">
-        <jxb:globalBindings localScoping="toplevel">
-            <!-- <xjc:simple /> -->
+    <bindings schemaLocation="PrintTalk20.xsd">
+        <globalBindings>
             <xjc:serializable/>
-
-            <xjc:javaType name="org.cip4.lib.xjdf.type.DateTime"
-                          xmlType="xjdf:dateTime"
-                          adapter="org.cip4.lib.xjdf.type.DateTime"/>
-
-        </jxb:globalBindings>
-        <jxb:schemaBindings>
-            <jxb:package name="org.cip4.lib.xprinttalk.schema"/>
-        </jxb:schemaBindings>
-    </jxb:bindings>
-
-</jxb:bindings>
-
-	
+        </globalBindings>
+        <schemaBindings>
+            <package name="org.cip4.lib.xprinttalk.schema"/>
+        </schemaBindings>
+        <bindings scd="/~xjdf:dateTime">
+            <xjc:javaType name="org.cip4.lib.xjdf.type.DateTime" adapter="org.cip4.lib.xjdf.type.DateTime"/>
+        </bindings>
+    </bindings>
+</bindings>

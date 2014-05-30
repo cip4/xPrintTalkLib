@@ -55,7 +55,7 @@
 		</xs:documentation>
 	</xs:annotation>
 	<!-- Import JDF and JDF Types -->
-	<xs:import namespace="http://www.CIP4.org/JDFSchema_2_0" schemaLocation="JDF20.xsd" />
+	<xs:import namespace="http://www.CIP4.org/JDFSchema_2_0" schemaLocation="./JDF20.xsd" />
 
 	<!-- PrintTalk - the root element -->
 	<xs:element name="PrintTalk">
