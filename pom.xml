@@ -142,6 +142,31 @@
                     </archive>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>2.8</version>
+                <executions>
+                    <execution>
+                        <id>src-dependencies</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>unpack</goal>
+                        </goals>
+                        <configuration>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>org.cip4.lib.xjdf</groupId>
+                                    <artifactId>xJdfLib</artifactId>
+                                    <includes>JDF20.xsd</includes>
+                                    <outputDirectory>src/main/resources</outputDirectory>
+                                    <overWrite>true</overWrite>
+                                </artifactItem>
+                            </artifactItems>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
             <!-- Java generation from XSD -->
             <plugin>
                 <groupId>org.jvnet.jaxb2.maven2</groupId>
@@ -165,7 +190,6 @@
                     <readOnly>true</readOnly>
                     <markGenerated>true</markGenerated>
                     <episode>true</episode>
-                    <!--<catalog>src/main/resources/org/cip4/lib/xprinttalk/catalog.cat</catalog>-->
                     <episodes>
                         <episode>
                             <groupId>org.cip4.lib.xjdf</groupId>
