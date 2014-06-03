@@ -185,6 +185,7 @@
                     </schemaExcludes>
                     <args>
                         <arg>-no-header</arg>
+                        <arg>-Xfluent-api</arg>
                     </args>
                     <extension>true</extension>
                     <readOnly>true</readOnly>
@@ -196,6 +197,13 @@
                             <artifactId>xJdfLib</artifactId>
                         </episode>
                     </episodes>
+                    <plugins>
+                        <plugin>
+                            <groupId>org.jvnet.jaxb2_commons</groupId>
+                            <artifactId>jaxb2-fluent-api</artifactId>
+                            <version>3.0</version>
+                        </plugin>
+                    </plugins>
                 </configuration>
             </plugin>
             <plugin>
