@@ -44,6 +44,16 @@ public class PrintTalkConstants {
 
     public static final byte[] PTK_XSD_BYTES = loadPtkByteArray();
 
+    /**
+     * Media type for PrintTalk documents.
+     */
+    public static final String MEDIA_TYPE_PTK = "application/vnd.cip4-ptk+xml";
+
+    /**
+     * Media type for PrintTalk packages.
+     */
+    public static final String MEDIA_TYPE_PTK_ZIP = "application/vnd.cip4-ptk+zip";
+
     private static final String RES_BUILD_PROPS = "/org/cip4/lib/xprinttalk/build.properties";
 
     private static final String RES_PTK20_XSD = "/PrintTalk20.xsd";
