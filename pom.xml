@@ -100,6 +100,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
+                <version>2.10.1</version>
                 <executions>
                     <execution>
                         <id>attach-javadocs</id>
@@ -157,7 +158,7 @@
             <plugin>
                 <groupId>org.jvnet.jaxb2.maven2</groupId>
                 <artifactId>maven-jaxb2-plugin</artifactId>
-                <version>0.8.3</version>
+                <version>0.12.2</version>
                 <executions>
                     <execution>
                         <goals>
@@ -172,6 +173,8 @@
                     <args>
                         <arg>-no-header</arg>
                         <arg>-Xfluent-api</arg>
+                        <arg>-Xequals</arg>
+                        <arg>-XhashCode</arg>
                     </args>
                     <extension>true</extension>
                     <readOnly>true</readOnly>
@@ -184,6 +187,11 @@
                         </episode>
                     </episodes>
                     <plugins>
+                        <plugin>
+                            <groupId>org.jvnet.jaxb2_commons</groupId>
+                            <artifactId>jaxb2-basics</artifactId>
+                            <version>0.9.1</version>
+                        </plugin>
                         <plugin>
                             <groupId>org.jvnet.jaxb2_commons</groupId>
                             <artifactId>jaxb2-fluent-api</artifactId>
