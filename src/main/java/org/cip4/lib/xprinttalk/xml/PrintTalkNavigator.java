@@ -114,7 +114,7 @@ public class PrintTalkNavigator extends XmlNavigator {
 
 	/**
 	 * Custom constructor. Accepting a file for initializing.
-	 * @param ptkPath The file of the PrintTalk Document.
+	 * @param ptkFile The file of the PrintTalk Document.
 	 * @throws Exception
 	 */
 	public PrintTalkNavigator(File ptkFile) throws Exception {
@@ -123,7 +123,7 @@ public class PrintTalkNavigator extends XmlNavigator {
 
 	/**
 	 * Custom constructor. Accepting a file for initializing.
-	 * @param ptkPath The file of the PrintTalk Document.
+	 * @param ptkFile The file of the PrintTalk Document.
 	 * @param namespaceAware True if navigator should be XML Namespace aware.
 	 * @throws Exception
 	 */
@@ -151,7 +151,7 @@ public class PrintTalkNavigator extends XmlNavigator {
 
 	/**
 	 * Read attribute from embedded XJdf Document in PrintTalk.
-	 * @param xPath XPath expression of XJDF attribute needed.
+	 * @param xPathXJdf XPath expression of XJDF attribute needed.
 	 * @return Value of attribute as String.
 	 * @throws XPathExpressionException Is being thrown in case an exception occurs.
 	 */
