@@ -10,18 +10,6 @@
  */
 package org.cip4.lib.xprinttalk.xml;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.util.UUID;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipInputStream;
-
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.io.IOUtils;
@@ -38,6 +26,18 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.util.UUID;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipInputStream;
 
 /**
  * JUnit test case for PrintTalkPackager
@@ -64,10 +64,6 @@ public class PrintTalkPackagerTest {
 	public void tearDown() throws Exception {
 	}
 
-	/**
-	 * Test method for {@link org.cip4.lib.xjdf.xml.XJdfPackager#packageXJdf(org.cip4.lib.xjdf.schema.XJDF, java.io.OutputStream)}.
-	 * @throws Exception
-	 */
 	@Test
 	public void testPackagePrintTalk() throws Exception {
 
@@ -89,19 +85,11 @@ public class PrintTalkPackagerTest {
 		ptkBuilder.addRequest(ptkNf.createPurchaseOrder("MyBusinessId", null, xjdf));
 		PrintTalk ptk = ptkBuilder.build();
 
-		PrintTalkParser parser = new PrintTalkParser();
-		ByteArrayOutputStream bosPtk = new ByteArrayOutputStream();
-		parser.parsePrintTalk(ptk, bosPtk);
-		bosPtk.close();
-
 		// act
 		ByteArrayOutputStream bos = new ByteArrayOutputStream();
-
-		PrintTalkPackager packager = new PrintTalkPackager(bosPtk.toByteArray());
+		PrintTalkPackager packager = new PrintTalkPackager(bos, null);
 		packager.setCompressionLevel(CompressionLevel.BEST_SPEED);
-		packager.packagePrintTalk(bos, "MyJobFile.ptk");
-
-		bos.close();
+		packager.packagePrintTalk(new PrintTalkNavigator(new PrintTalkParser().parsePrintTalk(ptk)), "MyJobFile.ptk");
 
 		// assert
 		String dir = unzipStream(new ByteArrayInputStream(bos.toByteArray()));
@@ -122,10 +110,6 @@ public class PrintTalkPackagerTest {
 		FileUtils.deleteDirectory(new File(dir));
 	}
 
-	/**
-	 * Test method for {@link org.cip4.lib.xjdf.xml.XJdfPackager#packageXJdf(org.cip4.lib.xjdf.schema.XJDF, java.io.OutputStream)}.
-	 * @throws Exception
-	 */
 	@Test
 	public void testPackagePrintTalkWithoutHierarchy() throws Exception {
 
@@ -147,19 +131,17 @@ public class PrintTalkPackagerTest {
 		ptkBuilder.addRequest(ptkNf.createPurchaseOrder("MyBusinessId", null, xjdf));
 		PrintTalk ptk = ptkBuilder.build();
 
-		PrintTalkParser parser = new PrintTalkParser();
-		ByteArrayOutputStream bosPtk = new ByteArrayOutputStream();
-		parser.parsePrintTalk(ptk, bosPtk);
-		bosPtk.close();
-
 		// act
 		ByteArrayOutputStream bos = new ByteArrayOutputStream();
-
-		PrintTalkPackager packager = new PrintTalkPackager(bosPtk.toByteArray());
+		PrintTalkPackager packager = new PrintTalkPackager(bos, null);
 		packager.setCompressionLevel(CompressionLevel.BEST_SPEED);
-		packager.packagePrintTalk(bos, "MyJobFile.ptk", true);
-
-		bos.close();
+		packager.packagePrintTalk(
+            new PrintTalkNavigator(
+                new PrintTalkParser().parsePrintTalk(ptk)
+            ),
+            "MyJobFile.ptk",
+            true
+        );
 
 		// assert
 		String dir = unzipStream(new ByteArrayInputStream(bos.toByteArray()));
@@ -183,7 +165,6 @@ public class PrintTalkPackagerTest {
 	/**
 	 * Private helper method for unpackaging zip stream.
 	 * @param inputStream ZipStream as InputStream.
-	 * @param dir Target directory.
 	 * @throws IOException
 	 */
 	private String unzipStream(InputStream inputStream) throws IOException {
