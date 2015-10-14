@@ -1,11 +1,10 @@
 package org.cip4.lib.xprinttalk.xml;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.OutputStream;
 
 import javax.xml.bind.JAXBException;
-import javax.xml.bind.ValidationException;
+import javax.xml.parsers.ParserConfigurationException;
 
 import org.cip4.lib.xjdf.xml.XJdfConstants;
 import org.cip4.lib.xjdf.xml.internal.AbstractXmlParser;
@@ -15,11 +14,10 @@ import org.cip4.lib.xprinttalk.xml.internal.JAXBContextFactory;
 import org.cip4.lib.xprinttalk.xml.internal.PrintTalkNamespaceMapper;
 
 import com.sun.xml.bind.marshaller.NamespacePrefixMapper;
+import org.xml.sax.SAXException;
 
 /**
  * Parsing logic for building a XML Document from PrintTalk DOM-Tree and the way around.
- *
- * @author s.meissner
  */
 public class PrintTalkParser extends AbstractXmlParser<PrintTalk> {
 
@@ -51,13 +49,9 @@ public class PrintTalkParser extends AbstractXmlParser<PrintTalk> {
      *
      * @param printTalk PrintTalk Object Tree for parsing.
      * @param os Target OutputStream where PrintTalk Document is being parsed.
-     *
-     * @throws ValidationException Is thrown in case PrintTalk is not valid and validation process is not being
-     * skipped.
-     * @throws Exception Is thrown in case an exception occurs.
      */
     public final void parsePrintTalk(final PrintTalk printTalk, final OutputStream os)
-        throws Exception, ValidationException {
+        throws ParserConfigurationException, JAXBException, SAXException, IOException {
         parseXml(printTalk, os);
     }
 
@@ -67,13 +61,9 @@ public class PrintTalkParser extends AbstractXmlParser<PrintTalk> {
      * @param printTalk PrintTalk Object Tree for parsing.
      * @param os Target OutputStream where PrintTalk Document is being parsed.
      * @param skipValidation Indicates whether or not validation has to be skipped.
-     *
-     * @throws ValidationException Is thrown in case PrintTalk is not valid and validation process is not being
-     * skipped.
-     * @throws Exception Is thrown in case an exception occurs.
      */
     public final void parsePrintTalk(final PrintTalk printTalk, final OutputStream os, final boolean skipValidation)
-        throws Exception, ValidationException {
+        throws IOException, ParserConfigurationException, SAXException, JAXBException {
         parseXml(printTalk, os, skipValidation);
     }
 
@@ -83,9 +73,9 @@ public class PrintTalkParser extends AbstractXmlParser<PrintTalk> {
      * @param printTalk PrintTalk Object Tree for parsing.
      *
      * @return PrintTalk as byte array.
-     * @throws Exception Is thrown in case an exception occurs.
      */
-    public final byte[] parsePrintTalk(final PrintTalk printTalk) throws Exception {
+    public final byte[] parsePrintTalk(final PrintTalk printTalk)
+        throws ParserConfigurationException, IOException, SAXException, JAXBException {
         return parseXml(printTalk);
     }
 
@@ -96,9 +86,9 @@ public class PrintTalkParser extends AbstractXmlParser<PrintTalk> {
      * @param skipValidation Skip validation.
      *
      * @return PrintTalk as byte array.
-     * @throws Exception Is thrown in case an exception occurs.
      */
-    public final byte[] parsePrintTalk(final PrintTalk printTalk, final boolean skipValidation) throws Exception {
+    public final byte[] parsePrintTalk(final PrintTalk printTalk, final boolean skipValidation)
+        throws ParserConfigurationException, JAXBException, SAXException, IOException {
         return parseXml(printTalk, skipValidation);
     }
 
@@ -126,8 +116,8 @@ public class PrintTalkParser extends AbstractXmlParser<PrintTalk> {
     }
 
     @Override
-    protected final AbstractXmlValidator<PrintTalk> createValidator(final InputStream is) throws IOException {
-        return new PrintTalkValidator(is);
+    protected final AbstractXmlValidator<PrintTalk> createValidator() {
+        return new PrintTalkValidator();
     }
 
 }

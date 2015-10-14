@@ -1,7 +1,6 @@
 package org.cip4.lib.xprinttalk.xml;
 
-import java.io.IOException;
-import java.io.InputStream;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -11,20 +10,19 @@ import org.cip4.lib.xprinttalk.schema.PrintTalk;
 
 /**
  * Validation of PrintTalk Documents based on PrintTalk schema file.
- *
- * @author s.meissner
  */
 public class PrintTalkValidator extends AbstractXmlValidator<PrintTalk> {
 
     /**
-     * Custom constructor. Accepting PrintTalk Stream for initializing.
-     *
-     * @param printTalkStream Stream to read the PrintTalk document from.
-     *
-     * @throws IOException if an error errors while reading the document.
+     * URL of the internal PrintTalk schema.
      */
-    public PrintTalkValidator(final InputStream printTalkStream) throws IOException {
-        super(PrintTalkConstants.PTK_XSD_BYTES, printTalkStream, loadXsdDependencies());
+    private static final URL SCHEMA = PrintTalkValidator.class.getResource("/PrintTalk20.xsd");
+
+    /**
+     * Custom constructor. Accepting PrintTalk Stream for initializing.
+     */
+    public PrintTalkValidator() {
+        super(loadXsdDependencies());
     }
 
     /**
@@ -37,5 +35,10 @@ public class PrintTalkValidator extends AbstractXmlValidator<PrintTalk> {
         map.put("./JDF20.xsd", XJdfConstants.XJDF_XSD_BYTES);
 
         return map;
+    }
+
+    @Override
+    protected final URL getSchema() {
+        return SCHEMA;
     }
 }
