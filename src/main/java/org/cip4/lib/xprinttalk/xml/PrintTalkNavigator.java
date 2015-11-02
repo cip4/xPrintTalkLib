@@ -10,17 +10,19 @@
  */
 package org.cip4.lib.xprinttalk.xml;
 
-import java.io.ByteArrayInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.InputStream;
+import org.cip4.lib.xjdf.xml.XJdfConstants;
+import org.cip4.lib.xjdf.xml.internal.XmlNavigator;
+import org.xml.sax.SAXException;
 
 import javax.xml.bind.JAXBException;
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.TransformerException;
 import javax.xml.xpath.XPathExpressionException;
-
-import org.cip4.lib.xjdf.xml.XJdfConstants;
-import org.cip4.lib.xjdf.xml.internal.XmlNavigator;
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 
 /**
  * Navigator class which simplify XPath handling using PrintTalk Documents.
@@ -52,8 +54,15 @@ public class PrintTalkNavigator extends XmlNavigator {
 	/**
 	 * Custom constructor. Accepting a PrintTalk as Input Stream for initializing.
 	 * @param xPrintTalkStream The PrintTalk Document as Input Stream.
+     *
+     * @throws ParserConfigurationException if a DocumentBuilder cannot be created
+     * which satisfies the configuration requested.
+     * @throws SAXException - If any parse errors occur.
+     * @throws IOException - If any IO errors occur.
 	 */
-	public PrintTalkNavigator(InputStream xPrintTalkStream) throws Exception {
+	public PrintTalkNavigator(
+        final InputStream xPrintTalkStream
+    ) throws ParserConfigurationException, SAXException, IOException {
 
 		// call super class
 		this(xPrintTalkStream, false);
@@ -63,8 +72,16 @@ public class PrintTalkNavigator extends XmlNavigator {
 	 * Custom constructor. Accepting a PrintTalk as Input Stream for initializing.
 	 * @param xPrintTalkStream The PrintTalk Document as Input Stream.
 	 * @param namespaceAware True if navigator should be XML Namespace aware.
+	 *
+	 * @throws ParserConfigurationException if a DocumentBuilder cannot be created
+	 * which satisfies the configuration requested.
+	 * @throws SAXException - If any parse errors occur.
+	 * @throws IOException - If any IO errors occur.
 	 */
-	public PrintTalkNavigator(InputStream xPrintTalkStream, boolean namespaceAware) throws Exception {
+	public PrintTalkNavigator(
+		final InputStream xPrintTalkStream,
+		final boolean namespaceAware
+	) throws IOException, SAXException, ParserConfigurationException {
 
 		// call super class
 		super(xPrintTalkStream, namespaceAware);
@@ -77,9 +94,15 @@ public class PrintTalkNavigator extends XmlNavigator {
 	/**
 	 * Custom constructor. Accepting a PrintTalk as byte array for initializing.
 	 * @param xPrintTalkBytes The PrintTalk Document as Byte Array.
-	 * @throws Exception
+	 *
+     * @throws ParserConfigurationException if a DocumentBuilder cannot be created
+     * which satisfies the configuration requested.
+     * @throws SAXException - If any parse errors occur.
+     * @throws IOException - If any IO errors occur.
 	 */
-	public PrintTalkNavigator(byte[] xPrintTalkBytes) throws Exception {
+	public PrintTalkNavigator(
+        final byte[] xPrintTalkBytes
+    ) throws ParserConfigurationException, SAXException, IOException {
 		super(new ByteArrayInputStream(xPrintTalkBytes));
 	}
 
@@ -87,18 +110,29 @@ public class PrintTalkNavigator extends XmlNavigator {
 	 * Custom constructor. Accepting a PrintTalk as byte array for initializing.
 	 * @param xPrintTalkBytes The PrintTalk Document as Byte Array.
 	 * @param namespaceAware True if navigator should be XML Namespace aware.
-	 * @throws Exception
+     *
+     * @throws ParserConfigurationException if a DocumentBuilder cannot be created
+     * which satisfies the configuration requested.
+     * @throws SAXException - If any parse errors occur.
+     * @throws IOException - If any IO errors occur.
 	 */
-	public PrintTalkNavigator(byte[] xPrintTalkBytes, boolean namespaceAware) throws Exception {
+	public PrintTalkNavigator(
+        final byte[] xPrintTalkBytes,
+        final boolean namespaceAware
+    ) throws ParserConfigurationException, SAXException, IOException {
 		this(new ByteArrayInputStream(xPrintTalkBytes), namespaceAware);
 	}
 
 	/**
 	 * Custom constructor. Accepting a path for initializing.
 	 * @param ptkPath The path to the PrintTalk Document.
-	 * @throws Exception
+     *
+     * @throws ParserConfigurationException if a DocumentBuilder cannot be created
+     * which satisfies the configuration requested.
+     * @throws SAXException - If any parse errors occur.
+     * @throws IOException - If any IO errors occur.
 	 */
-	public PrintTalkNavigator(String ptkPath) throws Exception {
+	public PrintTalkNavigator(final String ptkPath) throws IOException, SAXException, ParserConfigurationException {
 		this(new FileInputStream(ptkPath));
 	}
 
@@ -106,18 +140,29 @@ public class PrintTalkNavigator extends XmlNavigator {
 	 * Custom constructor. Accepting a path for initializing.
 	 * @param ptkPath The path to the PrintTalk Document.
 	 * @param namespaceAware True if navigator should be XML Namespace aware.
-	 * @throws Exception
+     *
+     * @throws ParserConfigurationException if a DocumentBuilder cannot be created
+     * which satisfies the configuration requested.
+     * @throws SAXException - If any parse errors occur.
+     * @throws IOException - If any IO errors occur.
 	 */
-	public PrintTalkNavigator(String ptkPath, boolean namespaceAware) throws Exception {
+	public PrintTalkNavigator(
+        final String ptkPath,
+        final boolean namespaceAware
+    ) throws IOException, ParserConfigurationException, SAXException {
 		this(new FileInputStream(ptkPath), namespaceAware);
 	}
 
 	/**
 	 * Custom constructor. Accepting a file for initializing.
 	 * @param ptkFile The file of the PrintTalk Document.
-	 * @throws Exception
+     *
+     * @throws ParserConfigurationException if a DocumentBuilder cannot be created
+     * which satisfies the configuration requested.
+     * @throws SAXException - If any parse errors occur.
+     * @throws IOException - If any IO errors occur.
 	 */
-	public PrintTalkNavigator(File ptkFile) throws Exception {
+	public PrintTalkNavigator(final File ptkFile) throws IOException, SAXException, ParserConfigurationException {
 		this(new FileInputStream(ptkFile));
 	}
 
@@ -125,27 +170,38 @@ public class PrintTalkNavigator extends XmlNavigator {
 	 * Custom constructor. Accepting a file for initializing.
 	 * @param ptkFile The file of the PrintTalk Document.
 	 * @param namespaceAware True if navigator should be XML Namespace aware.
-	 * @throws Exception
+     *
+     * @throws ParserConfigurationException if a DocumentBuilder cannot be created
+     * which satisfies the configuration requested.
+     * @throws SAXException - If any parse errors occur.
+     * @throws IOException - If any IO errors occur.
 	 */
-	public PrintTalkNavigator(File ptkFile, boolean namespaceAware) throws Exception {
+	public PrintTalkNavigator(
+        final File ptkFile,
+        final boolean namespaceAware
+    ) throws IOException, ParserConfigurationException, SAXException {
 		this(new FileInputStream(ptkFile), namespaceAware);
 	}
 
 	/**
 	 * Returns the PrintTalk Document as Byte Array.
 	 * @return PrintTalk Document as Byte Array.
-	 * @throws Exception Is thrown in case an exception occurs.
+	 *
+     * @throws TransformerException If this document could not be transformed.
+     * @throws IOException - If any IO errors occur.
 	 */
-	public byte[] getPtkBytes() throws Exception {
+	public byte[] getPtkBytes() throws TransformerException, IOException {
 		return super.getXmlBytes();
 	}
 
 	/**
 	 * Returns the PrintTalk Document as Stream.
 	 * @return PrintTalk Document as Stream.
-	 * @throws Exception Is thrown in case an exception occurs.
+     * 
+     * @throws TransformerException If this document could not be transformed.
+     * @throws IOException - If any IO errors occur.
 	 */
-	public InputStream getPtkStream() throws Exception {
+	public InputStream getPtkStream() throws TransformerException, IOException {
 		return super.getXmlStream();
 	}
 
