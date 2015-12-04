@@ -1,13 +1,3 @@
-/**
- * All rights reserved by
- * 
- * flyeralarm GmbH
- * Alfred-Nobel-Straße 18
- * 97080 Würzburg
- *
- * Email: info@flyeralarm.com
- * Website: http://www.flyeralarm.com
- */
 package org.cip4.lib.xprinttalk.xml;
 
 import org.apache.commons.io.FileUtils;
@@ -35,6 +25,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.nio.file.Paths;
 import java.util.UUID;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
@@ -87,7 +78,7 @@ public class PrintTalkPackagerTest {
 
 		// act
 		ByteArrayOutputStream bos = new ByteArrayOutputStream();
-		PrintTalkPackager packager = new PrintTalkPackager(bos, null);
+		PrintTalkPackager packager = new PrintTalkPackager(bos, Paths.get(".").toUri());
 		packager.setCompressionLevel(CompressionLevel.BEST_SPEED);
 		packager.packagePrintTalk(new PrintTalkNavigator(new PrintTalkParser().parsePrintTalk(ptk)), "MyJobFile.ptk");
 
@@ -133,7 +124,7 @@ public class PrintTalkPackagerTest {
 
 		// act
 		ByteArrayOutputStream bos = new ByteArrayOutputStream();
-		PrintTalkPackager packager = new PrintTalkPackager(bos, null);
+		PrintTalkPackager packager = new PrintTalkPackager(bos, Paths.get(".").toUri());
 		packager.setCompressionLevel(CompressionLevel.BEST_SPEED);
 		packager.packagePrintTalk(
             new PrintTalkNavigator(

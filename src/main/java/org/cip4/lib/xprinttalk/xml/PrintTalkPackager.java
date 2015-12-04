@@ -61,12 +61,12 @@ public class PrintTalkPackager extends AbstractXmlPackager {
      * @throws Exception If the XML document could not be packaged.
      */
     public void packagePrintTalk(PrintTalkNavigator ptkNavigator, String docName, boolean withoutHierarchy) throws Exception {
-        if (StringUtils.isNotBlank(docName)) {
+        if (StringUtils.isBlank(docName)) {
+            docName = IDGeneratorUtil.generateID("PTK") + ".ptk";
+        } else {
             if (StringUtils.isBlank(FilenameUtils.getExtension(docName))) {
                 docName += ".ptk";
             }
-        } else {
-            docName = IDGeneratorUtil.generateID("PTK") + ".ptk";
         }
 
         packageXml(ptkNavigator, docName, withoutHierarchy);
