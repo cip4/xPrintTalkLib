@@ -33,7 +33,6 @@ import java.util.zip.ZipInputStream;
 /**
  * JUnit test case for PrintTalkPackager
  * @author stefan.meissner
- * @date 27.01.2013
  */
 public class PrintTalkPackagerTest {
 
@@ -78,9 +77,13 @@ public class PrintTalkPackagerTest {
 
 		// act
 		ByteArrayOutputStream bos = new ByteArrayOutputStream();
-		PrintTalkPackager packager = new PrintTalkPackager(bos, Paths.get(".").toUri());
+		PrintTalkPackager packager = new PrintTalkPackager(bos, false);
 		packager.setCompressionLevel(CompressionLevel.BEST_SPEED);
-		packager.packagePrintTalk(new PrintTalkNavigator(new PrintTalkParser().parsePrintTalk(ptk)), "MyJobFile.ptk");
+		packager.packagePrintTalk(
+            new PrintTalkNavigator(new PrintTalkParser().parsePrintTalk(ptk), true),
+            "MyJobFile.ptk",
+            Paths.get(".").toUri()
+        );
 
 		// assert
 		String dir = unzipStream(new ByteArrayInputStream(bos.toByteArray()));
@@ -124,15 +127,13 @@ public class PrintTalkPackagerTest {
 
 		// act
 		ByteArrayOutputStream bos = new ByteArrayOutputStream();
-		PrintTalkPackager packager = new PrintTalkPackager(bos, Paths.get(".").toUri());
+		PrintTalkPackager packager = new PrintTalkPackager(bos, true);
 		packager.setCompressionLevel(CompressionLevel.BEST_SPEED);
 		packager.packagePrintTalk(
-            new PrintTalkNavigator(
-                new PrintTalkParser().parsePrintTalk(ptk)
-            ),
-            "MyJobFile.ptk",
-            true
-        );
+			new PrintTalkNavigator(new PrintTalkParser().parsePrintTalk(ptk), true),
+			"MyJobFile.ptk",
+            Paths.get(".").toUri()
+		);
 
 		// assert
 		String dir = unzipStream(new ByteArrayInputStream(bos.toByteArray()));

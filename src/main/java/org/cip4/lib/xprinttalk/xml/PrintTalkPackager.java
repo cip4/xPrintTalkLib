@@ -17,26 +17,27 @@ public class PrintTalkPackager extends AbstractXmlPackager {
 	 * Create a new PrintTalkPackager.
 	 *
 	 * @param out     The underlying OutputStream to write the package to.
-	 * @param rootUri The root URI to use when dealing with relative URIs.
+	 * @param withoutHierarchy Put all files into the zip root.
 	 */
-	public PrintTalkPackager(OutputStream out, URI rootUri) {
-		super(out, rootUri);
+	public PrintTalkPackager(final OutputStream out, final boolean withoutHierarchy) {
+		super(out, withoutHierarchy);
 	}
 
     /**
      * Packages an XJDF Document to a zipped binary output stream.
      *
      * @param ptkNavigator The PrintTalkNavigator containing the data.
+     * @param rootUri The root URI to use when dealing with relative URIs.
      *
      * @throws Exception If the XML document could not be packaged.
      */
-    public void packagePrintTalk(PrintTalkNavigator ptkNavigator) throws Exception {
+    public final void packagePrintTalk(final PrintTalkNavigator ptkNavigator, final URI rootUri) throws Exception {
         String jobId = ptkNavigator.readAttribute(PrintTalkNavigator.BUSINESS_ID);
         if (jobId != null) {
             jobId += ".ptk";
         }
 
-        packagePrintTalk(ptkNavigator, jobId);
+        packagePrintTalk(ptkNavigator, jobId, rootUri);
     }
 
     /**
@@ -44,32 +45,24 @@ public class PrintTalkPackager extends AbstractXmlPackager {
      *
      * @param ptkNavigator The PrintTalkNavigator containing the data.
      * @param docName Documents name in ZIP Package.
+     * @param rootUri The root URI to use when dealing with relative URIs.
      *
      * @throws Exception If the XML document could not be packaged.
      */
-    public void packagePrintTalk(PrintTalkNavigator ptkNavigator, String docName) throws Exception {
-        packagePrintTalk(ptkNavigator, docName, false);
-    }
-
-    /**
-     * Packages an XJDF Document to a zipped binary output stream.
-     *
-     * @param ptkNavigator The PrintTalkNavigator containing the data.
-     * @param docName Documents name in ZIP Package.
-     * @param withoutHierarchy Put all files into the ZIP Root.
-     *
-     * @throws Exception If the XML document could not be packaged.
-     */
-    public void packagePrintTalk(PrintTalkNavigator ptkNavigator, String docName, boolean withoutHierarchy) throws Exception {
-        if (StringUtils.isBlank(docName)) {
-            docName = IDGeneratorUtil.generateID("PTK") + ".ptk";
+    public final void packagePrintTalk(
+        final PrintTalkNavigator ptkNavigator,
+        final String docName,
+        final URI rootUri
+    ) throws Exception {
+        String tmpDocName = docName;
+        if (StringUtils.isBlank(tmpDocName)) {
+            tmpDocName = IDGeneratorUtil.generateID("PTK") + ".ptk";
         } else {
-            if (StringUtils.isBlank(FilenameUtils.getExtension(docName))) {
-                docName += ".ptk";
+            if (StringUtils.isBlank(FilenameUtils.getExtension(tmpDocName))) {
+                tmpDocName += ".ptk";
             }
         }
 
-        packageXml(ptkNavigator, docName, withoutHierarchy);
+        packageXml(ptkNavigator, tmpDocName, rootUri);
     }
-
 }
