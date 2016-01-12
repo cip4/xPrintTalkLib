@@ -4,7 +4,9 @@ import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang.StringUtils;
 import org.cip4.lib.xjdf.util.IDGeneratorUtil;
 import org.cip4.lib.xjdf.xml.internal.AbstractXmlPackager;
+import org.cip4.lib.xjdf.xml.internal.PackagerException;
 
+import javax.xml.xpath.XPathExpressionException;
 import java.io.OutputStream;
 import java.net.URI;
 
@@ -29,15 +31,15 @@ public class PrintTalkPackager extends AbstractXmlPackager {
      * @param ptkNavigator The PrintTalkNavigator containing the data.
      * @param rootUri The root URI to use when dealing with relative URIs.
      *
-     * @throws Exception If the XML document could not be packaged.
+     * @throws PackagerException If the PTK document could not be packaged.
+     * @throws XPathExpressionException If the BusinessID of the PTK could not be read.
      */
-    public final void packagePrintTalk(final PrintTalkNavigator ptkNavigator, final URI rootUri) throws Exception {
-        String jobId = ptkNavigator.readAttribute(PrintTalkNavigator.BUSINESS_ID);
-        if (jobId != null) {
-            jobId += ".ptk";
-        }
-
-        packagePrintTalk(ptkNavigator, jobId, rootUri);
+    public final void packagePrintTalk(
+        final PrintTalkNavigator ptkNavigator,
+        final URI rootUri
+    ) throws PackagerException, XPathExpressionException {
+        final String businessID = ptkNavigator.readAttribute(PrintTalkNavigator.BUSINESS_ID);
+        packagePrintTalk(ptkNavigator, businessID, rootUri);
     }
 
     /**
@@ -47,13 +49,13 @@ public class PrintTalkPackager extends AbstractXmlPackager {
      * @param docName Documents name in ZIP Package.
      * @param rootUri The root URI to use when dealing with relative URIs.
      *
-     * @throws Exception If the XML document could not be packaged.
+     * @throws PackagerException If the PTK could not be packaged.
      */
     public final void packagePrintTalk(
         final PrintTalkNavigator ptkNavigator,
         final String docName,
         final URI rootUri
-    ) throws Exception {
+    ) throws PackagerException {
         String tmpDocName = docName;
         if (StringUtils.isBlank(tmpDocName)) {
             tmpDocName = IDGeneratorUtil.generateID("PTK") + ".ptk";
