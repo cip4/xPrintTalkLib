@@ -15,6 +15,15 @@ import java.net.URI;
  */
 public class PrintTalkPackager extends AbstractXmlPackager {
 
+    /**
+     * Create a new PrintTalkPackager.
+     *
+     * @param out     The underlying OutputStream to write the package to.
+     */
+    public PrintTalkPackager(final OutputStream out) {
+        super(out, false);
+    }
+
 	/**
 	 * Create a new PrintTalkPackager.
 	 *
