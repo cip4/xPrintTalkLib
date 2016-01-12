@@ -5,6 +5,7 @@ import org.apache.commons.lang.StringUtils;
 import org.cip4.lib.xjdf.util.IDGeneratorUtil;
 import org.cip4.lib.xjdf.xml.internal.AbstractXmlPackager;
 import org.cip4.lib.xjdf.xml.internal.PackagerException;
+import org.cip4.lib.xjdf.xml.internal.XmlNavigator;
 
 import javax.xml.xpath.XPathExpressionException;
 import java.io.OutputStream;
@@ -33,6 +34,14 @@ public class PrintTalkPackager extends AbstractXmlPackager {
 	public PrintTalkPackager(final OutputStream out, final boolean withoutHierarchy) {
 		super(out, withoutHierarchy);
 	}
+
+    @Override
+    public final void packageXml(
+        final XmlNavigator ptkNavigator,
+        final URI rootUri
+    ) throws PackagerException, XPathExpressionException {
+        packagePrintTalk((PrintTalkNavigator) ptkNavigator, rootUri);
+    }
 
     /**
      * Packages an XJDF Document to a zipped binary output stream.
