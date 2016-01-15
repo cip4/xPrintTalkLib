@@ -1,13 +1,3 @@
-/**
- * All rights reserved by
- * 
- * flyeralarm GmbH
- * Alfred-Nobel-Straße 18
- * 97080 Würzburg
- *
- * Email: info@flyeralarm.com
- * Website: http://www.flyeralarm.com
- */
 package org.cip4.lib.xprinttalk.xml;
 
 import java.io.ByteArrayOutputStream;
@@ -16,6 +6,8 @@ import java.io.InputStream;
 
 import javax.xml.bind.JAXBException;
 import javax.xml.parsers.ParserConfigurationException;
+
+import static org.junit.Assert.*;
 
 import org.cip4.lib.xjdf.XJdfNodeFactory;
 import org.cip4.lib.xjdf.builder.ProductBuilder;
@@ -33,8 +25,6 @@ import org.xml.sax.SAXException;
 
 /**
  * JUnit test case for PrintTalkValidator.
- * @author s.meissner
- * @date 03.07.2012
  */
 public class PrintTalkValidatorTest {
 
@@ -90,14 +80,10 @@ public class PrintTalkValidatorTest {
 		InputStream is = PrintTalkValidatorTest.class.getResourceAsStream(RES_TEST_PTK);
 
 		// act
-		printTalkValidator = new PrintTalkValidator(is);
-		boolean isValid = printTalkValidator.isValid();
+		printTalkValidator = new PrintTalkValidator();
 
 		// assert
-		System.out.println(printTalkValidator.getMessagesText());
-
-		// TODO Update XSD for validations (e.g. ID needed or not ??)
-		// Assert.assertTrue("Validation result is wrong", isValid);
+		assertFalse(printTalkValidator.isValid(is));
 	}
 
 	@Test
