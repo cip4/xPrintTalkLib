@@ -1,107 +1,88 @@
-/**
- * All rights reserved by
- * 
- * flyeralarm GmbH
- * Alfred-Nobel-Straße 18
- * 97080 Würzburg
- *
- * Email: info@flyeralarm.com
- * Website: http://www.flyeralarm.com
- */
 package org.cip4.lib.xprinttalk.xml;
 
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang.StringUtils;
 import org.cip4.lib.xjdf.util.IDGeneratorUtil;
-import org.cip4.lib.xjdf.xml.XJdfPackager;
+import org.cip4.lib.xjdf.xml.internal.AbstractXmlPackager;
+import org.cip4.lib.xjdf.xml.internal.PackagerException;
+import org.cip4.lib.xjdf.xml.internal.XmlNavigator;
 
+import javax.xml.xpath.XPathExpressionException;
 import java.io.OutputStream;
+import java.net.URI;
 
 /**
  * Packaging logic for PrintTalk Documents. Package an PrintTalk with all references in a ZIP Package.
- * @author stefan.meissner
- * @date 27.01.2013
  */
-public class PrintTalkPackager extends XJdfPackager {
+public class PrintTalkPackager extends AbstractXmlPackager {
+
+    /**
+     * Create a new PrintTalkPackager.
+     *
+     * @param out     The underlying OutputStream to write the package to.
+     */
+    public PrintTalkPackager(final OutputStream out) {
+        super(out, false);
+    }
 
 	/**
-	 * Custom constructor. Accepting a PrintTalk Path for initializing.
-	 * @param ptkPath Path to PrintTalk Document.
-	 * @throws Exception
+	 * Create a new PrintTalkPackager.
+	 *
+	 * @param out     The underlying OutputStream to write the package to.
+	 * @param withoutHierarchy Put all files into the zip root.
 	 */
-	public PrintTalkPackager(String ptkPath) throws Exception {
-		super(ptkPath);
+	public PrintTalkPackager(final OutputStream out, final boolean withoutHierarchy) {
+		super(out, withoutHierarchy);
 	}
 
-	/**
-	 * Custom constructor. Accepting an PrintTalk Document for initializing.
-	 * @param ptk PrintTalk Document byte array for packaging.
-	 * @throws Exception
-	 */
-	public PrintTalkPackager(byte[] ptk) throws Exception {
-		this(ptk, null);
-	}
+    @Override
+    public final void packageXml(
+        final XmlNavigator ptkNavigator,
+        final URI rootUri
+    ) throws PackagerException, XPathExpressionException {
+        packagePrintTalk((PrintTalkNavigator) ptkNavigator, rootUri);
+    }
 
-	/**
-	 * Custom constructor. Accepting an PrintTalk Document for initializing.
-	 * @param ptk PrintTalk Document byte array for packaging.
-	 * @param rootPath The documents root path.
-	 * @throws Exception
-	 */
-	public PrintTalkPackager(byte[] ptk, String rootPath) throws Exception {
-		super(ptk, rootPath);
-	}
+    /**
+     * Packages an XJDF Document to a zipped binary output stream.
+     *
+     * @param ptkNavigator The PrintTalkNavigator containing the data.
+     * @param rootUri The root URI to use when dealing with relative URIs.
+     *
+     * @throws PackagerException If the PTK document could not be packaged.
+     * @throws XPathExpressionException If the BusinessID of the PTK could not be read.
+     */
+    public final void packagePrintTalk(
+        final PrintTalkNavigator ptkNavigator,
+        final URI rootUri
+    ) throws PackagerException, XPathExpressionException {
+        final String businessID = ptkNavigator.readAttribute(PrintTalkNavigator.BUSINESS_ID);
+        packagePrintTalk(ptkNavigator, businessID, rootUri);
+    }
 
-	/**
-	 * Packages an PrintTalk Document to a zipped binary output stream.
-	 * @param os Target OutputStream where PrintTalkDocument is being packaged.
-	 * @throws Exception
-	 */
-	public void packagePrintTalk(OutputStream os) throws Exception {
+    /**
+     * Packages an XJDF Document to a zipped binary output stream.
+     *
+     * @param ptkNavigator The PrintTalkNavigator containing the data.
+     * @param docName Documents name in ZIP Package.
+     * @param rootUri The root URI to use when dealing with relative URIs.
+     *
+     * @throws PackagerException If the PTK could not be packaged.
+     */
+    public final void packagePrintTalk(
+        final PrintTalkNavigator ptkNavigator,
+        final String docName,
+        final URI rootUri
+    ) throws PackagerException {
+        String tmpDocName = docName;
+        if (StringUtils.isBlank(tmpDocName)) {
+            tmpDocName = IDGeneratorUtil.generateID("PTK") + ".ptk";
+        } else {
+            if (StringUtils.isBlank(FilenameUtils.getExtension(tmpDocName))) {
+                tmpDocName += ".ptk";
+            }
+        }
 
-		PrintTalkNavigator nav = new PrintTalkNavigator(getXmlDoc());
-
-		// get document name
-		String businessId = nav.readAttribute(PrintTalkNavigator.BUSINESS_ID);
-
-		if (businessId != null) {
-			businessId += ".ptk";
-		}
-
-		// package
-		packageXJdf(os, businessId);
-	}
-
-	/**
-	 * Packages an PrintTalk Document to a zipped binary output stream.
-	 * @param os Target OutputStream where PrintTalkDocument is being packaged.
-	 * @param docName Documents name in ZIP Package.
-	 * @throws Exception
-	 */
-	public void packagePrintTalk(OutputStream os, String docName) throws Exception {
-
-		// package xml
-		packagePrintTalk(os, docName, false);
-	}
-
-	/**
-	 * Packages an PrintTalk Document to a zipped binary output stream.
-	 * @param os Target OutputStream where PrintTalkDocument is being packaged.
-	 * @param docName Documents name in ZIP Package.
-	 * @param withoutHierarchy Put all files into the ZIP Root.
-	 * @throws Exception
-	 */
-	public void packagePrintTalk(OutputStream os, String docName, boolean withoutHierarchy) throws Exception {
-
-		// create main doc Name
-		if (docName == null || docName.equals("")) {
-			docName = IDGeneratorUtil.generateID("PTK") + ".ptk";
-
-		} else if (StringUtils.isEmpty(FilenameUtils.getExtension(docName))) {
-			docName = docName + ".ptk";
-		}
-
-		// package xml
-		packageXJdf(os, docName, withoutHierarchy);
-	}
+        packageXml(ptkNavigator, tmpDocName, rootUri);
+    }
 }
