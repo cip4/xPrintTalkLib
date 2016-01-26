@@ -1,13 +1,10 @@
 package org.cip4.lib.xprinttalk.xml;
 
 import java.io.ByteArrayOutputStream;
-import java.io.IOException;
 import java.io.InputStream;
 
 import javax.xml.bind.JAXBException;
-import javax.xml.parsers.ParserConfigurationException;
-
-import static org.junit.Assert.*;
+import javax.xml.bind.ValidationException;
 
 import org.cip4.lib.xjdf.XJdfNodeFactory;
 import org.cip4.lib.xjdf.builder.ProductBuilder;
@@ -21,16 +18,13 @@ import org.cip4.lib.xprinttalk.schema.PrintTalk;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.xml.sax.SAXException;
 
 /**
  * JUnit test case for PrintTalkValidator.
  */
 public class PrintTalkValidatorTest {
 
-	private final String RES_TEST_PTK = "/org/cip4/lib/xprinttalk/simple_job.ptk";
-
-	private PrintTalkValidator printTalkValidator;
+    private PrintTalkValidator printTalkValidator;
 
 	/**
 	 * Default constructor.
@@ -64,26 +58,16 @@ public class PrintTalkValidatorTest {
 		printTalkValidator = null;
 	}
 
-	/**
-	 * Test method for {@link org.cip4.lib.xjdf.xml.internal.AbstractXmlValidator#check(java.io.InputStream)}.
-	 * @throws IOException
-	 * @throws ParserConfigurationException
-	 * @throws SAXException
-	 * @throws InstantiationException
-	 * @throws IllegalAccessException
-	 * @throws ClassNotFoundException
-	 */
-	@Test
-	public void testCheck() throws SAXException, ParserConfigurationException, IOException, ClassNotFoundException, IllegalAccessException, InstantiationException {
+	@Test(expected = ValidationException.class)
+	public void testCheck() throws Exception {
 
 		// arrange
-		InputStream is = PrintTalkValidatorTest.class.getResourceAsStream(RES_TEST_PTK);
+        String RES_TEST_PTK = "/org/cip4/lib/xprinttalk/simple_job.ptk";
+        InputStream is = PrintTalkValidatorTest.class.getResourceAsStream(RES_TEST_PTK);
 
 		// act
 		printTalkValidator = new PrintTalkValidator();
-
-		// assert
-		assertFalse(printTalkValidator.isValid(is));
+		printTalkValidator.isValid(is);
 	}
 
 	@Test
