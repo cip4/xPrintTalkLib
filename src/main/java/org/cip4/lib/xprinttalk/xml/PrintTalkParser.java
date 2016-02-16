@@ -1,20 +1,18 @@
 package org.cip4.lib.xprinttalk.xml;
 
-import java.io.IOException;
-import java.io.OutputStream;
-
-import javax.xml.bind.JAXBException;
-import javax.xml.parsers.ParserConfigurationException;
-
+import com.sun.xml.bind.marshaller.NamespacePrefixMapper;
 import org.cip4.lib.xjdf.xml.XJdfConstants;
 import org.cip4.lib.xjdf.xml.internal.AbstractXmlParser;
 import org.cip4.lib.xjdf.xml.internal.AbstractXmlValidator;
 import org.cip4.lib.xprinttalk.schema.PrintTalk;
 import org.cip4.lib.xprinttalk.xml.internal.JAXBContextFactory;
 import org.cip4.lib.xprinttalk.xml.internal.PrintTalkNamespaceMapper;
-
-import com.sun.xml.bind.marshaller.NamespacePrefixMapper;
 import org.xml.sax.SAXException;
+
+import javax.xml.bind.JAXBException;
+import javax.xml.parsers.ParserConfigurationException;
+import java.io.IOException;
+import java.io.OutputStream;
 
 /**
  * Parsing logic for building a XML Document from PrintTalk DOM-Tree and the way around.
@@ -31,24 +29,15 @@ public class PrintTalkParser extends AbstractXmlParser<PrintTalk> {
     }
 
     /**
-     * Factory method for getting a new XJdfParser instance.
-     *
-     * @return New XJdfParser instance.
-     */
-    public static PrintTalkParser newInstance() {
-        try {
-            return new PrintTalkParser();
-        } catch (JAXBException e) {
-            e.printStackTrace();
-            throw new AssertionError(e);
-        }
-    }
-
-    /**
      * Parse a PrintTalk Object Tree to a binary output stream.
      *
      * @param printTalk PrintTalk Object Tree for parsing.
      * @param os Target OutputStream where PrintTalk Document is being parsed.
+     *
+     * @throws ParserConfigurationException Is thrown in case a serious configuration error occurs.
+     * @throws JAXBException Is thrown in case any error while un-/marshalling occurs.
+     * @throws SAXException Is thrown in case parsing an xml document fails.
+     * @throws IOException Is thrown in case any IO error occurs.
      */
     public final void parsePrintTalk(final PrintTalk printTalk, final OutputStream os)
         throws ParserConfigurationException, JAXBException, SAXException, IOException {
@@ -61,6 +50,11 @@ public class PrintTalkParser extends AbstractXmlParser<PrintTalk> {
      * @param printTalk PrintTalk Object Tree for parsing.
      * @param os Target OutputStream where PrintTalk Document is being parsed.
      * @param skipValidation Indicates whether or not validation has to be skipped.
+     *
+     * @throws ParserConfigurationException Is thrown in case a serious configuration error occurs.
+     * @throws JAXBException Is thrown in case any error while un-/marshalling occurs.
+     * @throws SAXException Is thrown in case parsing an xml document fails.
+     * @throws IOException Is thrown in case any IO error occurs.
      */
     public final void parsePrintTalk(final PrintTalk printTalk, final OutputStream os, final boolean skipValidation)
         throws IOException, ParserConfigurationException, SAXException, JAXBException {
@@ -73,6 +67,10 @@ public class PrintTalkParser extends AbstractXmlParser<PrintTalk> {
      * @param printTalk PrintTalk Object Tree for parsing.
      *
      * @return PrintTalk as byte array.
+     * @throws ParserConfigurationException Is thrown in case a serious configuration error occurs.
+     * @throws JAXBException Is thrown in case any error while un-/marshalling occurs.
+     * @throws SAXException Is thrown in case parsing an xml document fails.
+     * @throws IOException Is thrown in case any IO error occurs.
      */
     public final byte[] parsePrintTalk(final PrintTalk printTalk)
         throws ParserConfigurationException, IOException, SAXException, JAXBException {
@@ -86,6 +84,10 @@ public class PrintTalkParser extends AbstractXmlParser<PrintTalk> {
      * @param skipValidation Skip validation.
      *
      * @return PrintTalk as byte array.
+     * @throws ParserConfigurationException Is thrown in case a serious configuration error occurs.
+     * @throws JAXBException Is thrown in case any error while un-/marshalling occurs.
+     * @throws SAXException Is thrown in case parsing an xml document fails.
+     * @throws IOException Is thrown in case any IO error occurs.
      */
     public final byte[] parsePrintTalk(final PrintTalk printTalk, final boolean skipValidation)
         throws ParserConfigurationException, JAXBException, SAXException, IOException {

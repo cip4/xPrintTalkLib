@@ -19,7 +19,7 @@ public class PrintTalkValidator extends AbstractXmlValidator<PrintTalk> {
     private static final URL SCHEMA = PrintTalkValidator.class.getResource("/PrintTalk20.xsd");
 
     /**
-     * Custom constructor. Accepting PrintTalk Stream for initializing.
+     * Custom constructor.
      */
     public PrintTalkValidator() {
         super(loadXsdDependencies());
