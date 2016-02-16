@@ -27,8 +27,6 @@ import org.junit.Test;
 
 /**
  * JUnit test case for PrintTalkParser
- * @author stefan.meissner
- * @date 23.10.2012
  */
 public class PrintTalkParserTest {
 
@@ -42,7 +40,7 @@ public class PrintTalkParserTest {
 	public void setUp() throws Exception {
 
 		// new Instance
-		ptkParser = PrintTalkParser.newInstance();
+		ptkParser = new PrintTalkParser();
 	}
 
 	/**

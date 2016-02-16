@@ -67,7 +67,7 @@ public class PrintTalkValidatorTest {
 
 		// act
 		printTalkValidator = new PrintTalkValidator();
-		printTalkValidator.isValid(is);
+		printTalkValidator.validate(is);
 	}
 
 	@Test
