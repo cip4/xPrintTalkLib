@@ -1,153 +1,125 @@
-/**
- * All rights reserved by
- * 
- * flyeralarm GmbH
- * Alfred-Nobel-Straße 18
- * 97080 Würzburg
- *
- * Email: info@flyeralarm.com
- * Website: http://www.flyeralarm.com
- */
 package org.cip4.lib.xprinttalk.xml;
 
-import java.io.InputStream;
-import java.io.OutputStream;
-
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.ValidationException;
-
+import com.sun.xml.bind.marshaller.NamespacePrefixMapper;
 import org.cip4.lib.xjdf.xml.XJdfConstants;
 import org.cip4.lib.xjdf.xml.internal.AbstractXmlParser;
+import org.cip4.lib.xjdf.xml.internal.AbstractXmlValidator;
 import org.cip4.lib.xprinttalk.schema.PrintTalk;
 import org.cip4.lib.xprinttalk.xml.internal.JAXBContextFactory;
 import org.cip4.lib.xprinttalk.xml.internal.PrintTalkNamespaceMapper;
+import org.xml.sax.SAXException;
 
-import com.sun.xml.bind.marshaller.NamespacePrefixMapper;
+import javax.xml.bind.JAXBException;
+import javax.xml.parsers.ParserConfigurationException;
+import java.io.IOException;
+import java.io.OutputStream;
 
 /**
  * Parsing logic for building a XML Document from PrintTalk DOM-Tree and the way around.
- * @author s.meissner
- * @date 26.06.2012
  */
 public class PrintTalkParser extends AbstractXmlParser<PrintTalk> {
 
-	/**
-	 * Private default constructor.
-	 * @throws JAXBException Thrown in case a JAXBException occurs.
-	 */
-	public PrintTalkParser() throws JAXBException {
+    /**
+     * Private default constructor.
+     *
+     * @throws JAXBException Thrown in case a JAXBException occurs.
+     */
+    public PrintTalkParser() throws JAXBException {
+        super(JAXBContextFactory.getInstance());
+    }
 
-		// call super class
-		super(JAXBContextFactory.getInstance());
-	}
+    /**
+     * Parse a PrintTalk Object Tree to a binary output stream.
+     *
+     * @param printTalk PrintTalk Object Tree for parsing.
+     * @param os Target OutputStream where PrintTalk Document is being parsed.
+     *
+     * @throws ParserConfigurationException Is thrown in case a serious configuration error occurs.
+     * @throws JAXBException Is thrown in case any error while un-/marshalling occurs.
+     * @throws SAXException Is thrown in case parsing an xml document fails.
+     * @throws IOException Is thrown in case any IO error occurs.
+     */
+    public final void parsePrintTalk(final PrintTalk printTalk, final OutputStream os)
+        throws ParserConfigurationException, JAXBException, SAXException, IOException {
+        parseXml(printTalk, os);
+    }
 
-	/**
-	 * Factory method for getting a new XJdfParser instance.
-	 * @return New XJdfParser instance.
-	 */
-	public static PrintTalkParser newInstance() {
+    /**
+     * Parse a PrintTalk Object Tree to a binary output stream.
+     *
+     * @param printTalk PrintTalk Object Tree for parsing.
+     * @param os Target OutputStream where PrintTalk Document is being parsed.
+     * @param skipValidation Indicates whether or not validation has to be skipped.
+     *
+     * @throws ParserConfigurationException Is thrown in case a serious configuration error occurs.
+     * @throws JAXBException Is thrown in case any error while un-/marshalling occurs.
+     * @throws SAXException Is thrown in case parsing an xml document fails.
+     * @throws IOException Is thrown in case any IO error occurs.
+     */
+    public final void parsePrintTalk(final PrintTalk printTalk, final OutputStream os, final boolean skipValidation)
+        throws IOException, ParserConfigurationException, SAXException, JAXBException {
+        parseXml(printTalk, os, skipValidation);
+    }
 
-		try {
+    /**
+     * Parse a PrintTalk Object Tree to a byte array.
+     *
+     * @param printTalk PrintTalk Object Tree for parsing.
+     *
+     * @return PrintTalk as byte array.
+     * @throws ParserConfigurationException Is thrown in case a serious configuration error occurs.
+     * @throws JAXBException Is thrown in case any error while un-/marshalling occurs.
+     * @throws SAXException Is thrown in case parsing an xml document fails.
+     * @throws IOException Is thrown in case any IO error occurs.
+     */
+    public final byte[] parsePrintTalk(final PrintTalk printTalk)
+        throws ParserConfigurationException, IOException, SAXException, JAXBException {
+        return parseXml(printTalk);
+    }
 
-			// return new instance
-			return new PrintTalkParser();
+    /**
+     * Parse a PrintTalk Object Tree to a byte array.
+     *
+     * @param printTalk PrintTalk Object Tree for parsing.
+     * @param skipValidation Skip validation.
+     *
+     * @return PrintTalk as byte array.
+     * @throws ParserConfigurationException Is thrown in case a serious configuration error occurs.
+     * @throws JAXBException Is thrown in case any error while un-/marshalling occurs.
+     * @throws SAXException Is thrown in case parsing an xml document fails.
+     * @throws IOException Is thrown in case any IO error occurs.
+     */
+    public final byte[] parsePrintTalk(final PrintTalk printTalk, final boolean skipValidation)
+        throws ParserConfigurationException, JAXBException, SAXException, IOException {
+        return parseXml(printTalk, skipValidation);
+    }
 
-		} catch (JAXBException e) {
+    /**
+     * Returns a new specific NamespacePrefixMapper implementation.
+     *
+     * @return New specific NamespacePrefixMapper implementation.
+     */
+    @Override
+    protected final NamespacePrefixMapper getNamespacePrefixMapper() {
+        return new PrintTalkNamespaceMapper();
+    }
 
-			// error
-			e.printStackTrace();
-			throw new AssertionError(e);
+    /**
+     * Returns the XML Header for marshaling.
+     *
+     * @return XML Header as String
+     */
+    @Override
+    protected final String getXmlHeader() {
+        String header = "<!-- Generated by CIP4 xPrintTalkLib " + PrintTalkConstants.PTK_LIB_VERSION
+            + " and CIP4 xJdfLib " + XJdfConstants.XJDF_LIB_VERSION + " -->\r\n";
+        header = header.replaceAll("  ", " ");
+        return header;
+    }
 
-		}
-	}
-
-	/**
-	 * Parse a PrintTalk Object Tree to a binary output stream.
-	 * @param printTalk PrintTalk Object Tree for parsing.
-	 * @param os Target OutputStream where PrintTalk Document is being parsed.
-	 * @throws ValidationException Is thrown in case PrintTalk is not valid and validation process is not being skipped.
-	 * @throws Exception Is thrown in case an exception occurs.
-	 */
-	public void parsePrintTalk(PrintTalk printTalk, OutputStream os) throws Exception {
-		parseXml(printTalk, os, PrintTalkValidator.class);
-	}
-
-	/**
-	 * Parse a PrintTalk Object Tree to a binary output stream.
-	 * @param printTalk PrintTalk Object Tree for parsing.
-	 * @param os Target OutputStream where PrintTalk Document is being parsed.
-	 * @param skipValidation Indicates whether or not validation has to be skipped.
-	 * @throws ValidationException Is thrown in case PrintTalk is not valid and validation process is not being skipped.
-	 * @throws Exception Is thrown in case an exception occurs.
-	 */
-	public void parsePrintTalk(PrintTalk printTalk, OutputStream os, boolean skipValidation) throws Exception {
-		parseXml(printTalk, os, skipValidation, PrintTalkValidator.class);
-	}
-
-	/**
-	 * Parse a PrintTalk Object Tree to a byte array.
-	 * @param printTalk PrintTalk Object Tree for parsing.
-	 * @return PrintTalk as byte array.
-	 * @throws Exception Is thrown in case an exception occurs.
-	 */
-	public byte[] parsePrintTalk(PrintTalk printTalk) throws Exception {
-		return parseXml(printTalk, PrintTalkValidator.class);
-	}
-
-	/**
-	 * Parse a PrintTalk Object Tree to a byte array.
-	 * @param printTalk PrintTalk Object Tree for parsing.
-	 * @param skipValidation Skip validation.
-	 * @return PrintTalk as byte array.
-	 * @throws Exception Is thrown in case an exception occurs.
-	 */
-	public byte[] parsePrintTalk(PrintTalk printTalk, boolean skipValidation) throws Exception {
-		return parseXml(printTalk, skipValidation, PrintTalkValidator.class);
-	}
-
-	/**
-	 * Parse a binary input stream to a PrintTalk Object Tree.
-	 * @param is Binary PrintTalk Input Stream for parsing.
-	 * @return PrintTalk Object Tree parsed from binary input stream.
-	 * @throws Exception Is thrown in case an exception occurs.
-	 */
-	@Override
-	public PrintTalk parseStream(InputStream is) throws Exception {
-		return super.parseStream(is);
-	}
-
-	/**
-	 * @see org.cip4.lib.xjdf.xml.internal.AbstractXmlParser#parseBytes(byte[])
-	 */
-	@Override
-	protected PrintTalk parseBytes(byte[] bytes) throws Exception {
-		return super.parseBytes(bytes);
-	}
-
-	/**
-	 * Returns a new specific NamespacePrefixMapper implementation.
-	 * @return New specific NamespacePrefixMapper implementation.
-	 */
-	@Override
-	protected NamespacePrefixMapper getNamespacePrefixMapper() {
-		return new PrintTalkNamespaceMapper();
-	}
-
-	/**
-	 * Returns the XML Header for marshaling.
-	 * @return XML Header as String
-	 */
-	@Override
-	protected String getXmlHeader() {
-
-		String header = "";
-
-		// build PrintTalk Header
-		header += "<!-- Generated by CIP4 xPrintTalkLib " + PrintTalkConstants.PTK_LIB_VERSION + " and CIP4 xJdfLib " + XJdfConstants.XJDF_LIB_VERSION + " -->\r\n";
-		header = header.replaceAll("  ", " ");
-
-		// return header
-		return header;
-	}
+    @Override
+    protected final AbstractXmlValidator<PrintTalk> createValidator() {
+        return new PrintTalkValidator();
+    }
 
 }
