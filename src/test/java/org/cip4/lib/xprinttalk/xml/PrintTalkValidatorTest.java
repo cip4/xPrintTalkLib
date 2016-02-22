@@ -1,21 +1,10 @@
-/**
- * All rights reserved by
- * 
- * flyeralarm GmbH
- * Alfred-Nobel-Straße 18
- * 97080 Würzburg
- *
- * Email: info@flyeralarm.com
- * Website: http://www.flyeralarm.com
- */
 package org.cip4.lib.xprinttalk.xml;
 
 import java.io.ByteArrayOutputStream;
-import java.io.IOException;
 import java.io.InputStream;
 
 import javax.xml.bind.JAXBException;
-import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.bind.ValidationException;
 
 import org.cip4.lib.xjdf.XJdfNodeFactory;
 import org.cip4.lib.xjdf.builder.ProductBuilder;
@@ -29,18 +18,13 @@ import org.cip4.lib.xprinttalk.schema.PrintTalk;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.xml.sax.SAXException;
 
 /**
  * JUnit test case for PrintTalkValidator.
- * @author s.meissner
- * @date 03.07.2012
  */
 public class PrintTalkValidatorTest {
 
-	private final String RES_TEST_PTK = "/org/cip4/lib/xprinttalk/simple_job.ptk";
-
-	private PrintTalkValidator printTalkValidator;
+    private PrintTalkValidator printTalkValidator;
 
 	/**
 	 * Default constructor.
@@ -74,30 +58,16 @@ public class PrintTalkValidatorTest {
 		printTalkValidator = null;
 	}
 
-	/**
-	 * Test method for {@link org.cip4.lib.xjdf.xml.internal.AbstractXmlValidator#check(java.io.InputStream)}.
-	 * @throws IOException
-	 * @throws ParserConfigurationException
-	 * @throws SAXException
-	 * @throws InstantiationException
-	 * @throws IllegalAccessException
-	 * @throws ClassNotFoundException
-	 */
-	@Test
-	public void testCheck() throws SAXException, ParserConfigurationException, IOException, ClassNotFoundException, IllegalAccessException, InstantiationException {
+	@Test(expected = ValidationException.class)
+	public void testCheck() throws Exception {
 
 		// arrange
-		InputStream is = PrintTalkValidatorTest.class.getResourceAsStream(RES_TEST_PTK);
+        String RES_TEST_PTK = "/org/cip4/lib/xprinttalk/simple_job.ptk";
+        InputStream is = PrintTalkValidatorTest.class.getResourceAsStream(RES_TEST_PTK);
 
 		// act
-		printTalkValidator = new PrintTalkValidator(is);
-		boolean isValid = printTalkValidator.isValid();
-
-		// assert
-		System.out.println(printTalkValidator.getMessagesText());
-
-		// TODO Update XSD for validations (e.g. ID needed or not ??)
-		// Assert.assertTrue("Validation result is wrong", isValid);
+		printTalkValidator = new PrintTalkValidator();
+		printTalkValidator.validate(is);
 	}
 
 	@Test
