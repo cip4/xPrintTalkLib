@@ -1,11 +1,5 @@
 package org.cip4.lib.xprinttalk.xml;
 
-import java.io.ByteArrayOutputStream;
-import java.io.InputStream;
-
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.ValidationException;
-
 import org.cip4.lib.xjdf.XJdfNodeFactory;
 import org.cip4.lib.xjdf.builder.ProductBuilder;
 import org.cip4.lib.xjdf.builder.XJdfBuilder;
@@ -18,6 +12,11 @@ import org.cip4.lib.xprinttalk.schema.PrintTalk;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.ValidationException;
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
 
 /**
  * JUnit test case for PrintTalkValidator.
