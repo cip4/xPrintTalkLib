@@ -17,6 +17,7 @@ import java.io.InputStream;
 
 import org.apache.commons.io.IOUtils;
 import org.cip4.lib.xjdf.schema.ProductList;
+import org.cip4.lib.xjdf.xml.XJdfConstants;
 import org.cip4.lib.xjdf.xml.XJdfNavigator;
 import org.junit.After;
 import org.junit.Assert;
@@ -76,16 +77,19 @@ public class PrintTalkNavigatorTest {
 
 	@Test
 	public void testXPathExpressionsXJDF() throws Exception {
+        try (final InputStream is = PrintTalkNavigatorTest.class.getResourceAsStream(RES_TEST_PTK)) {
+            PrintTalkNavigator printTalkNavigator = new PrintTalkNavigator(is, true);
+            // arrange
+            String actual;
 
-		// arrange
-		String actual;
+            // act / assert
+            actual = printTalkNavigator.readAttribute("//xjdf:XJDF/xjdf:GeneralID[@IDUsage='CatalogID']/@IDValue");
+            Assert.assertEquals("Value 'CatalogID' is wrong.", "42", actual);
 
-		// act / assert
-		actual = printTalkNavigator.readXJdfAttribute(XJdfNavigator.GENERAL_CATALOG_ID);
-		Assert.assertEquals("Value 'CatalogID' is wrong.", "42", actual);
+            actual = printTalkNavigator.readAttribute("//xjdf:XJDF/xjdf:ProductList/xjdf:Product/@Amount");
+            Assert.assertEquals("Value 'Amount' is wrong.", "1500", actual);
 
-		actual = printTalkNavigator.readXJdfAttribute(XJdfNavigator.AMOUNT);
-		Assert.assertEquals("Value 'Amount' is wrong.", "1500", actual);
+        }
 	}
 
 	@Test
