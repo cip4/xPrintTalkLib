@@ -89,14 +89,14 @@ public class PrintTalkPackagerTest {
 		String dir = unzipStream(new ByteArrayInputStream(bos.toByteArray()));
 
 		File xPtk = new File(FilenameUtils.concat(dir, "MyJobFile.ptk"));
-		File pdf = new File(FilenameUtils.concat(dir, "artwork/test.pdf"));
+		File pdf = new File(FilenameUtils.concat(dir, "assets/test.pdf"));
 
 		Assert.assertTrue("PrintTalk File does not exist.", xPtk.exists());
 		Assert.assertTrue("PrintTalk File size is 0.", xPtk.length() > 0);
 
 		PrintTalkNavigator ptkNav = new PrintTalkNavigator(new FileInputStream(xPtk));
 		String pdfPath = ptkNav.readAttribute("//FileSpec/@URL");
-		Assert.assertEquals("URL attribute is wrong.", "artwork/test.pdf", pdfPath);
+		Assert.assertEquals("URL attribute is wrong.", "assets/test.pdf", pdfPath);
 
 		Assert.assertTrue("PDF File does not exist.", pdf.exists());
 		Assert.assertTrue("PDF File size is 0.", pdf.length() > 0);
