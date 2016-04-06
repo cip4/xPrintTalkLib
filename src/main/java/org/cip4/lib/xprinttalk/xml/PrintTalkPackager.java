@@ -2,14 +2,16 @@ package org.cip4.lib.xprinttalk.xml;
 
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang.StringUtils;
+import org.cip4.lib.xjdf.schema.XJDF;
 import org.cip4.lib.xjdf.util.IDGeneratorUtil;
 import org.cip4.lib.xjdf.xml.internal.AbstractXmlPackager;
+import org.cip4.lib.xjdf.xml.internal.JAXBNavigator;
 import org.cip4.lib.xjdf.xml.internal.PackagerException;
-import org.cip4.lib.xjdf.xml.internal.XmlNavigator;
+import org.cip4.lib.xprinttalk.schema.PrintTalk;
 
+import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpressionException;
 import java.io.OutputStream;
-import java.net.URI;
 
 /**
  * Packaging logic for PrintTalk Documents. Package an PrintTalk with all references in a ZIP Package.
@@ -19,70 +21,64 @@ public class PrintTalkPackager extends AbstractXmlPackager {
     /**
      * Create a new PrintTalkPackager.
      *
-     * @param out     The underlying OutputStream to write the package to.
+     * @param out The underlying OutputStream to write the package to.
      */
     public PrintTalkPackager(final OutputStream out) {
-        super(out, false);
-    }
-
-	/**
-	 * Create a new PrintTalkPackager.
-	 *
-	 * @param out     The underlying OutputStream to write the package to.
-	 * @param withoutHierarchy Put all files into the zip root.
-	 */
-	public PrintTalkPackager(final OutputStream out, final boolean withoutHierarchy) {
-		super(out, withoutHierarchy);
-	}
-
-    @Override
-    public final void packageXml(
-        final XmlNavigator ptkNavigator,
-        final URI rootUri
-    ) throws PackagerException, XPathExpressionException {
-        packagePrintTalk((PrintTalkNavigator) ptkNavigator, rootUri);
+        super(out);
     }
 
     /**
-     * Packages an XJDF Document to a zipped binary output stream.
+     * Packages a PrintTalk document to a zipped binary output stream.
      *
-     * @param ptkNavigator The PrintTalkNavigator containing the data.
-     * @param rootUri The root URI to use when dealing with relative URIs.
+     * @param ptk The PrintTalk document to package.
      *
      * @throws PackagerException If the PTK document could not be packaged.
      * @throws XPathExpressionException If the BusinessID of the PTK could not be read.
      */
     public final void packagePrintTalk(
-        final PrintTalkNavigator ptkNavigator,
-        final URI rootUri
+        final PrintTalk ptk
     ) throws PackagerException, XPathExpressionException {
-        final String businessID = ptkNavigator.readAttribute(PrintTalkNavigator.BUSINESS_ID);
-        packagePrintTalk(ptkNavigator, businessID, rootUri);
+        String businessID = ptk.getRequest().getBusinessObject().getValue().getBusinessID();
+        packagePrintTalk(ptk, businessID);
     }
 
     /**
-     * Packages an XJDF Document to a zipped binary output stream.
+     * Packages a PrintTalk document.
      *
-     * @param ptkNavigator The PrintTalkNavigator containing the data.
-     * @param docName Documents name in ZIP Package.
-     * @param rootUri The root URI to use when dealing with relative URIs.
+     * @param ptk The PrintTalk document to package.
+     * @param docName Document's name in ZIP Package.
      *
      * @throws PackagerException If the PTK could not be packaged.
+     * @throws XPathExpressionException If the PTK could not be packaged.
      */
     public final void packagePrintTalk(
-        final PrintTalkNavigator ptkNavigator,
-        final String docName,
-        final URI rootUri
-    ) throws PackagerException {
-        String tmpDocName = docName;
-        if (StringUtils.isBlank(tmpDocName)) {
-            tmpDocName = IDGeneratorUtil.generateID("PTK") + ".ptk";
+        final PrintTalk ptk,
+        String docName
+    ) throws PackagerException, XPathExpressionException {
+        if (StringUtils.isBlank(docName)) {
+            docName = IDGeneratorUtil.generateID("PTK") + ".ptk";
         } else {
-            if (StringUtils.isBlank(FilenameUtils.getExtension(tmpDocName))) {
-                tmpDocName += ".ptk";
+            if (StringUtils.isBlank(FilenameUtils.getExtension(docName))) {
+                docName += ".ptk";
             }
         }
+        XJDF xjdf = extractXjdfNode(ptk);
+        packageXml(xjdf, docName);
+    }
 
-        packageXml(ptkNavigator, tmpDocName, rootUri);
+    /**
+     * Extracts the XJDF node out of a PrintTalk document.
+     *
+     * @param ptk PrintTalk document.
+     *
+     * @return Extracted xjdf.
+     */
+    private XJDF extractXjdfNode(final PrintTalk ptk) {
+        try {
+            JAXBNavigator<PrintTalk> jaxbNavigator = new JAXBNavigator<>(ptk);
+            return (XJDF) jaxbNavigator.evaluate("//xjdf:XJDF", XPathConstants.NODE);
+        } catch (Exception e) {
+            throw new IllegalArgumentException("Could not extract the XJDF document", e);
+        }
     }
 }
