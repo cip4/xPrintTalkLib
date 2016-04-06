@@ -41,6 +41,16 @@
             <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
         </repository>
     </distributionManagement>
+    <repositories>
+        <repository>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+            </snapshots>
+            <id>project-repository</id>
+            <url>file:./m2repository</url>
+        </repository>
+    </repositories>
     <developers>
         <developer>
             <id>r.prosi</id>
