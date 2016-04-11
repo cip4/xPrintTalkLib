@@ -2,14 +2,13 @@ package org.cip4.lib.xprinttalk.xml;
 
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang.StringUtils;
-import org.cip4.lib.xjdf.schema.XJDF;
 import org.cip4.lib.xjdf.util.IDGeneratorUtil;
 import org.cip4.lib.xjdf.xml.internal.AbstractXmlPackager;
 import org.cip4.lib.xjdf.xml.internal.JAXBNavigator;
 import org.cip4.lib.xjdf.xml.internal.PackagerException;
 import org.cip4.lib.xprinttalk.schema.PrintTalk;
+import org.cip4.lib.xprinttalk.schema.PurchaseOrder;
 
-import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpressionException;
 import java.io.OutputStream;
 
@@ -27,19 +26,24 @@ public class PrintTalkPackager extends AbstractXmlPackager {
         super(out);
     }
 
+    @Override
+    protected final byte[] parseDocument(final Object document) throws Exception {
+        return new PrintTalkParser().parsePrintTalk((PrintTalk) document);
+    }
+
     /**
      * Packages a PrintTalk document to a zipped binary output stream.
      *
      * @param ptk The PrintTalk document to package.
      *
-     * @throws PackagerException If the PTK document could not be packaged.
-     * @throws XPathExpressionException If the BusinessID of the PTK could not be read.
+     * @throws Exception If packaging fails.
      */
-    public final void packagePrintTalk(
-        final PrintTalk ptk
-    ) throws PackagerException, XPathExpressionException {
-        String businessID = ptk.getRequest().getBusinessObject().getValue().getBusinessID();
-        packagePrintTalk(ptk, businessID);
+    public final void packagePrintTalk(final PrintTalk ptk) throws Exception {
+        JAXBNavigator<PrintTalk> jaxbNavigator = new JAXBNavigator<>(ptk);
+        jaxbNavigator.addNamespace("ptk", PrintTalkConstants.NAMESPACE_PTK20);
+        PurchaseOrder purchaseOrder = (PurchaseOrder) jaxbNavigator.evaluateNode(
+            "//ptk:PrintTalk/ptk:Request/ptk:PurchaseOrder");
+        packagePrintTalk(ptk, purchaseOrder.getBusinessID());
     }
 
     /**
@@ -62,23 +66,6 @@ public class PrintTalkPackager extends AbstractXmlPackager {
                 docName += ".ptk";
             }
         }
-        XJDF xjdf = extractXjdfNode(ptk);
-        packageXml(xjdf, docName);
-    }
-
-    /**
-     * Extracts the XJDF node out of a PrintTalk document.
-     *
-     * @param ptk PrintTalk document.
-     *
-     * @return Extracted xjdf.
-     */
-    private XJDF extractXjdfNode(final PrintTalk ptk) {
-        try {
-            JAXBNavigator<PrintTalk> jaxbNavigator = new JAXBNavigator<>(ptk);
-            return (XJDF) jaxbNavigator.evaluate("//xjdf:XJDF", XPathConstants.NODE);
-        } catch (Exception e) {
-            throw new IllegalArgumentException("Could not extract the XJDF document", e);
-        }
+        packageXml(ptk, docName);
     }
 }
