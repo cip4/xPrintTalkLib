@@ -211,7 +211,7 @@
         <dependency>
             <groupId>org.cip4.lib.xjdf</groupId>
             <artifactId>xJdfLib</artifactId>
-            <version>0.7-SNAPSHOT</version>
+            <version>0.7</version>
         </dependency>
 
         <!-- JAXB -->
