@@ -33,6 +33,16 @@
             <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
         </repository>
     </distributionManagement>
+    <repositories>
+        <repository>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+            </snapshots>
+            <id>project-repository</id>
+            <url>file:./m2repository</url>
+        </repository>
+    </repositories>
     <licenses>
         <license>
             <name>CIP4 Software License</name>
@@ -52,8 +62,29 @@
             <id>s.meissner</id>
             <name>Stefan Meissner</name>
             <organization>flyeralarm GmbH</organization>
-            <organizationUrl>http://www.flyeralarm.com</organizationUrl>
-            <email>s.meissner@flyeralarm.de</email>
+            <organizationUrl>https://www.flyeralarm.com</organizationUrl>
+            <email>stefan.meissner@flyeralarm.com</email>
+        </developer>
+        <developer>
+            <id>m.hartmann</id>
+            <name>Michel Hartmann</name>
+            <organization>flyeralarm GmbH</organization>
+            <organizationUrl>https://www.flyeralarm.com</organizationUrl>
+            <email>michel.hartmann@flyeralarm.com</email>
+        </developer>
+        <developer>
+            <id>j.hammett</id>
+            <name>Jeffrey Hammett</name>
+            <organization>flyeralarm GmbH</organization>
+            <organizationUrl>https://www.flyeralarm.com</organizationUrl>
+            <email>jeffrey.hammett@flyeralarm.com</email>
+        </developer>
+        <developer>
+            <id>a.eirich</id>
+            <name>Arthur Eirich</name>
+            <organization>flyeralarm GmbH</organization>
+            <organizationUrl>https://www.flyeralarm.com</organizationUrl>
+            <email>arthur.eirich@flyeralarm.com</email>
         </developer>
     </developers>
     <build>
@@ -207,6 +238,13 @@
         </plugins>
     </build>
     <dependencies>
+        <!-- Logging -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>1.7.7</version>
+        </dependency>
+
         <!-- CIP4 -->
         <dependency>
             <groupId>org.cip4.lib.xjdf</groupId>

@@ -1,6 +1,6 @@
 /**
  * All rights reserved by
- * 
+ *
  * flyeralarm GmbH
  * Alfred-Nobel-Straße 18
  * 97080 Würzburg
@@ -10,13 +10,12 @@
  */
 package org.cip4.lib.xprinttalk.xml;
 
-import java.io.ByteArrayOutputStream;
-
 import org.cip4.lib.xjdf.XJdfNodeFactory;
 import org.cip4.lib.xjdf.builder.ProductBuilder;
 import org.cip4.lib.xjdf.builder.XJdfBuilder;
 import org.cip4.lib.xjdf.schema.GeneralID;
 import org.cip4.lib.xjdf.schema.RunList;
+import org.cip4.lib.xjdf.type.URI;
 import org.cip4.lib.xprinttalk.PrintTalkNodeFactory;
 import org.cip4.lib.xprinttalk.builder.PrintTalkBuilder;
 import org.cip4.lib.xprinttalk.schema.PrintTalk;
@@ -25,137 +24,129 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.ByteArrayOutputStream;
+
 /**
  * JUnit test case for PrintTalkParser
  */
 public class PrintTalkParserTest {
 
-	PrintTalkParser ptkParser;
+    private PrintTalkParser ptkParser;
 
-	/**
-	 * Set up unit test.
-	 * @throws java.lang.Exception
-	 */
-	@Before
-	public void setUp() throws Exception {
+    /**
+     * Set up unit test.
+     * @throws java.lang.Exception
+     */
+    @Before
+    public void setUp() throws Exception {
 
-		// new Instance
-		ptkParser = new PrintTalkParser();
-	}
+        // new Instance
+        ptkParser = new PrintTalkParser();
+    }
 
-	/**
-	 * Tear down unit test.
-	 * @throws java.lang.Exception
-	 */
-	@After
-	public void tearDown() throws Exception {
+    /**
+     * Tear down unit test.
+     * @throws java.lang.Exception
+     */
+    @After
+    public void tearDown() throws Exception {
 
-		// set null
-		ptkParser = null;
-	}
+        // set null
+        ptkParser = null;
+    }
 
-	/**
-	 * Test method for
-	 * {@link org.cip4.lib.xprinttalk.xml.PrintTalkParser#parsePrintTalk(org.cip4.lib.xprinttalk.schema.PrintTalk, java.io.OutputStream, boolean)}.
-	 */
-	@Test
-	public void testParsePrintTalkXmlHeader() throws Exception {
+    /**
+     * Test method for
+     * {@link org.cip4.lib.xprinttalk.xml.PrintTalkParser#parsePrintTalk(org.cip4.lib.xprinttalk.schema.PrintTalk, java.io.OutputStream, boolean)}.
+     */
+    @Test
+    public void testParsePrintTalkXmlHeader() throws Exception {
 
-		// arrange
-		final String PAYLOAD_ID = "PL_200";
-		final String BUSINESS_ID = "BS_12345";
-		final String JOB_ID = "JB_1234";
-		final String AMOUNT = "1500";
+        // arrange
+        final String PAYLOAD_ID = "PL_200";
+        final String BUSINESS_ID = "BS_12345";
+        final String JOB_ID = "JB_1234";
+        final String AMOUNT = "1500";
 
-		PrintTalkNodeFactory ptkNodeFactory = new PrintTalkNodeFactory();
-		XJdfNodeFactory xJdfNodeFactory = new XJdfNodeFactory();
+        PrintTalkNodeFactory ptkNodeFactory = new PrintTalkNodeFactory();
+        XJdfNodeFactory xJdfNodeFactory = new XJdfNodeFactory();
 
-		PrintTalkBuilder builder = new PrintTalkBuilder(PAYLOAD_ID);
+        PrintTalkBuilder builder = new PrintTalkBuilder(PAYLOAD_ID);
 
-		PurchaseOrder purchaseOrder = ptkNodeFactory.createPurchaseOrder(BUSINESS_ID, "EUR");
-		builder.addRequest(purchaseOrder);
+        PurchaseOrder purchaseOrder = ptkNodeFactory.createPurchaseOrder(BUSINESS_ID, "EUR");
+        builder.addRequest(purchaseOrder);
 
-		XJdfBuilder xJdfBuilder = new XJdfBuilder(JOB_ID);
+        XJdfBuilder xJdfBuilder = new XJdfBuilder(JOB_ID);
 
-		GeneralID generalId = xJdfNodeFactory.createGeneralID("CatalogID", "49");
-		xJdfBuilder.addGeneralID(generalId);
+        GeneralID generalId = xJdfNodeFactory.createGeneralID("CatalogID", "49");
+        xJdfBuilder.addGeneralID(generalId);
 
-		ProductBuilder productBuilder = new ProductBuilder(Integer.valueOf(AMOUNT).intValue());
-		xJdfBuilder.addProduct(productBuilder.build());
+        ProductBuilder productBuilder = new ProductBuilder(Integer.valueOf(AMOUNT));
+        xJdfBuilder.addProduct(productBuilder.build());
 
-		RunList runList = xJdfNodeFactory.createRunList("http://www.example.org:8080/artwork.pdf");
-		xJdfBuilder.addParameter(runList);
+        RunList runList = xJdfNodeFactory.createRunList(
+            new URI(
+                new java.net.URI("http://www.example.org:8080/artwork.pdf")
+            )
+        );
+        xJdfBuilder.addParameter(runList);
 
-		purchaseOrder.setXJDF(xJdfBuilder.build());
-		PrintTalk printTalk = builder.build();
+        purchaseOrder.setXJDF(xJdfBuilder.build());
+        PrintTalk printTalk = builder.build();
 
-		// act
-		ByteArrayOutputStream bos = new ByteArrayOutputStream();
-		ptkParser.parsePrintTalk(printTalk, bos, true);
+        // act
+        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+        ptkParser.parsePrintTalk(printTalk, bos, true);
 
-		// assert
-		String strXml = new String(bos.toByteArray());
-		System.out.println(strXml);
+        // assert
+        String strXml = new String(bos.toByteArray());
+        System.out.println(strXml);
+    }
 
-		int i = strXml.indexOf("\n");
-		int n = strXml.indexOf("\n", i + 1);
+    /**
+     * Test method for
+     * {@link org.cip4.lib.xprinttalk.xml.PrintTalkParser#parsePrintTalk(org.cip4.lib.xprinttalk.schema.PrintTalk, java.io.OutputStream, boolean)}.
+     */
+    @Test
+    public void testParsePrintTalkXmlHeaderByteArray() throws Exception {
 
-		String actual = strXml.substring(i + 1, n);
+        // arrange
+        final String PAYLOAD_ID = "PL_200";
+        final String BUSINESS_ID = "BS_12345";
+        final String JOB_ID = "JB_1234";
+        final String AMOUNT = "1500";
 
-		// Assert.assertEquals("Result is wrong", "<!-- Generated by CIP4 xPrintTalkLib [version not specified] and CIP4 xJdfLib [version not specified] -->",
-		// actual);
+        PrintTalkNodeFactory ptkNodeFactory = new PrintTalkNodeFactory();
+        XJdfNodeFactory xJdfNodeFactory = new XJdfNodeFactory();
 
-	}
+        PrintTalkBuilder builder = new PrintTalkBuilder(PAYLOAD_ID);
 
-	/**
-	 * Test method for
-	 * {@link org.cip4.lib.xprinttalk.xml.PrintTalkParser#parsePrintTalk(org.cip4.lib.xprinttalk.schema.PrintTalk, java.io.OutputStream, boolean)}.
-	 */
-	@Test
-	public void testParsePrintTalkXmlHeaderByteArray() throws Exception {
+        PurchaseOrder purchaseOrder = ptkNodeFactory.createPurchaseOrder(BUSINESS_ID, "EUR");
+        builder.addRequest(purchaseOrder);
 
-		// arrange
-		final String PAYLOAD_ID = "PL_200";
-		final String BUSINESS_ID = "BS_12345";
-		final String JOB_ID = "JB_1234";
-		final String AMOUNT = "1500";
+        XJdfBuilder xJdfBuilder = new XJdfBuilder(JOB_ID);
 
-		PrintTalkNodeFactory ptkNodeFactory = new PrintTalkNodeFactory();
-		XJdfNodeFactory xJdfNodeFactory = new XJdfNodeFactory();
+        GeneralID generalId = xJdfNodeFactory.createGeneralID("CatalogID", "49");
+        xJdfBuilder.addGeneralID(generalId);
 
-		PrintTalkBuilder builder = new PrintTalkBuilder(PAYLOAD_ID);
+        ProductBuilder productBuilder = new ProductBuilder(Integer.valueOf(AMOUNT));
+        xJdfBuilder.addProduct(productBuilder.build());
 
-		PurchaseOrder purchaseOrder = ptkNodeFactory.createPurchaseOrder(BUSINESS_ID, "EUR");
-		builder.addRequest(purchaseOrder);
+        RunList runList = xJdfNodeFactory.createRunList(
+            new URI(
+                new java.net.URI("http://www.example.org:8080/artwork.pdf")
+            )
+        );
+        xJdfBuilder.addParameter(runList);
 
-		XJdfBuilder xJdfBuilder = new XJdfBuilder(JOB_ID);
+        purchaseOrder.setXJDF(xJdfBuilder.build());
+        PrintTalk printTalk = builder.build();
 
-		GeneralID generalId = xJdfNodeFactory.createGeneralID("CatalogID", "49");
-		xJdfBuilder.addGeneralID(generalId);
+        // act
+        byte[] bytes = ptkParser.parsePrintTalk(printTalk, true);
 
-		ProductBuilder productBuilder = new ProductBuilder(Integer.valueOf(AMOUNT).intValue());
-		xJdfBuilder.addProduct(productBuilder.build());
-
-		RunList runList = xJdfNodeFactory.createRunList("http://www.example.org:8080/artwork.pdf");
-		xJdfBuilder.addParameter(runList);
-
-		purchaseOrder.setXJDF(xJdfBuilder.build());
-		PrintTalk printTalk = builder.build();
-
-		// act
-		byte[] bytes = ptkParser.parsePrintTalk(printTalk, true);
-
-		// assert
-		String strXml = new String(bytes);
-		System.out.println(strXml);
-
-		int i = strXml.indexOf("\n");
-		int n = strXml.indexOf("\n", i + 1);
-
-		String actual = strXml.substring(i + 1, n);
-
-		// Assert.assertEquals("Result is wrong", "<!-- Generated by CIP4 xPrintTalkLib [version not specified] and CIP4 xJdfLib [version not specified] -->",
-		// actual);
-
-	}
+        // assert
+        String strXml = new String(bytes);
+        System.out.println(strXml);
+    }
 }
