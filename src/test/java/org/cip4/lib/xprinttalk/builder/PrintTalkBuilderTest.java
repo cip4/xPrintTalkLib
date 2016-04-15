@@ -10,7 +10,7 @@
  */
 package org.cip4.lib.xprinttalk.builder;
 
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.cip4.lib.xjdf.XJdfNodeFactory;
 import org.cip4.lib.xjdf.builder.ProductBuilder;
 import org.cip4.lib.xjdf.builder.XJdfBuilder;

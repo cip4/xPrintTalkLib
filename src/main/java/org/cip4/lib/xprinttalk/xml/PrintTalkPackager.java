@@ -1,7 +1,7 @@
 package org.cip4.lib.xprinttalk.xml;
 
 import org.apache.commons.io.FilenameUtils;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.cip4.lib.xjdf.util.IDGeneratorUtil;
 import org.cip4.lib.xjdf.xml.internal.AbstractXmlPackager;
 import org.cip4.lib.xjdf.xml.internal.JAXBNavigator;
