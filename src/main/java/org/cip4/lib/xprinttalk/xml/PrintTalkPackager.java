@@ -16,7 +16,7 @@ import java.nio.file.Path;
 /**
  * Packaging logic for PrintTalk Documents. Package an PrintTalk with all references in a ZIP Package.
  */
-public class PrintTalkPackager extends AbstractXmlPackager {
+public class PrintTalkPackager extends AbstractXmlPackager<PrintTalk> {
 
     /**
      * Create a new PrintTalkPackager.
@@ -40,8 +40,8 @@ public class PrintTalkPackager extends AbstractXmlPackager {
     }
 
     @Override
-    protected final byte[] parseDocument(final Object document) throws Exception {
-        return new PrintTalkParser().parsePrintTalk((PrintTalk) document);
+    protected final byte[] parseDocument(final PrintTalk printTalk) throws Exception {
+        return new PrintTalkParser().parsePrintTalk(printTalk);
     }
 
     /**
