@@ -11,11 +11,12 @@ import org.cip4.lib.xprinttalk.schema.PurchaseOrder;
 
 import javax.xml.xpath.XPathExpressionException;
 import java.io.OutputStream;
+import java.nio.file.Path;
 
 /**
  * Packaging logic for PrintTalk Documents. Package an PrintTalk with all references in a ZIP Package.
  */
-public class PrintTalkPackager extends AbstractXmlPackager {
+public class PrintTalkPackager extends AbstractXmlPackager<PrintTalk> {
 
     /**
      * Create a new PrintTalkPackager.
@@ -26,9 +27,21 @@ public class PrintTalkPackager extends AbstractXmlPackager {
         super(out);
     }
 
+    /**
+     * Create a new PrintTalkPackager.
+     *
+     * This constructor should be used if an existing archive should be enhanced.
+     *
+     * @param zipPath The path to an existing archive.
+     * @param out The underlying OutputStream to write the package to.
+     */
+    public PrintTalkPackager(final Path zipPath, final OutputStream out) {
+        super(zipPath, out);
+    }
+
     @Override
-    protected final byte[] parseDocument(final Object document) throws Exception {
-        return new PrintTalkParser().parsePrintTalk((PrintTalk) document);
+    protected final byte[] parseDocument(final PrintTalk printTalk) throws Exception {
+        return new PrintTalkParser().parsePrintTalk(printTalk);
     }
 
     /**
