@@ -1,6 +1,6 @@
 /**
  * All rights reserved by
- * 
+ *
  * flyeralarm GmbH
  * Alfred-Nobel-Straße 18
  * 97080 Würzburg
@@ -13,6 +13,7 @@ package org.cip4.lib.xprinttalk.builder.msg;
 import org.cip4.lib.xjdf.XJdfNodeFactory;
 import org.cip4.lib.xjdf.schema.Milestone;
 import org.cip4.lib.xjdf.schema.Notification;
+import org.cip4.lib.xjdf.type.DateTime;
 import org.cip4.lib.xprinttalk.PrintTalkNodeFactory;
 import org.cip4.lib.xprinttalk.builder.PrintTalkBuilder;
 import org.cip4.lib.xprinttalk.schema.OrderStatusResponse;
@@ -33,7 +34,7 @@ public final class MilestoneMsgBuilder extends PrintTalkBuilder {
 	/**
 	 * Custom Constructor. Create and return a new instance of PrintTalkBuilder.
 	 */
-	public MilestoneMsgBuilder(String businessID, String jobID, String milestoneType) {
+	public MilestoneMsgBuilder(String businessID, String milestoneType) {
 
 		super();
 
@@ -46,9 +47,8 @@ public final class MilestoneMsgBuilder extends PrintTalkBuilder {
 		milestone.setMilestoneType(milestoneType);
 
 		Notification notification = nf.createNotification();
-		notification.setJobID(jobID);
-		notification.setType("Milestone");
-		notification.getMilestone().add(milestone);
+		notification.withMilestone(milestone);
+		notification.withTimeStamp(new DateTime());
 
 		OrderStatusResponse orderStatusResponse = ptkNf.createOrderStatusResponse(businessID);
 		orderStatusResponse.getNotification().add(notification);

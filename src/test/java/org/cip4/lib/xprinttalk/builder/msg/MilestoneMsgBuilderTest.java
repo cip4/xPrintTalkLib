@@ -50,20 +50,16 @@ public class MilestoneMsgBuilderTest extends AbstractBuilderTest<PrintTalk> {
 
 		// arrange
 		final String BUSINESS_ID = "businessID";
-		final String JOB_ID = "jobID";
 		final String MILESTONE_TYPE = "milestoneType";
 
 		// act
-		MilestoneMsgBuilder builder = new MilestoneMsgBuilder(BUSINESS_ID, JOB_ID, MILESTONE_TYPE);
+		MilestoneMsgBuilder builder = new MilestoneMsgBuilder(BUSINESS_ID, MILESTONE_TYPE);
 
 		// assert
 		byte[] bytes = marsahlResult(builder);
 
 		String actualBusinessID = getXPathValue(bytes, "/ptk:PrintTalk/ptk:Request/ptk:OrderStatusResponse/@BusinessID");
 		Assert.assertEquals("BusinessID is wrong.", BUSINESS_ID, actualBusinessID);
-
-		String actualJobID = getXPathValue(bytes, "/ptk:PrintTalk/ptk:Request/ptk:OrderStatusResponse/xjdf:Notification/@JobID");
-		Assert.assertEquals("JobID is wrong.", JOB_ID, actualJobID);
 
 		String actualMilestoneType = getXPathValue(bytes, "/ptk:PrintTalk/ptk:Request/ptk:OrderStatusResponse/xjdf:Notification/xjdf:Milestone/@MilestoneType");
 		Assert.assertEquals("MilestoneType is wrong.", MILESTONE_TYPE, actualMilestoneType);

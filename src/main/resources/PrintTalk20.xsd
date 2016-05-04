@@ -57,6 +57,17 @@
 	<!-- Import JDF and JDF Types -->
 	<xs:import namespace="http://www.CIP4.org/JDFSchema_2_0" schemaLocation="./JDF20.xsd" />
 
+	<!-- ** Complex type definition for Resource ** -->
+	<xs:complexType name="telem">
+		<xs:simpleContent>
+			<xs:extension base="xs:string"/>
+		</xs:simpleContent>
+	</xs:complexType>
+
+    <xs:simpleType name="gYearMonth">
+        <xs:restriction base="xs:gYearMonth"/>
+    </xs:simpleType>
+
 	<!-- PrintTalk - the root element -->
 	<xs:element name="PrintTalk">
 		<xs:annotation>
@@ -168,7 +179,7 @@
 			</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
-			<xs:element name="Identity" type="xjdf:telem" />
+			<xs:element name="Identity" type="ptk:telem" />
 			<xs:element name="SharedSecret" type="ptk:cXML-SharedSecret"
 				minOccurs="0" />
 			<xs:element name="CredentialMac" type="ptk:cXML-CredentialMac"
@@ -484,7 +495,7 @@
 		<xs:complexContent>
 			<xs:extension base="ptk:Abstract_pt">
 				<xs:sequence maxOccurs="unbounded" minOccurs="0">
-					<xs:element name="PayTerm" type="xjdf:telem" minOccurs="0" />
+					<xs:element name="PayTerm" type="ptk:telem" minOccurs="0" />
 					<xs:element minOccurs="0" name="CreditCard" type="ptk:CreditCard" />
 				</xs:sequence>
 			</xs:extension>
@@ -495,9 +506,9 @@
 			<xs:extension base="ptk:Abstract_pt">
 				<xs:attribute name="Authorization" type="xjdf:string"
 					use="optional" />
-				<xs:attribute name="AuthorizationExpires" type="xjdf:gYearMonth"
+				<xs:attribute name="AuthorizationExpires" type="ptk:gYearMonth"
 					use="optional" />
-				<xs:attribute name="Expires" type="xjdf:gYearMonth"
+				<xs:attribute name="Expires" type="ptk:gYearMonth"
 					use="required" />
 				<xs:attribute name="Number" type="xjdf:NMTOKEN" use="required" />
 				<xs:attribute name="Type" type="xjdf:NMTOKEN" use="required" />
