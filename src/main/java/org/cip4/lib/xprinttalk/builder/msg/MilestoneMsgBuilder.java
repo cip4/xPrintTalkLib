@@ -1,31 +1,17 @@
-/**
- * All rights reserved by
- *
- * flyeralarm GmbH
- * Alfred-Nobel-Straße 18
- * 97080 Würzburg
- *
- * Email: info@flyeralarm.com
- * Website: http://www.flyeralarm.com
- */
 package org.cip4.lib.xprinttalk.builder.msg;
 
 import org.cip4.lib.xjdf.XJdfNodeFactory;
+import org.cip4.lib.xjdf.schema.EnumType;
 import org.cip4.lib.xjdf.schema.Milestone;
 import org.cip4.lib.xjdf.schema.Notification;
-import org.cip4.lib.xjdf.type.DateTime;
 import org.cip4.lib.xprinttalk.PrintTalkNodeFactory;
 import org.cip4.lib.xprinttalk.builder.PrintTalkBuilder;
 import org.cip4.lib.xprinttalk.schema.OrderStatusResponse;
 
 /**
  * Implementation of a Milestone builder class. This class covers the functionality for the creation of a full milestone PrintTalk Message.
- * @author stefan.meissner
- * @date 06.12.2012
  */
 public final class MilestoneMsgBuilder extends PrintTalkBuilder {
-
-	public final static String DIGITAL_ART_ARRIVED = "DigitalArtArrived";
 
 	private final PrintTalkNodeFactory ptkNf;
 
@@ -34,8 +20,7 @@ public final class MilestoneMsgBuilder extends PrintTalkBuilder {
 	/**
 	 * Custom Constructor. Create and return a new instance of PrintTalkBuilder.
 	 */
-	public MilestoneMsgBuilder(String businessID, String milestoneType) {
-
+	public MilestoneMsgBuilder(String businessID, String jobID, String milestoneType) {
 		super();
 
 		// init instance variables
@@ -47,13 +32,12 @@ public final class MilestoneMsgBuilder extends PrintTalkBuilder {
 		milestone.setMilestoneType(milestoneType);
 
 		Notification notification = nf.createNotification();
-		notification.withMilestone(milestone);
-		notification.withTimeStamp(new DateTime());
+		notification.setJobID(jobID);
+		notification.setType(EnumType.MILESTONE);
+		notification.setMilestone(milestone);
 
 		OrderStatusResponse orderStatusResponse = ptkNf.createOrderStatusResponse(businessID);
 		orderStatusResponse.getNotification().add(notification);
 		this.addRequest(orderStatusResponse);
-
 	}
-
 }
