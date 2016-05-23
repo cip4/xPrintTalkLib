@@ -1,6 +1,7 @@
 package org.cip4.lib.xprinttalk.builder.msg;
 
 import org.cip4.lib.xjdf.XJdfNodeFactory;
+import org.cip4.lib.xjdf.schema.EnumClass;
 import org.cip4.lib.xjdf.schema.EnumType;
 import org.cip4.lib.xjdf.schema.Milestone;
 import org.cip4.lib.xjdf.schema.Notification;
@@ -34,8 +35,9 @@ public final class MilestoneMsgBuilder extends PrintTalkBuilder {
 
 		Notification notification = nf.createNotification();
 		notification.setJobID(jobID);
-		notification.setType(EnumType.MILESTONE);
-		notification.setTimeStamp(new DateTime());
+        notification.setClazz(EnumClass.EVENT);
+        notification.setType(EnumType.MILESTONE);
+        notification.setTimeStamp(new DateTime());
 		notification.setMilestone(milestone);
 
 		OrderStatusResponse orderStatusResponse = ptkNf.createOrderStatusResponse(businessID);
