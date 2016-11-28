@@ -85,7 +85,7 @@ public class PrintTalkBuilderTest extends AbstractBuilderTest<PrintTalk> {
                 new java.net.URI("http://www.example.org:8080/artwork.pdf")
             )
         );
-        xJdfBuilder.addParameter(runList);
+        xJdfBuilder.addResource(runList);
 
         purchaseOrder.setXJDF(xJdfBuilder.build());
 

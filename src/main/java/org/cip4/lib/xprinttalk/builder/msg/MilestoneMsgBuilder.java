@@ -37,7 +37,6 @@ public final class MilestoneMsgBuilder extends PrintTalkBuilder {
 		notification.setJobID(jobID);
         notification.setClazz(EnumClass.EVENT);
         notification.setType(EnumType.MILESTONE);
-        notification.setTimeStamp(new DateTime());
 		notification.setMilestone(milestone);
 
 		OrderStatusResponse orderStatusResponse = ptkNf.createOrderStatusResponse(businessID);

@@ -84,7 +84,7 @@ public class PrintTalkValidatorTest {
 
         XJdfBuilder xJdfBuilder = new XJdfBuilder("MyJobId");
         xJdfBuilder.addProduct(product);
-        xJdfBuilder.addParameter(
+        xJdfBuilder.addResource(
             nf.createRunList(
                 new URI(
                     new java.net.URI("MyContent")

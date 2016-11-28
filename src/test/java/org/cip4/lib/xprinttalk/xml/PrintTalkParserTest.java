@@ -89,7 +89,7 @@ public class PrintTalkParserTest {
                 new java.net.URI("http://www.example.org:8080/artwork.pdf")
             )
         );
-        xJdfBuilder.addParameter(runList);
+        xJdfBuilder.addResource(runList);
 
         purchaseOrder.setXJDF(xJdfBuilder.build());
         PrintTalk printTalk = builder.build();
@@ -137,7 +137,7 @@ public class PrintTalkParserTest {
                 new java.net.URI("http://www.example.org:8080/artwork.pdf")
             )
         );
-        xJdfBuilder.addParameter(runList);
+        xJdfBuilder.addResource(runList);
 
         purchaseOrder.setXJDF(xJdfBuilder.build());
         PrintTalk printTalk = builder.build();

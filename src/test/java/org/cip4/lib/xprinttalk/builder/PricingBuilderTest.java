@@ -13,6 +13,7 @@ package org.cip4.lib.xprinttalk.builder;
 import org.cip4.lib.xjdf.XJdfNodeFactory;
 import org.cip4.lib.xjdf.builder.ProductBuilder;
 import org.cip4.lib.xjdf.builder.XJdfBuilder;
+import org.cip4.lib.xjdf.schema.LayoutIntent;
 import org.cip4.lib.xjdf.schema.XJDF;
 import org.cip4.lib.xjdf.type.URI;
 import org.cip4.lib.xprinttalk.PrintTalkNodeFactory;
@@ -54,11 +55,11 @@ public class PricingBuilderTest extends AbstractBuilderTest<PrintTalk> {
         XJdfNodeFactory nf = new XJdfNodeFactory();
 
         ProductBuilder productBuilder = new ProductBuilder(1000);
-        productBuilder.addIntent(nf.createLayoutIntent(22));
+        productBuilder.addIntent(new LayoutIntent());
 
         XJdfBuilder xJdfBuilder = new XJdfBuilder("Job387943", "Web2Print", "MyProduct");
         xJdfBuilder.addGeneralID(nf.createGeneralID("CatalogID", "ID_Whatever"));
-        xJdfBuilder.addParameter(
+        xJdfBuilder.addResource(
             nf.createRunList(
                 new URI(
                     new java.net.URI(
@@ -104,11 +105,11 @@ public class PricingBuilderTest extends AbstractBuilderTest<PrintTalk> {
         XJdfNodeFactory nf = new XJdfNodeFactory();
 
         ProductBuilder productBuilder = new ProductBuilder(1000);
-        productBuilder.addIntent(nf.createLayoutIntent(22));
+        productBuilder.addIntent(new LayoutIntent());
 
         XJdfBuilder xJdfBuilder = new XJdfBuilder("Job387943", "Web2Print", "MyProduct");
         xJdfBuilder.addGeneralID(nf.createGeneralID("CatalogID", "ID_Whatever"));
-        xJdfBuilder.addParameter(
+        xJdfBuilder.addResource(
             nf.createRunList(
                 new URI(
                     new java.net.URI(
