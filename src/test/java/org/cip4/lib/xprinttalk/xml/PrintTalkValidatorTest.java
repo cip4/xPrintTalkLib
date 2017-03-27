@@ -92,6 +92,7 @@ public class PrintTalkValidatorTest {
             )
         );
         XJDF xjdf = xJdfBuilder.build();
+        xjdf.withTypes("Product");
 
         PrintTalkBuilder ptkBuilder = new PrintTalkBuilder();
         ptkBuilder.addRequest(ptkNf.createPurchaseOrder("MyJobId", null, xjdf));

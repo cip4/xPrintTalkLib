@@ -3,6 +3,7 @@ package org.cip4.lib.xprinttalk.builder.msg;
 import org.cip4.lib.xjdf.XJdfNodeFactory;
 import org.cip4.lib.xjdf.schema.Milestone;
 import org.cip4.lib.xjdf.schema.Notification;
+import org.cip4.lib.xjdf.schema.Severity;
 import org.cip4.lib.xprinttalk.PrintTalkNodeFactory;
 import org.cip4.lib.xprinttalk.builder.PrintTalkBuilder;
 import org.cip4.lib.xprinttalk.schema.OrderStatusResponse;
@@ -32,8 +33,7 @@ public final class MilestoneMsgBuilder extends PrintTalkBuilder {
 
 		Notification notification = nf.createNotification();
 		notification.setJobID(jobID);
-        notification.setClazz(Notification.Class.EVENT);
-        notification.setType(Notification.Type.MILESTONE);
+		notification.setClazz(Severity.EVENT);
 		notification.setMilestone(milestone);
 
 		OrderStatusResponse orderStatusResponse = ptkNf.createOrderStatusResponse(businessID);
