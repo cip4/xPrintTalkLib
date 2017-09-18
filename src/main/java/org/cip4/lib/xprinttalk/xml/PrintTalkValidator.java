@@ -11,7 +11,7 @@ import org.cip4.lib.xprinttalk.schema.PrintTalk;
 /**
  * Validation of PrintTalk Documents based on PrintTalk schema file.
  */
-public class PrintTalkValidator extends AbstractXmlValidator<PrintTalk> {
+public class PrintTalkValidator extends AbstractXmlValidator {
 
     /**
      * URL of the internal PrintTalk schema.

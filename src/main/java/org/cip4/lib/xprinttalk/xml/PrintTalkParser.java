@@ -118,7 +118,7 @@ public class PrintTalkParser extends AbstractXmlParser<PrintTalk> {
     }
 
     @Override
-    protected final AbstractXmlValidator<PrintTalk> createValidator() {
+    protected final AbstractXmlValidator createValidator() {
         return new PrintTalkValidator();
     }
 

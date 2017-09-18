@@ -442,22 +442,22 @@
                 <xs:sequence>
                     <xs:element name="Additional" type="ptk:Additional" minOccurs="0" maxOccurs="unbounded"/>
                 </xs:sequence>
-                <xs:attribute name="Amount" type="xjdf:double" use="optional"/>
+                <xs:attribute name="Amount" type="xs:double" use="optional"/>
                 <!-- Descriptive Name is added in the Abstract_pt_A base type -->
                 <xs:attribute name="ItemRefs" type="xjdf:NMTOKENS" use="optional"/>
                 <xs:attribute name="LineID" type="xjdf:ID" use="optional"/>
                 <xs:attribute name="LineIDRefs" type="xjdf:NMTOKENS" use="optional"/>
-                <xs:attribute name="Price" type="xjdf:double" use="optional"/>
+                <xs:attribute name="Price" type="xs:double" use="optional"/>
                 <xs:attribute name="Unit" type="xjdf:string" use="optional"/>
-                <xs:attribute name="UnitPrice" type="xjdf:double" use="optional"/>
+                <xs:attribute name="UnitPrice" type="xs:double" use="optional"/>
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
     <xs:complexType name="Additional">
         <xs:complexContent>
             <xs:extension base="ptk:Abstract_pt">
-                <xs:attribute name="Amount" type="xjdf:double" use="required"/>
-                <xs:attribute name="Price" type="xjdf:double" use="required"/>
+                <xs:attribute name="Amount" type="xs:double" use="required"/>
+                <xs:attribute name="Price" type="xs:double" use="required"/>
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>

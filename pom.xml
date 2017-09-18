@@ -238,18 +238,11 @@
         </plugins>
     </build>
     <dependencies>
-        <!-- Logging -->
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-log4j12</artifactId>
-            <version>1.7.7</version>
-        </dependency>
-
         <!-- CIP4 -->
         <dependency>
             <groupId>org.cip4.lib.xjdf</groupId>
             <artifactId>xJdfLib</artifactId>
-            <version>0.12</version>
+            <version>0.13-SNAPSHOT</version>
         </dependency>
 
         <!-- JAXB -->
