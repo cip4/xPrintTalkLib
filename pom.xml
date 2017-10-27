@@ -1,10 +1,9 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.cip4.lib.xprinttalk</groupId>
     <artifactId>xPrintTalkLib</artifactId>
-    <version>0.13-SNAPSHOT</version>
+    <version>0.13</version>
     <packaging>jar</packaging>
     <name>CIP4 xPrintTalkLib</name>
     <description>CIP4 PrintTalk Java Library</description>
@@ -18,7 +17,7 @@
         <url>https://bitbucket.cip4.org/scm/lib/xprinttalklib.git</url>
         <developerConnection>scm:git:https://bitbucket.cip4.org/scm/lib/xprinttalklib.git</developerConnection>
         <connection>scm:git:https://bitbucket.cip4.org/scm/lib/xprinttalklib.git</connection>
-        <tag>xPrintTalkLib-0.12</tag>
+        <tag>xPrintTalkLib-0.13</tag>
     </scm>
     <issueManagement>
         <system>JIRA</system>
@@ -229,7 +228,7 @@
                         <phase>process-sources</phase>
                         <configuration>
                             <target>
-                                <delete dir="${project.build.directory}/generated-sources/xjc/org/cip4/lib/xjdf"/>
+                                <delete dir="${project.build.directory}/generated-sources/xjc/org/cip4/lib/xjdf" />
                             </target>
                         </configuration>
                         <goals>
