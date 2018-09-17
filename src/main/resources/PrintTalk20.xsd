@@ -63,7 +63,7 @@
     </xs:complexType>
 
     <xs:simpleType name="IntegerRangeList">
-        <xs:list itemType="xjdf:integer"/>
+        <xs:list itemType="xs:integer"/>
     </xs:simpleType>
 
     <xs:simpleType name="gYearMonth">
@@ -181,8 +181,8 @@
             <xs:element name="SharedSecret" type="ptk:cXML-SharedSecret" minOccurs="0"/>
             <xs:element name="CredentialMac" type="ptk:cXML-CredentialMac" minOccurs="0"/>
         </xs:sequence>
-        <xs:attribute name="domain" type="xjdf:string" use="required"/>
-        <xs:attribute name="type" type="xjdf:string" use="optional"/>
+        <xs:attribute name="domain" type="xs:string" use="required"/>
+        <xs:attribute name="type" type="xs:string" use="optional"/>
     </xs:complexType>
 
 
@@ -204,7 +204,7 @@
             <xs:element ref="xjdf:Comment" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="xjdf:GeneralID" minOccurs="0" maxOccurs="unbounded"/>
         </xs:sequence>
-        <xs:attribute name="DescriptiveName" type="xjdf:string" use="optional"/>
+        <xs:attribute name="DescriptiveName" type="xs:string" use="optional"/>
     </xs:complexType>
     <xs:complexType name="Abstract_pt_A" abstract="true">
         <xs:annotation>
@@ -219,18 +219,18 @@
                     <xs:element ref="xjdf:Comment" minOccurs="0" maxOccurs="unbounded"/>
                     <xs:element ref="xjdf:GeneralID" minOccurs="0" maxOccurs="unbounded"/>
                 </xs:sequence>
-                <xs:attribute name="DescriptiveName" type="xjdf:string" use="required"/>
+                <xs:attribute name="DescriptiveName" type="xs:string" use="required"/>
             </xs:restriction>
         </xs:complexContent>
     </xs:complexType>
     <xs:complexType name="BusinessObject" abstract="true">
         <xs:complexContent>
             <xs:extension base="ptk:Abstract_pt">
-                <xs:attribute name="AgentID" type="xjdf:NMTOKEN" use="optional"/>
-                <xs:attribute name="AgentDisplayName" type="xjdf:string" use="optional"/>
-                <xs:attribute name="AuxID" type="xjdf:NMTOKEN" use="optional"/>
-                <xs:attribute name="BusinessID" type="xjdf:NMTOKEN" use="required"/>
-                <xs:attribute name="BusinessRefID" type="xjdf:NMTOKEN" use="optional"/>
+                <xs:attribute name="AgentID" type="xs:NMTOKEN" use="optional"/>
+                <xs:attribute name="AgentDisplayName" type="xs:string" use="optional"/>
+                <xs:attribute name="AuxID" type="xs:NMTOKEN" use="optional"/>
+                <xs:attribute name="BusinessID" type="xs:NMTOKEN" use="required"/>
+                <xs:attribute name="BusinessRefID" type="xs:NMTOKEN" use="optional"/>
                 <xs:attribute name="RequestDate" type="xjdf:dateTime" use="optional"/>
             </xs:extension>
         </xs:complexContent>
@@ -385,11 +385,11 @@
                 <xs:sequence>
                     <xs:element ref="xjdf:XJDF"/>
                 </xs:sequence>
-                <xs:attribute name="Currency" type="xjdf:NMTOKEN" use="required"/>
-                <xs:attribute name="Estimate" type="xjdf:boolean" use="optional"/>
+                <xs:attribute name="Currency" type="xs:NMTOKEN" use="required"/>
+                <xs:attribute name="Estimate" type="xs:boolean" use="optional"/>
                 <xs:attribute name="Expires" type="xjdf:dateTime" use="required"/>
-                <xs:attribute name="ReorderID" type="xjdf:NMTOKENS" use="optional"/>
-                <xs:attribute name="ReplaceID" type="xjdf:NMTOKEN" use="optional"/>
+                <xs:attribute name="ReorderID" type="xs:NMTOKENS" use="optional"/>
+                <xs:attribute name="ReplaceID" type="xs:NMTOKEN" use="optional"/>
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
@@ -401,11 +401,11 @@
                 <xs:sequence>
                     <xs:element name="Quote" type="ptk:QuoteType" maxOccurs="unbounded"/>
                 </xs:sequence>
-                <xs:attribute name="Currency" type="xjdf:NMTOKEN" use="required"/>
-                <xs:attribute name="Estimate" type="xjdf:boolean" use="required"/>
+                <xs:attribute name="Currency" type="xs:NMTOKEN" use="required"/>
+                <xs:attribute name="Estimate" type="xs:boolean" use="required"/>
                 <xs:attribute name="Expires" type="xjdf:dateTime" use="required"/>
-                <xs:attribute name="ReorderID" type="xjdf:NMTOKENS" use="optional"/>
-                <xs:attribute name="ReplaceID" type="xjdf:NMTOKEN" use="optional"/>
+                <xs:attribute name="ReorderID" type="xs:NMTOKENS" use="optional"/>
+                <xs:attribute name="ReplaceID" type="xs:NMTOKEN" use="optional"/>
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
@@ -416,13 +416,13 @@
                     <xs:element ref="xjdf:XJDF"/>
                     <xs:element name="Pricing" type="ptk:Pricing"/>
                 </xs:sequence>
-                <xs:attribute name="Currency" type="xjdf:NMTOKEN" use="optional"/>
-                <xs:attribute name="Estimate" type="xjdf:boolean" use="optional"/>
+                <xs:attribute name="Currency" type="xs:NMTOKEN" use="optional"/>
+                <xs:attribute name="Estimate" type="xs:boolean" use="optional"/>
                 <xs:attribute name="Expires" type="xjdf:dateTime" use="optional"/>
-                <xs:attribute name="QuoteID" type="xjdf:NMTOKEN" use="required"/>
-                <xs:attribute name="ReorderID" type="xjdf:NMTOKENS" use="optional"/>
-                <xs:attribute name="ReplaceID" type="xjdf:NMTOKEN" use="optional"/>
-                <xs:attribute name="ReturnJDF" type="xjdf:boolean" use="optional"/>
+                <xs:attribute name="QuoteID" type="xs:NMTOKEN" use="required"/>
+                <xs:attribute name="ReorderID" type="xs:NMTOKENS" use="optional"/>
+                <xs:attribute name="ReplaceID" type="xs:NMTOKEN" use="optional"/>
+                <xs:attribute name="ReturnJDF" type="xs:boolean" use="optional"/>
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
@@ -444,11 +444,11 @@
                 </xs:sequence>
                 <xs:attribute name="Amount" type="xs:double" use="optional"/>
                 <!-- Descriptive Name is added in the Abstract_pt_A base type -->
-                <xs:attribute name="ItemRefs" type="xjdf:NMTOKENS" use="optional"/>
+                <xs:attribute name="ItemRefs" type="xs:NMTOKENS" use="optional"/>
                 <xs:attribute name="LineID" type="xjdf:ID" use="optional"/>
-                <xs:attribute name="LineIDRefs" type="xjdf:NMTOKENS" use="optional"/>
+                <xs:attribute name="LineIDRefs" type="xs:NMTOKENS" use="optional"/>
                 <xs:attribute name="Price" type="xs:double" use="optional"/>
-                <xs:attribute name="Unit" type="xjdf:string" use="optional"/>
+                <xs:attribute name="Unit" type="xs:string" use="optional"/>
                 <xs:attribute name="UnitPrice" type="xs:double" use="optional"/>
             </xs:extension>
         </xs:complexContent>
@@ -474,11 +474,11 @@
     <xs:complexType name="CreditCard">
         <xs:complexContent>
             <xs:extension base="ptk:Abstract_pt">
-                <xs:attribute name="Authorization" type="xjdf:string" use="optional"/>
+                <xs:attribute name="Authorization" type="xs:string" use="optional"/>
                 <xs:attribute name="AuthorizationExpires" type="ptk:gYearMonth" use="optional"/>
                 <xs:attribute name="Expires" type="ptk:gYearMonth" use="required"/>
-                <xs:attribute name="Number" type="xjdf:NMTOKEN" use="required"/>
-                <xs:attribute name="Type" type="xjdf:NMTOKEN" use="required"/>
+                <xs:attribute name="Number" type="xs:NMTOKEN" use="required"/>
+                <xs:attribute name="Type" type="xs:NMTOKEN" use="required"/>
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
@@ -491,12 +491,12 @@
                     <xs:element ref="xjdf:XJDF"/>
                     <xs:element name="Pricing" type="ptk:Pricing" minOccurs="0"/>
                 </xs:sequence>
-                <xs:attribute name="Currency" type="xjdf:NMTOKEN" use="optional"/>
+                <xs:attribute name="Currency" type="xs:NMTOKEN" use="optional"/>
                 <xs:attribute name="Expires" type="xjdf:dateTime" use="optional"/>
-                <xs:attribute name="QuoteID" type="xjdf:NMTOKEN" use="optional"/>
-                <xs:attribute name="ReorderID" type="xjdf:NMTOKENS" use="optional"/>
-                <xs:attribute name="ReplaceID" type="xjdf:NMTOKEN" use="optional"/>
-                <xs:attribute name="ReturnJDF" type="xjdf:boolean" use="optional"/>
+                <xs:attribute name="QuoteID" type="xs:NMTOKEN" use="optional"/>
+                <xs:attribute name="ReorderID" type="xs:NMTOKENS" use="optional"/>
+                <xs:attribute name="ReplaceID" type="xs:NMTOKEN" use="optional"/>
+                <xs:attribute name="ReturnJDF" type="xs:boolean" use="optional"/>
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
@@ -548,8 +548,8 @@
     <xs:complexType name="StatusRequest">
         <xs:complexContent>
             <xs:extension base="ptk:Abstract_pt">
-                <xs:attribute name="JobIDRef" type="xjdf:string" use="optional"/>
-                <xs:attribute name="JobPartIDRef" type="xjdf:string" use="optional"/>
+                <xs:attribute name="JobIDRef" type="xs:string" use="optional"/>
+                <xs:attribute name="JobPartIDRef" type="xs:string" use="optional"/>
                 <xs:attribute name="ResponseDetails">
                     <xs:simpleType>
                         <xs:restriction base="xs:NMTOKEN">
@@ -593,8 +593,8 @@
                 <xs:sequence>
                     <xs:element name="ProofItem" type="xjdf:ProofItem"/>
                 </xs:sequence>
-                <xs:attribute name="JobIDRef" type="xjdf:string" use="optional"/>
-                <xs:attribute name="JobPartIDRef" type="xjdf:string" use="optional"/>
+                <xs:attribute name="JobIDRef" type="xs:string" use="optional"/>
+                <xs:attribute name="JobPartIDRef" type="xs:string" use="optional"/>
                 <xs:attribute name="ProofLocation" type="xjdf:URL" use="optional"/>
             </xs:extension>
         </xs:complexContent>
@@ -618,8 +618,8 @@
                     <xs:element ref="xjdf:ApprovalDetails"/>
                     <xs:element name="ProofItem" type="xjdf:ProofItem"/>
                 </xs:sequence>
-                <xs:attribute name="JobIDRef" type="xjdf:string" use="optional"/>
-                <xs:attribute name="JobPartIDRef" type="xjdf:string" use="optional"/>
+                <xs:attribute name="JobIDRef" type="xs:string" use="optional"/>
+                <xs:attribute name="JobPartIDRef" type="xs:string" use="optional"/>
                 <xs:attribute name="PageIndex" type="ptk:IntegerRangeList" use="optional"/>
                 <xs:attribute name="Response" use="optional">
                     <xs:simpleType>
@@ -642,7 +642,7 @@
                     <xs:element ref="xjdf:XJDF" minOccurs="0"/>
                     <xs:element name="Pricing" type="ptk:Pricing"/>
                 </xs:sequence>
-                <xs:attribute name="Currency" type="xjdf:NMTOKEN" use="required"/>
+                <xs:attribute name="Currency" type="xs:NMTOKEN" use="required"/>
                 <xs:attribute name="Expires" type="xjdf:dateTime" use="required"/>
             </xs:extension>
         </xs:complexContent>

@@ -28,10 +28,10 @@ public final class MilestoneMsgBuilder extends PrintTalkBuilder {
 		ptkNf = new PrintTalkNodeFactory();
 
 		// create milestone
-		Milestone milestone = nf.createMilestone();
+		Milestone milestone = new Milestone();
 		milestone.setMilestoneType(milestoneType);
 
-		Notification notification = nf.createNotification();
+		Notification notification = new Notification();
 		notification.setJobID(jobID);
 		notification.setClazz(Severity.EVENT);
 		notification.setMilestone(milestone);

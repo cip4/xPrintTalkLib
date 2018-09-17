@@ -3,100 +3,99 @@
 <ptk:PrintTalk xmlns:ptk="http://www.printtalk.org/schema_2_0" xmlns:xjdf="http://www.CIP4.org/JDFSchema_2_0" Timestamp="2013-08-22T12:25:00+02:00" payloadID="0558d0ac-03bd-41e8-91a0-930eecf99cfc" version="2.0">
     <ptk:Request>
         <ptk:PurchaseOrder BusinessID="14710604" Currency="EUR">
-            <xjdf:XJDF Category="Web2Print" ID="XJDF_D93ZWABG" JobID="14710604-01" Version="2.0">
-                <xjdf:AuditPool>
-                    <xjdf:Created AgentName="FLYERALARM AutoPattern" AgentVersion="v0.2.1" TimeStamp="2013-08-22T12:19:23+02:00"/>
-                    <xjdf:Modified AgentName="FLYERALARM SuperXJdfFactory" AgentVersion="1.1-SNAPSHOT" TimeStamp="2013-08-22T12:24:59+02:00"/>
-                </xjdf:AuditPool>
+            <xjdf:XJDF Category="Web2Print" JobID="14710604-01" Types="Product">
                 <xjdf:ProductList>
-                    <xjdf:Product Amount="100" DescriptiveName="PLAKAT A1;115af;4/0;" ID="PRD_132061959" IsRoot="true" JobID="132061959" ProductTypeDetails="Simple Product">
+                    <xjdf:Product Amount="100" DescriptiveName="PLAKAT A1;115af;4/0;" ID="PRD_132061959" IsRoot="true" ProductTypeDetails="Simple Product">
                         <xjdf:Intent Name="ColorIntent">
-                            <xjdf:ColorIntent NumColors="4 0"/>
+                            <xjdf:ColorIntent>
+                                <xjdf:SurfaceColor Surface="Front" ColorsUsed="Cyan Magenta Yellow Black"/>
+                                <xjdf:SurfaceColor Surface="Back"/>
+                            </xjdf:ColorIntent>
                         </xjdf:Intent>
                         <xjdf:Intent Name="MediaIntent">
-                            <xjdf:MediaIntent MediaQuality="AFF_115"/>
+                            <xjdf:MediaIntent MediaQuality="AFF_115" MediaType="Paper"/>
                         </xjdf:Intent>
                         <xjdf:Intent Name="LayoutIntent">
                             <xjdf:LayoutIntent FinishedDimensions="1689.448818897638 2386.7716535433074 0.0" Pages="0" Sides="OneSided"/>
                         </xjdf:Intent>
                     </xjdf:Product>
-                    <xjdf:Product Amount="100" DescriptiveName="PLAKAT A1;115af;4/0;" ID="PRD_132062258" IsRoot="true" JobID="132062258" ProductTypeDetails="Simple Product">
+                    <xjdf:Product Amount="100" DescriptiveName="PLAKAT A1;115af;4/0;" ID="PRD_132062258" IsRoot="true" ProductTypeDetails="Simple Product">
                         <xjdf:Intent Name="ColorIntent">
-                            <xjdf:ColorIntent NumColors="4 0"/>
+                            <xjdf:ColorIntent>
+                                <xjdf:SurfaceColor Surface="Front" ColorsUsed="Cyan Magenta Yellow Black"/>
+                                <xjdf:SurfaceColor Surface="Back"/>
+                            </xjdf:ColorIntent>
                         </xjdf:Intent>
                         <xjdf:Intent Name="MediaIntent">
-                            <xjdf:MediaIntent MediaQuality="AFF_115"/>
+                            <xjdf:MediaIntent MediaQuality="AFF_115" MediaType="Paper"/>
                         </xjdf:Intent>
                         <xjdf:Intent Name="LayoutIntent">
                             <xjdf:LayoutIntent FinishedDimensions="1689.448818897638 2386.7716535433074 0.0" Pages="0" Sides="OneSided"/>
                         </xjdf:Intent>
                     </xjdf:Product>
                 </xjdf:ProductList>
-                <xjdf:ParameterSet Name="ColorantControl">
-                    <xjdf:Parameter>
+                <xjdf:ResourceSet Name="ColorantControl">
+                    <xjdf:Resource>
                         <xjdf:ColorantControl ProcessColorModel="DeviceCMYK"/>
-                    </xjdf:Parameter>
-                </xjdf:ParameterSet>
-                <xjdf:ParameterSet Name="Media">
-                    <xjdf:Parameter>
-                        <xjdf:Media Dimension="3430.26 2452.21" MediaQuality="AFF_115"/>
-                    </xjdf:Parameter>
-                </xjdf:ParameterSet>
-                <xjdf:ParameterSet Name="CustomerInfo">
-                    <xjdf:Parameter>
+                    </xjdf:Resource>
+                </xjdf:ResourceSet>
+                <xjdf:ResourceSet Name="Media">
+                    <xjdf:Resource>
+                        <xjdf:Media Dimension="3430.26 2452.21" MediaQuality="AFF_115" MediaType="Paper"/>
+                    </xjdf:Resource>
+                </xjdf:ResourceSet>
+                <xjdf:ResourceSet Name="CustomerInfo">
+                    <xjdf:Resource>
                         <xjdf:CustomerInfo CustomerID="FLYERALARM"/>
-                    </xjdf:Parameter>
-                    <xjdf:Parameter>
+                    </xjdf:Resource>
+                    <xjdf:Resource>
                         <xjdf:Part ProductPart="PRD_132061959"/>
                         <xjdf:CustomerInfo CustomerID="240523"/>
-                    </xjdf:Parameter>
-                    <xjdf:Parameter>
+                    </xjdf:Resource>
+                    <xjdf:Resource>
                         <xjdf:Part ProductPart="PRD_132062258"/>
                         <xjdf:CustomerInfo CustomerID="219897"/>
-                    </xjdf:Parameter>
-                </xjdf:ParameterSet>
-                <xjdf:ParameterSet Name="RunList">
-                    <xjdf:Parameter>
+                    </xjdf:Resource>
+                </xjdf:ResourceSet>
+                <xjdf:ResourceSet Name="RunList">
+                    <xjdf:Resource>
                         <xjdf:RunList>
                             <xjdf:FileSpec URL="./artwork/14710604_02W6T.pdf"/>
                         </xjdf:RunList>
-                    </xjdf:Parameter>
-                </xjdf:ParameterSet>
-                <xjdf:ParameterSet Name="Preview">
-                    <xjdf:Parameter>
-                        <xjdf:Preview URL="./preview/14710604_02W6T-preview.jpg"/>
-                    </xjdf:Parameter>
-                </xjdf:ParameterSet>
-                <xjdf:ParameterSet Name="Layout">
-                    <xjdf:Parameter>
+                    </xjdf:Resource>
+                </xjdf:ResourceSet>
+                <xjdf:ResourceSet Name="Preview">
+                    <xjdf:Resource>
+                        <xjdf:Preview>
+                            <xjdf:FileSpec URL="./preview/14710604_02W6T-preview.jpg"/>
+                        </xjdf:Preview>
+                    </xjdf:Resource>
+                </xjdf:ResourceSet>
+                <xjdf:ResourceSet Name="Layout">
+                    <xjdf:Resource>
                         <xjdf:Part SheetName="SHEET-1"/>
                         <xjdf:Layout>
-                            <xjdf:BinderySignature AssemblyID="AS_132061959" ProductID="PRD_132061959">
-                                <xjdf:Position AbsoluteBox="25.4722 19.6447 1714.92 2406.42" Orientation="Rotate0"/>
-                            </xjdf:BinderySignature>
-                            <xjdf:BinderySignature AssemblyID="AS_132062258" ProductID="PRD_132062258">
-                                <xjdf:Position AbsoluteBox="1715.26 19.6447 3404.71 2406.42" Orientation="Rotate0"/>
-                            </xjdf:BinderySignature>
+                            <xjdf:Position AbsoluteBox="25.4722 19.6447 1714.92 2406.42" Orientation="Rotate0"/>
+                            <xjdf:Position AbsoluteBox="1715.26 19.6447 3404.71 2406.42" Orientation="Rotate0"/>
                         </xjdf:Layout>
-                    </xjdf:Parameter>
-                </xjdf:ParameterSet>
-                <xjdf:ParameterSet Name="NodeInfo">
-                    <xjdf:Parameter>
-                        <xjdf:NodeInfo JobPriority="50"/>
+                    </xjdf:Resource>
+                </xjdf:ResourceSet>
+                <xjdf:ResourceSet Name="NodeInfo">
+                    <xjdf:Resource>
                         <xjdf:AmountPool>
                             <xjdf:PartAmount Amount="100"/>
                         </xjdf:AmountPool>
-                    </xjdf:Parameter>
-                </xjdf:ParameterSet>
-                <xjdf:ParameterSet Name="Contact">
-                    <xjdf:Parameter>
-                        <xjdf:Contact ContactTypes="Customer">
+                        <xjdf:NodeInfo JobPriority="50"/>
+                    </xjdf:Resource>
+                </xjdf:ResourceSet>
+                <xjdf:ResourceSet Name="Contact">
+                    <xjdf:Resource>
+                        <xjdf:Contact>
+                            <xjdf:Address City="Würzburg" Country="GERMANY" CountryCode="de" PostalCode="97080" Street="Alfred-Nobel-Straße 18"/>
                             <xjdf:Company OrganizationName="FLYERALARM GmbH"/>
-                            <xjdf:ComChannel ChannelType="Email" Locator="mailto:info@flyeralarm.com"/>
-                            <xjdf:Address City="WÃ¼rzburg" Country="GERMANY" CountryCode="de" PostalCode="97080" Street="Alfred-Nobel-StraÃŸe 18"/>
                         </xjdf:Contact>
-                    </xjdf:Parameter>
-                </xjdf:ParameterSet>
+                    </xjdf:Resource>
+                </xjdf:ResourceSet>
             </xjdf:XJDF>
         </ptk:PurchaseOrder>
     </ptk:Request>

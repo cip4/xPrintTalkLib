@@ -1,0 +1,133 @@
+apply plugin: 'maven'
+apply plugin: 'signing'
+
+// javadoc.jar generation
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+javadoc {
+    failOnError = true
+}
+
+// sources.jar generation
+task sourcesJar(type: Jar) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+artifacts {
+    archives javadocJar
+    archives sourcesJar
+}
+
+signing {
+    required { gradle.taskGraph.hasTask(uploadArchives) }
+    sign configurations.archives
+}
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
+
+            repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
+                authentication(userName: ossrhUsername, password: ossrhPassword)
+            }
+
+            snapshotRepository(url: "https://oss.sonatype.org/content/repositories/snapshots/") {
+                authentication(userName: ossrhUsername, password: ossrhPassword)
+            }
+
+            pom.project {
+                name project.name
+                packaging 'jar'
+                // optionally artifactId can be defined here
+                description project.description
+                url 'http://www.cip4.org'
+
+                scm {
+                    url 'https://stash.cip4.org/scm/lib/xjdflib.git'
+                    connection 'scm:git:https://stash.cip4.org/scm/lib/xjdflib.git'
+                    developerConnection 'scm:git:https://stash.cip4.org/scm/lib/xjdflib.git'
+                }
+
+                issueManagement {
+                    system 'JIRA'
+                    url 'https://jira.cip4.org/browse/XJDFLIB'
+                }
+
+                licenses {
+                    license {
+                        name 'CIP4 Software License'
+                        url 'https://confluence.cip4.org/display/PUB/CIP4+Software+License'
+                        distribution 'repo'
+                    }
+                }
+
+                developers {
+                    developer {
+                        id 'r.prosi'
+                        name 'Dr. Rainer Prosi'
+                        organization 'Heidelberger Druckmaschinen AG'
+                        organizationUrl 'http://www.heidelberg.com'
+                        email 'rainer.prosi@heidelberg.com'
+                    }
+                    developer {
+                        id 's.meissner'
+                        name 'Stefan Meissner'
+                        organization 'flyeralarm GmbH'
+                        organizationUrl 'https://www.flyeralarm.com'
+                        email 'stefan.meissner@flyeralarm.com'
+                    }
+                    developer {
+                        id 'm.hartmann'
+                        name 'Michel Hartmann'
+                        organization 'flyeralarm GmbH'
+                        organizationUrl 'https://www.flyeralarm.com'
+                        email 'michel.hartmann@flyeralarm.com'
+                    }
+                    developer {
+                        id 'j.hammett'
+                        name 'Jeffrey Hammett'
+                        organization 'flyeralarm GmbH'
+                        organizationUrl 'https://www.flyeralarm.com'
+                        email 'jeffrey.hammett@flyeralarm.com'
+                    }
+                }
+            }
+        }
+    }
+}
+
+task createRelease (dependsOn: [test, javadoc]) {
+    description = 'Tags the current head with the project\'s version.'
+
+    outputs.file('version.properties')
+    String gitCommand = 'git'
+    doLast {
+        if (!project.hasProperty('projectVersion')) {
+            throw new RuntimeException('Version has to be supplied using -PprojectVersion=');
+        }
+        file('version.properties').text = project.projectVersion
+        exec { commandLine gitCommand, 'add', 'version.properties' }
+        exec { commandLine gitCommand, 'commit', '-m', "'Prepare for release of ${version}'" }
+        exec { commandLine gitCommand, 'tag', '-m', "Release of ${version}",  "xJdfLib-${version}" }
+        exec { commandLine gitCommand, 'push', 'origin' }
+    }
+}
+
+task updateVersion {
+    outputs.file('version.properties')
+    String gitCommand = 'git'
+    doLast {
+        if (!project.hasProperty('projectVersion')) {
+            throw new RuntimeException('Version has to be supplied using -PprojectVersion=');
+        }
+        file('version.properties').text = project.projectVersion
+        exec { commandLine gitCommand, 'add', 'version.properties' }
+        exec { commandLine gitCommand, 'commit', '-m', "'Incremented version number to ${project.projectVersion}'" }
+        exec { commandLine gitCommand, 'push', 'origin' }
+    }
+}

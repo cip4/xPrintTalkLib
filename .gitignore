@@ -2,4 +2,4 @@
 /target
 /atlassian-ide-plugin.xml
 /xPrintTalkLib.iml
-src/main/resources/JDF20.xsd
+/src/generated
