@@ -20,7 +20,6 @@ import org.cip4.lib.xprinttalk.schema.PurchaseOrder;
 /**
  * Static Factory Class which is managing the creation of PrintTalkNodes.
  * @author s.meissner
- * @date 22.06.2012
  */
 public class PrintTalkNodeFactory extends ObjectFactory {
 
@@ -33,7 +32,7 @@ public class PrintTalkNodeFactory extends ObjectFactory {
 
 	/**
 	 * Create a new OrderStatusResponse Node which already contains the attribute BusinessID.
-	 * @param BusinessID Value of BusinessID attribute.
+	 * @param businessID Value of BusinessID attribute.
 	 * @return OrderStatusResponse Node which already contains the attribute BusinessID.
 	 */
 	public OrderStatusResponse createOrderStatusResponse(String businessID) {
@@ -50,8 +49,8 @@ public class PrintTalkNodeFactory extends ObjectFactory {
 
 	/**
 	 * Create a new PurchaseOrder Node which already contains the attributes BusinessID, Currency and BusinessRefID.
-	 * @param BusinessID Value of BusinessID attribute.
-	 * @param Currency Value of Currency attribute.
+	 * @param businessID Value of BusinessID attribute.
+	 * @param currency Value of Currency attribute.
 	 * @return PurchaseOrder Node which already contains the attributes BusinessID, Currency and BusinessRefID.
 	 */
 	public PurchaseOrder createPurchaseOrder(String businessID, String currency) {
@@ -62,9 +61,9 @@ public class PrintTalkNodeFactory extends ObjectFactory {
 
 	/**
 	 * Create a new PurchaseOrder Node which already contains the attributes BusinessID, Currency and XJDF.
-	 * @param BusinessID Value of BusinessID attribute.
-	 * @param Currency Value of Currency attribute.
-	 * @param XJDF XJDF Document.
+	 * @param businessID Value of BusinessID attribute.
+	 * @param currency Value of Currency attribute.
+	 * @param xjdf XJDF Document.
 	 * @return PurchaseOrder Node which already contains the attributes BusinessID, Currency and BusinessRefID.
 	 */
 	public PurchaseOrder createPurchaseOrder(String businessID, String currency, XJDF xjdf) {
@@ -75,10 +74,10 @@ public class PrintTalkNodeFactory extends ObjectFactory {
 
 	/**
 	 * Create a new PurchaseOrder Node which already contains the attributes BusinessID, Currency and XJDF.
-	 * @param BusinessID Value of BusinessID attribute.
-	 * @param Currency Value of Currency attribute.
-	 * @param XJDF XJDF Document.
-	 * @Param pricing Pricing Node
+	 * @param businessID Value of BusinessID attribute.
+	 * @param currency Value of Currency attribute.
+	 * @param xjdf XJDF Document.
+	 * @param pricing Pricing Node
 	 * @return PurchaseOrder Node which already contains the attributes BusinessID, Currency and BusinessRefID.
 	 */
 	public PurchaseOrder createPurchaseOrder(String businessID, String currency, XJDF xjdf, Pricing pricing) {
@@ -89,9 +88,9 @@ public class PrintTalkNodeFactory extends ObjectFactory {
 
 	/**
 	 * Create a new PurchaseOrder Node which already contains the attributes BusinessID, Currency and XJDF.
-	 * @param BusinessID Value of BusinessID attribute.
-	 * @param Currency Value of Currency attribute.
-	 * @param BueinssRefID Value of BusinessRefID attribute.
+	 * @param businessID Value of BusinessID attribute.
+	 * @param currency Value of Currency attribute.
+	 * @param businessRefID Value of BusinessRefID attribute.
 	 * @return PurchaseOrder Node which already contains the attributes BusinessID, Currency and BusinessRefID.
 	 */
 	public PurchaseOrder createPurchaseOrder(String businessID, String currency, String businessRefID) {
@@ -102,11 +101,11 @@ public class PrintTalkNodeFactory extends ObjectFactory {
 
 	/**
 	 * Create a new PurchaseOrder Node which already contains the attributes BusinessID, Currency, XJDF and BusinessRefID.
-	 * @param BusinessID Value of BusinessID attribute.
-	 * @param Currency Value of Currency attribute.
-	 * @param XJDF XJDF Document.
-	 * @param BueinssRefID Value of BusinessRefID attribute.
-	 * @param Pricing Pricing Node.
+	 * @param businessID Value of BusinessID attribute.
+	 * @param currency Value of Currency attribute.
+	 * @param xjdf XJDF Document.
+	 * @param businessRefID Value of BusinessRefID attribute.
+	 * @param pricing Pricing Node.
 	 * @return PurchaseOrder Node which already contains the attributes BusinessID, Currency, XJDF and BusinessRefID.
 	 */
 	public PurchaseOrder createPurchaseOrder(String businessID, String currency, XJDF xjdf, String businessRefID, Pricing pricing) {

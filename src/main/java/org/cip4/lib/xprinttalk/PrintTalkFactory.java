@@ -19,7 +19,6 @@ import org.cip4.lib.xprinttalk.xml.internal.JAXBContextFactory;
 /**
  * Factory class for global library initialization.
  * @author s.meissner
- * @date 28.01.2013
  */
 public class PrintTalkFactory implements Runnable {
 
@@ -44,7 +43,6 @@ public class PrintTalkFactory implements Runnable {
 
 	/**
 	 * Initialize the PrintTalk Library.
-	 * @throws JAXBException
 	 */
 	public static void init(boolean initAsync) {
 
@@ -53,7 +51,6 @@ public class PrintTalkFactory implements Runnable {
 
 	/**
 	 * Initialize the JAXB framework.
-	 * @throws JAXBException
 	 */
 	public static void initXJdfPrintTalk() throws JAXBException {
 

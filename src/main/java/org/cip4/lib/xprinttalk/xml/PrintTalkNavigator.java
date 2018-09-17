@@ -27,7 +27,6 @@ import java.io.InputStream;
 /**
  * Navigator class which simplify XPath handling using PrintTalk Documents.
  * @author s.meissner
- * @date 03.07.2012
  */
 public class PrintTalkNavigator extends XmlNavigator {
 

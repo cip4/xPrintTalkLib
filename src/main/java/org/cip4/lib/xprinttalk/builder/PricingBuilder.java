@@ -21,7 +21,6 @@ import org.cip4.lib.xprinttalk.schema.Pricing;
 /**
  * Implementation of a Pricing builder class.
  * @author s.meissner
- * @date 25.06.2012
  */
 public class PricingBuilder extends AbstractNodeBuilder<Pricing> {
 

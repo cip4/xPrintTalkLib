@@ -18,7 +18,6 @@ import com.sun.xml.bind.marshaller.NamespacePrefixMapper;
 /**
  * PrintTalk Namespace Prefix Mapper for organizing namespace prefixes.
  * @author s.meissner
- * @date 22.06.2012
  */
 public class PrintTalkNamespaceMapper extends NamespacePrefixMapper {
 
@@ -36,7 +35,7 @@ public class PrintTalkNamespaceMapper extends NamespacePrefixMapper {
 	}
 
 	/**
-	 * Custom constructor. <br/>
+	 * Custom constructor.
 	 * Accepting a String object as place holder for default namespace. This place holder later can be replaced by empty string.
 	 */
 	public PrintTalkNamespaceMapper(String nsDefaultNamespace) {

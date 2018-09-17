@@ -26,7 +26,6 @@ import org.cip4.lib.xprinttalk.xml.PrintTalkConstants;
 /**
  * Implementation of a PrintTalk builder class.
  * @author s.meissner
- * @date 22.06.2012
  */
 public class PrintTalkBuilder extends AbstractNodeBuilder<PrintTalk> {
 
@@ -43,7 +42,6 @@ public class PrintTalkBuilder extends AbstractNodeBuilder<PrintTalk> {
 	/**
 	 * Custom Constructor. Creates a new instance of PrintTalkBuilder preconfigured with attributes Timestamp (current Time), payloadID (paramter) and the
 	 * latest version number.
-	 * @return New PrintTalkBuilder instance.
 	 */
 	public PrintTalkBuilder(String payloadID) {
 
