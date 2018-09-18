@@ -131,3 +131,8 @@ task updateVersion {
         exec { commandLine gitCommand, 'push', 'origin' }
     }
 }
+
+nexusStaging {
+    packageGroup = "org.cip4"
+    stagingProfileId = "105e2b532689c6"
+}
