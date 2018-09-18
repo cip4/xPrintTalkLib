@@ -1,13 +1,3 @@
-/**
- * All rights reserved by
- * 
- * flyeralarm GmbH
- * Alfred-Nobel-Straße 18
- * 97080 Würzburg
- *
- * Email: info@flyeralarm.com
- * Website: http://www.flyeralarm.com
- */
 package org.cip4.lib.xprinttalk.xml.internal;
 
 import org.cip4.lib.xjdf.xml.internal.XJdfNamespaceMapper;
@@ -20,8 +10,6 @@ import com.sun.xml.bind.marshaller.NamespacePrefixMapper;
  * @author s.meissner
  */
 public class PrintTalkNamespaceMapper extends NamespacePrefixMapper {
-
-	private final String nsDefaultNamespace;
 
 	private final NamespacePrefixMapper xjdfMapper;
 
@@ -41,7 +29,6 @@ public class PrintTalkNamespaceMapper extends NamespacePrefixMapper {
 	public PrintTalkNamespaceMapper(String nsDefaultNamespace) {
 
 		// initialize parameter
-		this.nsDefaultNamespace = nsDefaultNamespace;
 		xjdfMapper = new XJdfNamespaceMapper();
 	}
 

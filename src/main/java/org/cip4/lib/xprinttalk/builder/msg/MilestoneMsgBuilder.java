@@ -13,10 +13,6 @@ import org.cip4.lib.xprinttalk.schema.OrderStatusResponse;
  */
 public final class MilestoneMsgBuilder extends PrintTalkBuilder {
 
-	private final PrintTalkNodeFactory ptkNf;
-
-	private final XJdfNodeFactory nf;
-
 	/**
 	 * Custom Constructor. Create and return a new instance of PrintTalkBuilder.
 	 */
@@ -24,8 +20,7 @@ public final class MilestoneMsgBuilder extends PrintTalkBuilder {
 		super();
 
 		// init instance variables
-		nf = new XJdfNodeFactory();
-		ptkNf = new PrintTalkNodeFactory();
+		PrintTalkNodeFactory ptkNf = new PrintTalkNodeFactory();
 
 		// create milestone
 		Milestone milestone = new Milestone();

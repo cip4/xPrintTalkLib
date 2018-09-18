@@ -1,13 +1,3 @@
-/**
- * All rights reserved by
- * 
- * flyeralarm GmbH
- * Alfred-Nobel-Straße 18
- * 97080 Würzburg
- *
- * Email: info@flyeralarm.com
- * Website: http://www.flyeralarm.com
- */
 package org.cip4.lib.xprinttalk.builder;
 
 import java.util.UUID;
@@ -62,6 +52,7 @@ public class PrintTalkBuilder extends AbstractNodeBuilder<PrintTalk> {
 	 * @param businessObject BusinessObject object to append.
 	 * @return The current PrintTalkBuilder instance.
 	 */
+	@SuppressWarnings("unchecked")
 	public PrintTalkBuilder addRequest(BusinessObject businessObject) {
 
 		if (getPrintTalk().getRequest() == null) {

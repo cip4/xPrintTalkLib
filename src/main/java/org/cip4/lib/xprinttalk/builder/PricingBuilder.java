@@ -1,13 +1,3 @@
-/**
- * All rights reserved by
- * 
- * flyeralarm GmbH
- * Alfred-Nobel-Straße 18
- * 97080 Würzburg
- *
- * Email: info@flyeralarm.com
- * Website: http://www.flyeralarm.com
- */
 package org.cip4.lib.xprinttalk.builder;
 
 import org.cip4.lib.xjdf.XJdfNodeFactory;
@@ -158,9 +148,8 @@ public class PricingBuilder extends AbstractNodeBuilder<Pricing> {
 		lineCounter++;
 
 		// get next line id
-		String lineId = "Line_" + Integer.toString(lineCounter);
 
 		// return id
-		return lineId;
+		return "Line_" + Integer.toString(lineCounter);
 	}
 }

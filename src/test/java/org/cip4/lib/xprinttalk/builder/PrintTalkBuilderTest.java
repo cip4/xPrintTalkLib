@@ -1,13 +1,3 @@
-/**
- * All rights reserved by
- *
- * flyeralarm GmbH
- * Alfred-Nobel-Straße 18
- * 97080 Würzburg
- *
- * Email: info@flyeralarm.com
- * Website: http://www.flyeralarm.com
- */
 package org.cip4.lib.xprinttalk.builder;
 
 import org.apache.commons.lang3.StringUtils;
@@ -39,7 +29,7 @@ public class PrintTalkBuilderTest extends AbstractBuilderTest<PrintTalk> {
         PrintTalkBuilder builder = new PrintTalkBuilder(PAYLOAD_ID);
 
         // assert
-        byte[] bytes = marsahlResult(builder);
+        byte[] bytes = marshalResult(builder);
 
         String actualPayloadID = getXPathValue(bytes, "/ptk:PrintTalk/@payloadID");
         Assert.assertEquals("PayloadID is wrong.", PAYLOAD_ID, actualPayloadID);
@@ -90,7 +80,7 @@ public class PrintTalkBuilderTest extends AbstractBuilderTest<PrintTalk> {
         purchaseOrder.setXJDF(xJdfBuilder.build());
 
         // assert
-        byte[] bytes = marsahlResult(builder);
+        byte[] bytes = marshalResult(builder);
 
         String actualPayloadID = getXPathValue(bytes, "/ptk:PrintTalk/@payloadID");
         Assert.assertEquals("PayloadID is wrong.", PAYLOAD_ID, actualPayloadID);

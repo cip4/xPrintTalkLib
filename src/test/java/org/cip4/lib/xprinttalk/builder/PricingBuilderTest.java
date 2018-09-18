@@ -1,13 +1,3 @@
-/**
- * All rights reserved by
- *
- * flyeralarm GmbH
- * Alfred-Nobel-Straße 18
- * 97080 Würzburg
- *
- * Email: info@flyeralarm.com
- * Website: http://www.flyeralarm.com
- */
 package org.cip4.lib.xprinttalk.builder;
 
 import org.cip4.lib.xjdf.XJdfNodeFactory;
@@ -165,7 +155,7 @@ public class PricingBuilderTest extends AbstractBuilderTest<PrintTalk> {
         ptkBuilder.addRequest(purchaseOrder);
 
         // marshal
-        return marsahlResult(ptkBuilder);
+        return marshalResult(ptkBuilder);
     }
 
 }

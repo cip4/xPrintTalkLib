@@ -1,13 +1,3 @@
-/**
- * All rights reserved by
- * 
- * flyeralarm GmbH
- * Alfred-Nobel-Straße 18
- * 97080 Würzburg
- *
- * Email: info@flyeralarm.com
- * Website: http://www.flyeralarm.com
- */
 package org.cip4.lib.xprinttalk.xml;
 
 import org.apache.commons.io.FileUtils;
@@ -47,10 +37,6 @@ public class PrintTalkUnpackagerTest {
 	public void tearDown() throws Exception {
 	}
 
-	/**
-	 * Test method for {@link org.cip4.lib.xjdf.xml.internal.AbstractXmlUnpackager#unpackageZip(java.lang.String, java.lang.String)}.
-	 * @throws IOException
-	 */
 	@Test
 	public void testUnpackageZip() throws IOException, URISyntaxException {
 
@@ -81,10 +67,6 @@ public class PrintTalkUnpackagerTest {
 		Assert.assertFalse("Target destination was not removed.", targetFile.exists());
 	}
 
-	/**
-	 * Test method for {@link org.cip4.lib.xjdf.xml.internal.AbstractXmlUnpackager#unpackageZip(java.lang.String, java.lang.String)}.
-	 * @throws IOException
-	 */
 	@Test
 	public void testUnpackageZipTempDir() throws IOException, URISyntaxException {
 
@@ -112,10 +94,6 @@ public class PrintTalkUnpackagerTest {
 		Assert.assertFalse("Target destination was not removed.", targetFile.exists());
 	}
 
-	/**
-	 * Test method for {@link org.cip4.lib.xjdf.xml.XJdfPackageManager#getXJdfDocument()}.
-	 * @throws FileNotFoundException
-	 */
 	@Test
 	public void testGetPrintTalkDocument() throws Exception {
 
