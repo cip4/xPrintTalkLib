@@ -106,6 +106,7 @@ task createRelease (dependsOn: [test, javadoc]) {
 
     outputs.file('version.properties')
     String gitCommand = 'git'
+    String gitTag = "xJdfLib-${version}"
     doLast {
         if (!project.hasProperty('projectVersion')) {
             throw new RuntimeException('Version has to be supplied using -PprojectVersion=');
@@ -113,8 +114,8 @@ task createRelease (dependsOn: [test, javadoc]) {
         file('version.properties').text = project.projectVersion
         exec { commandLine gitCommand, 'add', 'version.properties' }
         exec { commandLine gitCommand, 'commit', '-m', "'Prepare for release of ${version}'" }
-        exec { commandLine gitCommand, 'tag', '-m', "Release of ${version}",  "xJdfLib-${version}" }
-        exec { commandLine gitCommand, 'push', 'origin' }
+        exec { commandLine gitCommand, 'tag', '-m', "Release of ${version}",  gitTag }
+        exec { commandLine gitCommand, 'push', 'origin', gitTag }
     }
 }
 
