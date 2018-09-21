@@ -29,7 +29,6 @@ tasks.withType(JavaCompile) {
 
 configurations {
     xjc
-    xjdf
 }
 repositories {
     mavenLocal()
@@ -57,8 +56,8 @@ dependencies {
     xjc group: 'org.jvnet.jaxb2_commons', name: 'jaxb2-fluent-api', version: '3.0'
 }
 
-task createBuildInfoFile(dependsOn: processResources) {
-    def buildInfoFile = new File("$buildDir/resources/main/org/cip4/lib/xjdf/build.properties")
+task createBuildInfoFile() {
+    def buildInfoFile = new File("$buildDir/resources/main/org/cip4/lib/xprinttalk/build.properties")
     outputs.file(buildInfoFile)
     doLast {
         def date = new Date()
@@ -68,6 +67,7 @@ task createBuildInfoFile(dependsOn: processResources) {
         props.store(buildInfoFile.newWriter(), null)
     }
 }
+processResources.finalizedBy(createBuildInfoFile)
 
 task exractXjdfSchema(type: Copy) {
     from({ zipTree(project.configurations.compile.find { it.name.startsWith("xJdfLib") }) }) {
@@ -136,7 +136,6 @@ test {
 }
 
 jar {
-    dependsOn createBuildInfoFile
     manifest {
         attributes(
             "Implementation-Title": project.description,
@@ -161,10 +160,10 @@ idea {
 }
 
 task zipTestPackage(type: Zip) {
-    from 'src/test/resources/org/cip4/lib/xjdf/testPackage'
+    from 'src/test/resources/org/cip4/lib/xprinttalk/testPackage'
     include '*'
     include '*/*'
     archiveName 'testPackage.zip'
-    destinationDir(file("$buildDir/resources/test/org/cip4/lib/xjdf"))
+    destinationDir(file("$buildDir/resources/test/org/cip4/lib/xprinttalk"))
 }
 processTestResources.dependsOn(zipTestPackage)

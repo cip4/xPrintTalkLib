@@ -4,10 +4,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-import junit.framework.Assert;
-
 import org.apache.commons.io.IOUtils;
 import org.junit.Test;
+
+import static org.junit.Assert.*;
 
 /**
  * JUnit Test Case for PrintTalkConstants
@@ -41,22 +41,13 @@ public class PrintTalkConstantsTest {
 		String actualNs = PrintTalkConstants.NAMESPACE_PTK20;
 
 		// assert
-		Assert.assertEquals("Namespace PTK20 is wrong.", expectedNs, actualNs);
+		assertEquals("Namespace PTK20 is wrong.", expectedNs, actualNs);
 	}
 
-	/**
-	 * JUnit test
-	 * @throws IOException
-	 */
 	@Test
-	public void testLoadLibraryVersion() throws IOException {
-
-		// arrange
-
-		// act
+	public void testGradleBuildReplacedBuildProperties() throws IOException {
 		String val = PrintTalkConstants.PTK_LIB_VERSION;
 
-		// assert
-		// Assert.assertEquals("PTK library version is wrong.", "", val);
+		assertNotEquals("${pom.version}", val);
 	}
 }
