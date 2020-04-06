@@ -2,6 +2,7 @@ import groovy.json.JsonSlurper
 
 apply plugin: 'maven'
 apply plugin: 'signing'
+apply plugin: 'groovy'
 
 // javadoc.jar generation
 task javadocJar(type: Jar, dependsOn: javadoc) {
@@ -50,9 +51,9 @@ uploadArchives {
                 url 'http://www.cip4.org'
 
                 scm {
-                    url 'https://stash.cip4.org/scm/lib/xprinttalklib.git'
-                    connection 'scm:git:https://stash.cip4.org/scm/lib/xprinttalklib.git'
-                    developerConnection 'scm:git:https://stash.cip4.org/scm/lib/xprinttalklib.git'
+                    url 'https://github.com/cip4/xPrintTalkLib.git'
+                    connection 'scm:git:https://github.com/cip4/xPrintTalkLib.git'
+                    developerConnection 'scm:git:https://github.com/cip4/xPrintTalkLib.git'
                 }
 
                 issueManagement {
@@ -79,9 +80,9 @@ uploadArchives {
                     developer {
                         id 's.meissner'
                         name 'Stefan Meissner'
-                        organization 'flyeralarm GmbH'
-                        organizationUrl 'https://www.flyeralarm.com'
-                        email 'stefan.meissner@flyeralarm.com'
+                        organization 'Cimpress Technology'
+                        organizationUrl 'https://www.cimpress.com'
+                        email 'stefan.meissner@cimpress.com'
                     }
                     developer {
                         id 'm.hartmann'

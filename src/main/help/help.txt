@@ -1,4 +1,0 @@
-
-
-PrintTalkBuilder.newInstance(payload);
-Creation of a new PrintTalk Node preconfigured with attribute Timestamp (current time), payloadID (paramter) and the latest Version.

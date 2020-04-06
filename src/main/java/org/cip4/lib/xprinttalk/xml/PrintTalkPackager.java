@@ -45,21 +45,6 @@ public class PrintTalkPackager extends AbstractXmlPackager<PrintTalk> {
     }
 
     /**
-     * Packages a PrintTalk document to a zipped binary output stream.
-     *
-     * @param ptk The PrintTalk document to package.
-     *
-     * @throws Exception If packaging fails.
-     */
-    public final void packagePrintTalk(final PrintTalk ptk) throws Exception {
-        JAXBNavigator<PrintTalk> jaxbNavigator = new JAXBNavigator<>(ptk);
-        jaxbNavigator.addNamespace("ptk", PrintTalkConstants.NAMESPACE_PTK20);
-        PurchaseOrder purchaseOrder = (PurchaseOrder) jaxbNavigator.evaluateNode(
-            "//ptk:PrintTalk/ptk:Request/ptk:PurchaseOrder");
-        packagePrintTalk(ptk, purchaseOrder.getBusinessID());
-    }
-
-    /**
      * Packages a PrintTalk document.
      *
      * @param ptk The PrintTalk document to package.

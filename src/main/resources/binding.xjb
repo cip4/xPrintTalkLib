@@ -2,6 +2,7 @@
 <xjb:bindings version="2.1"
               xmlns:xjb="http://java.sun.com/xml/ns/jaxb"
               xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
+              xmlns:xs="http://www.w3.org/2001/XMLSchema"
               xmlns:xjdf="http://www.CIP4.org/JDFSchema_2_0"
               xmlns:ptk="http://www.printtalk.org/schema_2_0"
               schemaLocation="PrintTalk20.xsd">
@@ -12,7 +13,7 @@
     <xjb:schemaBindings>
         <xjb:package name="org.cip4.lib.xprinttalk.schema"/>
     </xjb:schemaBindings>
-    <xjb:bindings scd="/~xjdf:dateTime">
+    <xjb:bindings scd="/~xs:dateTime">
         <xjc:javaType name="org.cip4.lib.xjdf.type.DateTime" adapter="org.cip4.lib.xjdf.type.DateTime"/>
     </xjb:bindings>
 </xjb:bindings>
